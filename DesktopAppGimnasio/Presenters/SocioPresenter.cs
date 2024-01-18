@@ -21,7 +21,7 @@ namespace DesktopAppGimnasio.Presenters
             this.repository = repository;
             this.sociosBindingsource = new BindingSource();
 
-            //Subscribe to Events
+            // Subscribe to Events
             this.view.SearchEvent += SearchSocio;
             this.view.AddNewEvent += AddNewSocio;
             this.view.EditEvent += LoadSelectedSocioToEdit;
@@ -59,15 +59,15 @@ namespace DesktopAppGimnasio.Presenters
         }
         private void AddNewSocio(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
         private void LoadSelectedSocioToEdit(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
         private void DeleteSelectedSocio(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
         private void SaveSocio(object? sender, EventArgs e)
         {

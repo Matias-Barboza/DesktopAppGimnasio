@@ -10,13 +10,13 @@ namespace DesktopAppGimnasio.Models
 {
     public class SocioModel
     {
-        //Fields
+        // Fields
         private int codigoSocio;
         private String dni;
         private String nombreYApellido;
         private bool estaActivo;
 
-        //Properties
+        // Properties
         [DisplayName("Número de socio")]
         public int CodigoSocio { get => codigoSocio; set => codigoSocio = value; }
 
@@ -32,7 +32,7 @@ namespace DesktopAppGimnasio.Models
         [StringLength(100)]
         public string NombreYApellido { get => nombreYApellido; set => nombreYApellido = value; }
 
-        [DisplayName("Estado")]
+        [DisplayName("Estado de actividad")]
         [Required]
         public bool EstaActivo { get => estaActivo; set => estaActivo = value; }
     }

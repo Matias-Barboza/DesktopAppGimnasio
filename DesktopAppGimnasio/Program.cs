@@ -22,12 +22,15 @@ namespace DesktopAppGimnasio
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            String mySQLConnection = ConfigurationManager.ConnectionStrings["DesktopAppGimnasio.Properties.Settings.MySQLConnection"].ConnectionString;
-            ISocioView socioView = new SocioView();
-            ISocioRepository socioRepository = new SocioRepository(mySQLConnection);
-            SocioPresenter socioPresenter = new SocioPresenter(socioView, socioRepository);
+            String mySqlConnectionString = ConfigurationManager.ConnectionStrings["DesktopAppGimnasio.Properties.Settings.MySQLConnection"].ConnectionString;
+            //ISocioView socioView = new SocioView();
+            //ISocioRepository socioRepository = new SocioRepository(mySQLConnection);
+            //SocioPresenter socioPresenter = new SocioPresenter(socioView, socioRepository);
+
+            IMainView mainView = new MainView();
+            new MainPresenter(mainView, mySqlConnectionString);
 ;
-            Application.Run((Form) socioView);
+            Application.Run((Form) mainView);
         }
     }
 }

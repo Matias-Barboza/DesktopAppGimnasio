@@ -12,13 +12,13 @@ namespace DesktopAppGimnasio._Repositories
     public class SocioRepository : BaseRepository, ISocioRepository
     {
 
-        //Constructor
+        // Constructor
         public SocioRepository(String connectionString) 
         {
             this.connectionString = connectionString;
         }
 
-        //Methods
+        // Methods
         public void Add(SocioModel socioModel)
         {
             throw new NotImplementedException();

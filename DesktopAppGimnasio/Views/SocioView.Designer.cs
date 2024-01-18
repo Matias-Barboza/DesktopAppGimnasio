@@ -28,11 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panelSuperior = new Panel();
-            labelGymName = new Label();
-            tabControl1 = new TabControl();
+            tabControl = new TabControl();
+            tabPageSociosVisualizer = new TabPage();
+            buttonEdit = new Button();
+            buttonSearchSocio = new Button();
+            textBoxSearchSocio = new TextBox();
+            dataGridViewSocios = new DataGridView();
             tabPageAddOrEditOrDeleteSocio = new TabPage();
-            panel2 = new Panel();
+            panelOperation = new Panel();
+            buttonCancel = new Button();
+            buttonSave = new Button();
+            buttonAdd = new Button();
+            buttonDelete = new Button();
             labelOperation = new Label();
             labelDNI = new Label();
             textBoxDNI = new TextBox();
@@ -40,102 +47,163 @@
             labelName = new Label();
             labelLastName = new Label();
             textBoxName = new TextBox();
-            panel1 = new Panel();
-            buttonAdd = new Button();
-            button1 = new Button();
-            buttonEdit = new Button();
-            tabPageCuotasRegister = new TabPage();
-            tabPageSociosVisualizer = new TabPage();
-            buttonSearchSocio = new Button();
-            textBoxSearchSocio = new TextBox();
-            dataGridViewSocios = new DataGridView();
-            tabPageCuotasVisualizer = new TabPage();
-            dataGridCuotas = new DataGridView();
-            panelActions = new Panel();
-            groupBox1 = new GroupBox();
-            buttonSociosVisualizer = new Button();
-            buttonExit = new Button();
-            buttonCuotasVisualizer = new Button();
-            buttonCuotasRegister = new Button();
-            buttonAddOrEditOrDeleteSocio = new Button();
-            labelOptions = new Label();
-            panelSuperior.SuspendLayout();
-            tabControl1.SuspendLayout();
-            tabPageAddOrEditOrDeleteSocio.SuspendLayout();
-            panel2.SuspendLayout();
-            panel1.SuspendLayout();
+            buttonClose = new Button();
+            tabControl.SuspendLayout();
             tabPageSociosVisualizer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSocios).BeginInit();
-            tabPageCuotasVisualizer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridCuotas).BeginInit();
-            panelActions.SuspendLayout();
-            groupBox1.SuspendLayout();
+            tabPageAddOrEditOrDeleteSocio.SuspendLayout();
+            panelOperation.SuspendLayout();
             SuspendLayout();
             // 
-            // panelSuperior
+            // tabControl
             // 
-            panelSuperior.Controls.Add(labelGymName);
-            panelSuperior.Dock = DockStyle.Top;
-            panelSuperior.Location = new Point(0, 0);
-            panelSuperior.Name = "panelSuperior";
-            panelSuperior.Size = new Size(854, 93);
-            panelSuperior.TabIndex = 0;
+            tabControl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tabControl.Controls.Add(tabPageSociosVisualizer);
+            tabControl.Controls.Add(tabPageAddOrEditOrDeleteSocio);
+            tabControl.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tabControl.Location = new Point(0, 50);
+            tabControl.Name = "tabControl";
+            tabControl.SelectedIndex = 0;
+            tabControl.Size = new Size(855, 510);
+            tabControl.TabIndex = 1;
             // 
-            // labelGymName
+            // tabPageSociosVisualizer
             // 
-            labelGymName.AutoSize = true;
-            labelGymName.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            labelGymName.Location = new Point(329, 39);
-            labelGymName.Name = "labelGymName";
-            labelGymName.Size = new Size(167, 32);
-            labelGymName.TabIndex = 0;
-            labelGymName.Text = "Complemento";
+            tabPageSociosVisualizer.Controls.Add(buttonEdit);
+            tabPageSociosVisualizer.Controls.Add(buttonSearchSocio);
+            tabPageSociosVisualizer.Controls.Add(buttonDelete);
+            tabPageSociosVisualizer.Controls.Add(textBoxSearchSocio);
+            tabPageSociosVisualizer.Controls.Add(dataGridViewSocios);
+            tabPageSociosVisualizer.Location = new Point(4, 30);
+            tabPageSociosVisualizer.Name = "tabPageSociosVisualizer";
+            tabPageSociosVisualizer.Padding = new Padding(3);
+            tabPageSociosVisualizer.Size = new Size(847, 476);
+            tabPageSociosVisualizer.TabIndex = 3;
+            tabPageSociosVisualizer.Text = "Administración de socios";
+            tabPageSociosVisualizer.UseVisualStyleBackColor = true;
             // 
-            // tabControl1
+            // buttonEdit
             // 
-            tabControl1.Controls.Add(tabPageAddOrEditOrDeleteSocio);
-            tabControl1.Controls.Add(tabPageCuotasRegister);
-            tabControl1.Controls.Add(tabPageSociosVisualizer);
-            tabControl1.Controls.Add(tabPageCuotasVisualizer);
-            tabControl1.Dock = DockStyle.Right;
-            tabControl1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tabControl1.Location = new Point(189, 93);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(665, 416);
-            tabControl1.TabIndex = 1;
+            buttonEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonEdit.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonEdit.Location = new Point(717, 62);
+            buttonEdit.Name = "buttonEdit";
+            buttonEdit.Size = new Size(125, 39);
+            buttonEdit.TabIndex = 3;
+            buttonEdit.Text = "Editar";
+            buttonEdit.UseVisualStyleBackColor = true;
+            // 
+            // buttonSearchSocio
+            // 
+            buttonSearchSocio.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSearchSocio.Location = new Point(554, 20);
+            buttonSearchSocio.Name = "buttonSearchSocio";
+            buttonSearchSocio.Size = new Size(100, 30);
+            buttonSearchSocio.TabIndex = 2;
+            buttonSearchSocio.Text = "Buscar socio";
+            buttonSearchSocio.UseVisualStyleBackColor = true;
+            // 
+            // textBoxSearchSocio
+            // 
+            textBoxSearchSocio.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSearchSocio.Location = new Point(6, 20);
+            textBoxSearchSocio.Name = "textBoxSearchSocio";
+            textBoxSearchSocio.Size = new Size(540, 31);
+            textBoxSearchSocio.TabIndex = 1;
+            // 
+            // dataGridViewSocios
+            // 
+            dataGridViewSocios.AllowUserToAddRows = false;
+            dataGridViewSocios.AllowUserToDeleteRows = false;
+            dataGridViewSocios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewSocios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewSocios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewSocios.Location = new Point(6, 62);
+            dataGridViewSocios.Name = "dataGridViewSocios";
+            dataGridViewSocios.ReadOnly = true;
+            dataGridViewSocios.RowTemplate.Height = 25;
+            dataGridViewSocios.Size = new Size(705, 407);
+            dataGridViewSocios.TabIndex = 0;
             // 
             // tabPageAddOrEditOrDeleteSocio
             // 
-            tabPageAddOrEditOrDeleteSocio.Controls.Add(panel2);
-            tabPageAddOrEditOrDeleteSocio.Controls.Add(panel1);
-            tabPageAddOrEditOrDeleteSocio.Location = new Point(4, 26);
+            tabPageAddOrEditOrDeleteSocio.Controls.Add(panelOperation);
+            tabPageAddOrEditOrDeleteSocio.Location = new Point(4, 30);
             tabPageAddOrEditOrDeleteSocio.Name = "tabPageAddOrEditOrDeleteSocio";
             tabPageAddOrEditOrDeleteSocio.Padding = new Padding(3);
-            tabPageAddOrEditOrDeleteSocio.Size = new Size(657, 386);
+            tabPageAddOrEditOrDeleteSocio.Size = new Size(847, 476);
             tabPageAddOrEditOrDeleteSocio.TabIndex = 1;
             tabPageAddOrEditOrDeleteSocio.Text = "Añadir/Editar/Eliminar Socio";
             tabPageAddOrEditOrDeleteSocio.UseVisualStyleBackColor = true;
             // 
-            // panel2
+            // panelOperation
             // 
-            panel2.Controls.Add(labelOperation);
-            panel2.Controls.Add(labelDNI);
-            panel2.Controls.Add(textBoxDNI);
-            panel2.Controls.Add(textBoxLastName);
-            panel2.Controls.Add(labelName);
-            panel2.Controls.Add(labelLastName);
-            panel2.Controls.Add(textBoxName);
-            panel2.Location = new Point(180, 3);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(474, 361);
-            panel2.TabIndex = 10;
+            panelOperation.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panelOperation.Controls.Add(buttonCancel);
+            panelOperation.Controls.Add(buttonSave);
+            panelOperation.Controls.Add(buttonAdd);
+            panelOperation.Controls.Add(labelOperation);
+            panelOperation.Controls.Add(labelDNI);
+            panelOperation.Controls.Add(textBoxDNI);
+            panelOperation.Controls.Add(textBoxLastName);
+            panelOperation.Controls.Add(labelName);
+            panelOperation.Controls.Add(labelLastName);
+            panelOperation.Controls.Add(textBoxName);
+            panelOperation.Location = new Point(3, 3);
+            panelOperation.Name = "panelOperation";
+            panelOperation.Size = new Size(841, 474);
+            panelOperation.TabIndex = 10;
+            // 
+            // buttonCancel
+            // 
+            buttonCancel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            buttonCancel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonCancel.Location = new Point(437, 403);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new Size(165, 34);
+            buttonCancel.TabIndex = 9;
+            buttonCancel.Text = "Cancelar";
+            buttonCancel.UseVisualStyleBackColor = true;
+            // 
+            // buttonSave
+            // 
+            buttonSave.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            buttonSave.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSave.Location = new Point(257, 403);
+            buttonSave.Name = "buttonSave";
+            buttonSave.Size = new Size(165, 34);
+            buttonSave.TabIndex = 8;
+            buttonSave.Text = "Guardar";
+            buttonSave.UseVisualStyleBackColor = true;
+            // 
+            // buttonAdd
+            // 
+            buttonAdd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonAdd.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonAdd.Location = new Point(257, 356);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new Size(345, 39);
+            buttonAdd.TabIndex = 5;
+            buttonAdd.Text = "Añadir";
+            buttonAdd.UseVisualStyleBackColor = true;
+            // 
+            // buttonDelete
+            // 
+            buttonDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonDelete.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDelete.Location = new Point(717, 107);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(125, 39);
+            buttonDelete.TabIndex = 7;
+            buttonDelete.Text = "Eliminar";
+            buttonDelete.UseVisualStyleBackColor = true;
             // 
             // labelOperation
             // 
+            labelOperation.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelOperation.AutoSize = true;
             labelOperation.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            labelOperation.Location = new Point(86, 7);
+            labelOperation.Location = new Point(17, 21);
             labelOperation.Name = "labelOperation";
             labelOperation.Size = new Size(160, 25);
             labelOperation.TabIndex = 6;
@@ -143,6 +211,7 @@
             // 
             // labelDNI
             // 
+            labelDNI.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelDNI.AutoSize = true;
             labelDNI.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelDNI.Location = new Point(8, 79);
@@ -153,22 +222,25 @@
             // 
             // textBoxDNI
             // 
+            textBoxDNI.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBoxDNI.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxDNI.Location = new Point(8, 106);
             textBoxDNI.Name = "textBoxDNI";
-            textBoxDNI.Size = new Size(117, 29);
+            textBoxDNI.Size = new Size(238, 29);
             textBoxDNI.TabIndex = 1;
             // 
             // textBoxLastName
             // 
+            textBoxLastName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBoxLastName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxLastName.Location = new Point(8, 250);
             textBoxLastName.Name = "textBoxLastName";
-            textBoxLastName.Size = new Size(100, 29);
+            textBoxLastName.Size = new Size(295, 29);
             textBoxLastName.TabIndex = 5;
             // 
             // labelName
             // 
+            labelName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelName.AutoSize = true;
             labelName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelName.Location = new Point(8, 155);
@@ -179,6 +251,7 @@
             // 
             // labelLastName
             // 
+            labelLastName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelLastName.AutoSize = true;
             labelLastName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelLastName.Location = new Point(8, 226);
@@ -189,261 +262,50 @@
             // 
             // textBoxName
             // 
+            textBoxName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBoxName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxName.Location = new Point(8, 179);
             textBoxName.Name = "textBoxName";
-            textBoxName.Size = new Size(185, 29);
+            textBoxName.Size = new Size(295, 29);
             textBoxName.TabIndex = 3;
             // 
-            // panel1
+            // buttonClose
             // 
-            panel1.Controls.Add(buttonAdd);
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(buttonEdit);
-            panel1.Location = new Point(6, 3);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(168, 364);
-            panel1.TabIndex = 9;
-            // 
-            // buttonAdd
-            // 
-            buttonAdd.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonAdd.Location = new Point(25, 180);
-            buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(117, 34);
-            buttonAdd.TabIndex = 5;
-            buttonAdd.Text = "Añadir";
-            buttonAdd.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            button1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(25, 262);
-            button1.Name = "button1";
-            button1.Size = new Size(117, 34);
-            button1.TabIndex = 7;
-            button1.Text = "Eliminar";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // buttonEdit
-            // 
-            buttonEdit.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonEdit.Location = new Point(25, 220);
-            buttonEdit.Name = "buttonEdit";
-            buttonEdit.Size = new Size(117, 34);
-            buttonEdit.TabIndex = 8;
-            buttonEdit.Text = "Editar";
-            buttonEdit.UseVisualStyleBackColor = true;
-            // 
-            // tabPageCuotasRegister
-            // 
-            tabPageCuotasRegister.Location = new Point(4, 26);
-            tabPageCuotasRegister.Name = "tabPageCuotasRegister";
-            tabPageCuotasRegister.Padding = new Padding(3);
-            tabPageCuotasRegister.Size = new Size(657, 386);
-            tabPageCuotasRegister.TabIndex = 2;
-            tabPageCuotasRegister.Text = "Registrar pago de cuota";
-            tabPageCuotasRegister.UseVisualStyleBackColor = true;
-            // 
-            // tabPageSociosVisualizer
-            // 
-            tabPageSociosVisualizer.Controls.Add(buttonSearchSocio);
-            tabPageSociosVisualizer.Controls.Add(textBoxSearchSocio);
-            tabPageSociosVisualizer.Controls.Add(dataGridViewSocios);
-            tabPageSociosVisualizer.Location = new Point(4, 26);
-            tabPageSociosVisualizer.Name = "tabPageSociosVisualizer";
-            tabPageSociosVisualizer.Padding = new Padding(3);
-            tabPageSociosVisualizer.Size = new Size(657, 386);
-            tabPageSociosVisualizer.TabIndex = 3;
-            tabPageSociosVisualizer.Text = "Administración de socios";
-            tabPageSociosVisualizer.UseVisualStyleBackColor = true;
-            // 
-            // buttonSearchSocio
-            // 
-            buttonSearchSocio.Location = new Point(554, 21);
-            buttonSearchSocio.Name = "buttonSearchSocio";
-            buttonSearchSocio.Size = new Size(97, 25);
-            buttonSearchSocio.TabIndex = 2;
-            buttonSearchSocio.Text = "Buscar socio";
-            buttonSearchSocio.UseVisualStyleBackColor = true;
-            // 
-            // textBoxSearchSocio
-            // 
-            textBoxSearchSocio.Location = new Point(6, 22);
-            textBoxSearchSocio.Name = "textBoxSearchSocio";
-            textBoxSearchSocio.Size = new Size(540, 25);
-            textBoxSearchSocio.TabIndex = 1;
-            // 
-            // dataGridViewSocios
-            // 
-            dataGridViewSocios.AllowUserToAddRows = false;
-            dataGridViewSocios.AllowUserToDeleteRows = false;
-            dataGridViewSocios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewSocios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewSocios.Location = new Point(6, 62);
-            dataGridViewSocios.Name = "dataGridViewSocios";
-            dataGridViewSocios.ReadOnly = true;
-            dataGridViewSocios.RowTemplate.Height = 25;
-            dataGridViewSocios.Size = new Size(645, 314);
-            dataGridViewSocios.TabIndex = 0;
-            // 
-            // tabPageCuotasVisualizer
-            // 
-            tabPageCuotasVisualizer.Controls.Add(dataGridCuotas);
-            tabPageCuotasVisualizer.Location = new Point(4, 26);
-            tabPageCuotasVisualizer.Name = "tabPageCuotasVisualizer";
-            tabPageCuotasVisualizer.Padding = new Padding(3);
-            tabPageCuotasVisualizer.Size = new Size(657, 386);
-            tabPageCuotasVisualizer.TabIndex = 4;
-            tabPageCuotasVisualizer.Text = "Administración de cuotas";
-            tabPageCuotasVisualizer.UseVisualStyleBackColor = true;
-            // 
-            // dataGridCuotas
-            // 
-            dataGridCuotas.AllowUserToAddRows = false;
-            dataGridCuotas.AllowUserToDeleteRows = false;
-            dataGridCuotas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridCuotas.Location = new Point(6, 62);
-            dataGridCuotas.Name = "dataGridCuotas";
-            dataGridCuotas.ReadOnly = true;
-            dataGridCuotas.RowTemplate.Height = 25;
-            dataGridCuotas.Size = new Size(645, 314);
-            dataGridCuotas.TabIndex = 1;
-            // 
-            // panelActions
-            // 
-            panelActions.BackColor = SystemColors.Control;
-            panelActions.Controls.Add(groupBox1);
-            panelActions.Controls.Add(labelOptions);
-            panelActions.Dock = DockStyle.Fill;
-            panelActions.Location = new Point(0, 93);
-            panelActions.Name = "panelActions";
-            panelActions.Size = new Size(189, 416);
-            panelActions.TabIndex = 2;
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(buttonSociosVisualizer);
-            groupBox1.Controls.Add(buttonExit);
-            groupBox1.Controls.Add(buttonCuotasVisualizer);
-            groupBox1.Controls.Add(buttonCuotasRegister);
-            groupBox1.Controls.Add(buttonAddOrEditOrDeleteSocio);
-            groupBox1.Location = new Point(3, 59);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(180, 349);
-            groupBox1.TabIndex = 1;
-            groupBox1.TabStop = false;
-            // 
-            // buttonSociosVisualizer
-            // 
-            buttonSociosVisualizer.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonSociosVisualizer.Location = new Point(0, 134);
-            buttonSociosVisualizer.Name = "buttonSociosVisualizer";
-            buttonSociosVisualizer.Size = new Size(180, 54);
-            buttonSociosVisualizer.TabIndex = 4;
-            buttonSociosVisualizer.Text = "Administración de socios (3)";
-            buttonSociosVisualizer.UseVisualStyleBackColor = true;
-            // 
-            // buttonExit
-            // 
-            buttonExit.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonExit.Location = new Point(0, 300);
-            buttonExit.Name = "buttonExit";
-            buttonExit.Size = new Size(180, 43);
-            buttonExit.TabIndex = 3;
-            buttonExit.Text = "Salir";
-            buttonExit.UseVisualStyleBackColor = true;
-            // 
-            // buttonCuotasVisualizer
-            // 
-            buttonCuotasVisualizer.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonCuotasVisualizer.Location = new Point(0, 193);
-            buttonCuotasVisualizer.Name = "buttonCuotasVisualizer";
-            buttonCuotasVisualizer.Size = new Size(180, 54);
-            buttonCuotasVisualizer.TabIndex = 2;
-            buttonCuotasVisualizer.Text = "Administración de cuotas (4)";
-            buttonCuotasVisualizer.UseVisualStyleBackColor = true;
-            // 
-            // buttonCuotasRegister
-            // 
-            buttonCuotasRegister.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonCuotasRegister.Location = new Point(0, 74);
-            buttonCuotasRegister.Name = "buttonCuotasRegister";
-            buttonCuotasRegister.Size = new Size(180, 54);
-            buttonCuotasRegister.TabIndex = 1;
-            buttonCuotasRegister.Text = "Registrar pago de cuota (2)";
-            buttonCuotasRegister.UseVisualStyleBackColor = true;
-            // 
-            // buttonAddOrEditOrDeleteSocio
-            // 
-            buttonAddOrEditOrDeleteSocio.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonAddOrEditOrDeleteSocio.Location = new Point(1, 16);
-            buttonAddOrEditOrDeleteSocio.Name = "buttonAddOrEditOrDeleteSocio";
-            buttonAddOrEditOrDeleteSocio.Size = new Size(180, 54);
-            buttonAddOrEditOrDeleteSocio.TabIndex = 0;
-            buttonAddOrEditOrDeleteSocio.Text = "Añadir/Editar/Eliminar Socio (1)";
-            buttonAddOrEditOrDeleteSocio.UseVisualStyleBackColor = true;
-            // 
-            // labelOptions
-            // 
-            labelOptions.AutoSize = true;
-            labelOptions.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            labelOptions.Location = new Point(0, 26);
-            labelOptions.Name = "labelOptions";
-            labelOptions.Size = new Size(104, 30);
-            labelOptions.TabIndex = 0;
-            labelOptions.Text = "Opciones";
+            buttonClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonClose.Location = new Point(770, 10);
+            buttonClose.Name = "buttonClose";
+            buttonClose.Size = new Size(76, 39);
+            buttonClose.TabIndex = 3;
+            buttonClose.Text = "X";
+            buttonClose.UseVisualStyleBackColor = true;
             // 
             // SocioView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Khaki;
-            ClientSize = new Size(854, 509);
-            Controls.Add(panelActions);
-            Controls.Add(tabControl1);
-            Controls.Add(panelSuperior);
+            BackColor = Color.Gold;
+            ClientSize = new Size(855, 560);
+            Controls.Add(buttonClose);
+            Controls.Add(tabControl);
             FormBorderStyle = FormBorderStyle.None;
             Name = "SocioView";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Panel de administración de socios";
-            panelSuperior.ResumeLayout(false);
-            panelSuperior.PerformLayout();
-            tabControl1.ResumeLayout(false);
-            tabPageAddOrEditOrDeleteSocio.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            panel1.ResumeLayout(false);
+            tabControl.ResumeLayout(false);
             tabPageSociosVisualizer.ResumeLayout(false);
             tabPageSociosVisualizer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSocios).EndInit();
-            tabPageCuotasVisualizer.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridCuotas).EndInit();
-            panelActions.ResumeLayout(false);
-            panelActions.PerformLayout();
-            groupBox1.ResumeLayout(false);
+            tabPageAddOrEditOrDeleteSocio.ResumeLayout(false);
+            panelOperation.ResumeLayout(false);
+            panelOperation.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel panelSuperior;
-        private Label labelGymName;
-        private TabControl tabControl1;
+        private TabControl tabControl;
         private TabPage tabPageAddOrEditOrDeleteSocio;
-        private Panel panelActions;
-        private Label labelOptions;
-        private GroupBox groupBox1;
-        private Button buttonCuotasVisualizer;
-        private Button buttonCuotasRegister;
-        private Button buttonAddOrEditOrDeleteSocio;
-        private Button buttonExit;
-        private Button buttonSociosVisualizer;
         private TabPage tabPageSociosVisualizer;
         private DataGridView dataGridViewSocios;
-        private TabPage tabPageCuotasVisualizer;
-        private DataGridView dataGridCuotas;
-        private TabPage tabPageCuotasRegister;
         private TextBox textBoxLastName;
         private Label labelLastName;
         private TextBox textBoxName;
@@ -451,12 +313,14 @@
         private TextBox textBoxDNI;
         private Label labelDNI;
         private Label labelOperation;
-        private Button buttonEdit;
-        private Button button1;
-        private Button buttonAdd;
-        private Panel panel2;
-        private Panel panel1;
+        private Panel panelOperation;
         private Button buttonSearchSocio;
         private TextBox textBoxSearchSocio;
+        private Button buttonAdd;
+        private Button buttonDelete;
+        private Button buttonClose;
+        private Button buttonEdit;
+        private Button buttonCancel;
+        private Button buttonSave;
     }
 }

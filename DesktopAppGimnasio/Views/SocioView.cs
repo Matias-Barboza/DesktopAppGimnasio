@@ -12,12 +12,12 @@ namespace DesktopAppGimnasio.Views
 {
     public partial class SocioView : Form, ISocioView
     {
-        //Fields
+        // Fields
         private bool isEdit;
         private bool isSuccessful;
         private string message;
 
-        //Constructors
+        // Constructors
         public SocioView()
         {
             InitializeComponent();
@@ -27,12 +27,62 @@ namespace DesktopAppGimnasio.Views
 
         private void AssociateAndRaiseEvents()
         {
+            // Principal Events
             buttonSearchSocio.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
+            buttonAdd.Click += delegate 
+            { 
+                AddNewEvent?.Invoke(this, EventArgs.Empty);
+                labelOperation.Text = "Operación actual: Añadir socio";
+            };
+            buttonEdit.Click += delegate 
+            { 
+                EditEvent?.Invoke(this, EventArgs.Empty);
+                labelOperation.Text = "Operación actual: Editar socio";
+                tabControl.SelectedTab = tabPageAddOrEditOrDeleteSocio;
+            };
+            buttonDelete.Click += delegate 
+            { 
+                DeleteEvent?.Invoke(this, EventArgs.Empty);
+                labelOperation.Text = "Operación actual: Eliminar socio";
+                tabControl.SelectedTab = tabPageAddOrEditOrDeleteSocio;
+            };
+            buttonSave.Click += delegate 
+            { 
+                SaveEvent?.Invoke(this, EventArgs.Empty);
+
+                if (isSuccessful) 
+                {
+                    labelOperation.Text = "Operación actual: Realizada con éxito";
+                    tabControl.SelectedTab = tabPageSociosVisualizer;
+                    labelOperation.Text = "Operación actual:";
+                }
+            };
+            buttonCancel.Click += delegate { CancelEvent?.Invoke(this, EventArgs.Empty); };
+            
+            
+            // Other Events
             textBoxSearchSocio.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
                 {
                     SearchEvent?.Invoke(this, EventArgs.Empty);
+                }
+            };
+            buttonClose.Click += delegate { this.Close(); };
+            
+            tabControl.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.D1)
+                {
+                    tabControl.SelectedIndex = 0;
+                }
+            };
+            
+            tabControl.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.D2)
+                {
+                    tabControl.SelectedIndex = 1;
                 }
             };
         }
@@ -49,13 +99,36 @@ namespace DesktopAppGimnasio.Views
         public event EventHandler SearchEvent;
         public event EventHandler AddNewEvent;
         public event EventHandler EditEvent;
-        public event EventHandler SaveEvent;
         public event EventHandler DeleteEvent;
+        public event EventHandler SaveEvent;
         public event EventHandler CancelEvent;
 
         public void SetSocioListBindindSource(BindingSource sociosList)
         {
             dataGridViewSocios.DataSource = sociosList;
+        }
+
+        private static SocioView instance;
+        public static SocioView GetInstance(Form parentContainer) 
+        {
+
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new SocioView();
+                instance.MdiParent = parentContainer;
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else 
+            {
+                if (instance.WindowState == FormWindowState.Minimized) 
+                {
+                    instance.WindowState = FormWindowState.Normal;
+                }
+                instance.BringToFront();
+            }
+
+            return instance;
         }
     }
 }

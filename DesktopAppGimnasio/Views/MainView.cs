@@ -10,11 +10,22 @@ using System.Windows.Forms;
 
 namespace DesktopAppGimnasio.Views
 {
-    public partial class MainView : Form
+    public partial class MainView : Form, IMainView
     {
         public MainView()
         {
             InitializeComponent();
+            buttonSocios.Click += delegate { ShowSociosView?.Invoke(this, EventArgs.Empty); };
+            buttonSocios.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.D1)
+                {
+                    ShowSociosView?.Invoke(this, EventArgs.Empty);
+                }
+            };
         }
+
+        public event EventHandler ShowSociosView;
+        public event EventHandler ShowCuotasView;
     }
 }
