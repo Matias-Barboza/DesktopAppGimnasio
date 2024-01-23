@@ -32,14 +32,16 @@
             tabPageSociosVisualizer = new TabPage();
             buttonEdit = new Button();
             buttonSearchSocio = new Button();
+            buttonDelete = new Button();
             textBoxSearchSocio = new TextBox();
             dataGridViewSocios = new DataGridView();
             tabPageAddOrEditOrDeleteSocio = new TabPage();
             panelOperation = new Panel();
+            labelCodigoSocio = new Label();
+            textBoxCodigoSocio = new TextBox();
             buttonCancel = new Button();
             buttonSave = new Button();
             buttonAdd = new Button();
-            buttonDelete = new Button();
             labelOperation = new Label();
             labelDNI = new Label();
             textBoxDNI = new TextBox();
@@ -103,6 +105,17 @@
             buttonSearchSocio.Text = "Buscar socio";
             buttonSearchSocio.UseVisualStyleBackColor = true;
             // 
+            // buttonDelete
+            // 
+            buttonDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonDelete.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDelete.Location = new Point(717, 107);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(125, 39);
+            buttonDelete.TabIndex = 7;
+            buttonDelete.Text = "Eliminar";
+            buttonDelete.UseVisualStyleBackColor = true;
+            // 
             // textBoxSearchSocio
             // 
             textBoxSearchSocio.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
@@ -139,6 +152,8 @@
             // panelOperation
             // 
             panelOperation.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panelOperation.Controls.Add(labelCodigoSocio);
+            panelOperation.Controls.Add(textBoxCodigoSocio);
             panelOperation.Controls.Add(buttonCancel);
             panelOperation.Controls.Add(buttonSave);
             panelOperation.Controls.Add(buttonAdd);
@@ -153,6 +168,27 @@
             panelOperation.Name = "panelOperation";
             panelOperation.Size = new Size(841, 474);
             panelOperation.TabIndex = 10;
+            // 
+            // labelCodigoSocio
+            // 
+            labelCodigoSocio.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            labelCodigoSocio.AutoSize = true;
+            labelCodigoSocio.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelCodigoSocio.Location = new Point(8, 74);
+            labelCodigoSocio.Name = "labelCodigoSocio";
+            labelCodigoSocio.Size = new Size(132, 21);
+            labelCodigoSocio.TabIndex = 10;
+            labelCodigoSocio.Text = "Número de socio:";
+            // 
+            // textBoxCodigoSocio
+            // 
+            textBoxCodigoSocio.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBoxCodigoSocio.Enabled = false;
+            textBoxCodigoSocio.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxCodigoSocio.Location = new Point(8, 101);
+            textBoxCodigoSocio.Name = "textBoxCodigoSocio";
+            textBoxCodigoSocio.Size = new Size(238, 29);
+            textBoxCodigoSocio.TabIndex = 11;
             // 
             // buttonCancel
             // 
@@ -187,17 +223,6 @@
             buttonAdd.Text = "Añadir";
             buttonAdd.UseVisualStyleBackColor = true;
             // 
-            // buttonDelete
-            // 
-            buttonDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonDelete.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDelete.Location = new Point(717, 107);
-            buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(125, 39);
-            buttonDelete.TabIndex = 7;
-            buttonDelete.Text = "Eliminar";
-            buttonDelete.UseVisualStyleBackColor = true;
-            // 
             // labelOperation
             // 
             labelOperation.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -214,7 +239,7 @@
             labelDNI.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelDNI.AutoSize = true;
             labelDNI.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelDNI.Location = new Point(8, 79);
+            labelDNI.Location = new Point(8, 139);
             labelDNI.Name = "labelDNI";
             labelDNI.Size = new Size(40, 21);
             labelDNI.TabIndex = 0;
@@ -224,7 +249,7 @@
             // 
             textBoxDNI.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBoxDNI.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxDNI.Location = new Point(8, 106);
+            textBoxDNI.Location = new Point(8, 166);
             textBoxDNI.Name = "textBoxDNI";
             textBoxDNI.Size = new Size(238, 29);
             textBoxDNI.TabIndex = 1;
@@ -233,7 +258,7 @@
             // 
             textBoxLastName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBoxLastName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxLastName.Location = new Point(8, 250);
+            textBoxLastName.Location = new Point(8, 305);
             textBoxLastName.Name = "textBoxLastName";
             textBoxLastName.Size = new Size(295, 29);
             textBoxLastName.TabIndex = 5;
@@ -243,7 +268,7 @@
             labelName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelName.AutoSize = true;
             labelName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelName.Location = new Point(8, 155);
+            labelName.Location = new Point(8, 210);
             labelName.Name = "labelName";
             labelName.Size = new Size(71, 21);
             labelName.TabIndex = 2;
@@ -254,7 +279,7 @@
             labelLastName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelLastName.AutoSize = true;
             labelLastName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelLastName.Location = new Point(8, 226);
+            labelLastName.Location = new Point(8, 281);
             labelLastName.Name = "labelLastName";
             labelLastName.Size = new Size(67, 21);
             labelLastName.TabIndex = 4;
@@ -264,7 +289,7 @@
             // 
             textBoxName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBoxName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxName.Location = new Point(8, 179);
+            textBoxName.Location = new Point(8, 234);
             textBoxName.Name = "textBoxName";
             textBoxName.Size = new Size(295, 29);
             textBoxName.TabIndex = 3;
@@ -322,5 +347,7 @@
         private Button buttonEdit;
         private Button buttonCancel;
         private Button buttonSave;
+        private Label labelCodigoSocio;
+        private TextBox textBoxCodigoSocio;
     }
 }

@@ -22,7 +22,6 @@ namespace DesktopAppGimnasio.Views
         {
             InitializeComponent();
             AssociateAndRaiseEvents();
-            //tabControl1.TabPages.Remove(tabPageSociosVisualizer);
         }
 
         private void AssociateAndRaiseEvents()
@@ -42,9 +41,13 @@ namespace DesktopAppGimnasio.Views
             };
             buttonDelete.Click += delegate 
             { 
-                DeleteEvent?.Invoke(this, EventArgs.Empty);
-                labelOperation.Text = "Operación actual: Eliminar socio";
-                tabControl.SelectedTab = tabPageAddOrEditOrDeleteSocio;
+                DialogResult result = MessageBox.Show("¿Está seguro de eliminar el socio?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes) 
+                {
+                    DeleteEvent?.Invoke(this, EventArgs.Empty);
+                    MessageBox.Show(Message);
+                }
             };
             buttonSave.Click += delegate 
             { 
@@ -56,6 +59,8 @@ namespace DesktopAppGimnasio.Views
                     tabControl.SelectedTab = tabPageSociosVisualizer;
                     labelOperation.Text = "Operación actual:";
                 }
+
+                MessageBox.Show(Message);
             };
             buttonCancel.Click += delegate { CancelEvent?.Invoke(this, EventArgs.Empty); };
             
@@ -74,7 +79,7 @@ namespace DesktopAppGimnasio.Views
             {
                 if (e.KeyCode == Keys.D1)
                 {
-                    tabControl.SelectedIndex = 0;
+                    tabControl.SelectedTab = tabPageSociosVisualizer;
                 }
             };
             
@@ -82,14 +87,15 @@ namespace DesktopAppGimnasio.Views
             {
                 if (e.KeyCode == Keys.D2)
                 {
-                    tabControl.SelectedIndex = 1;
+                    tabControl.SelectedTab = tabPageAddOrEditOrDeleteSocio;
                 }
             };
         }
 
-        public int CodigoSocio { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string dniSocio { get => textBoxDNI.Text; set => textBoxDNI.Text = value; }
-        public string NombreYApellidoSocio { get => textBoxName.Text; set => textBoxName.Text = value; }
+        public int CodigoSocio { get => Convert.ToInt32(textBoxCodigoSocio.Text); set => textBoxCodigoSocio.Text = (value == 0) ? String.Empty : value.ToString(); }
+        public string DniSocio { get => textBoxDNI.Text; set => textBoxDNI.Text = value; }
+        public string NombreSocio { get => textBoxName.Text; set => textBoxName.Text = value; }
+        public string ApellidoSocio { get => textBoxLastName.Text; set => textBoxLastName.Text = value; }
         public bool EstaActivo { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string SearchValue { get => textBoxSearchSocio.Text; set => textBoxSearchSocio.Text = value; }
         public bool IsEdit { get => isEdit; set => isEdit = value; }

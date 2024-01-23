@@ -21,17 +21,99 @@ namespace DesktopAppGimnasio._Repositories
         // Methods
         public void Add(SocioModel socioModel)
         {
-            throw new NotImplementedException();
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+
+                using (MySqlCommand command = connection.CreateCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = "INSERT INTO socios (DNI, nombre, apellido, esta_activo) VALUES (@DNI_nuevo, @nombre_nuevo, @apellido_nuevo, true)";
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "DNI_nuevo",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = socioModel.DNI
+                    }) ;
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "nombre_nuevo",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = socioModel.Nombre
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "apellido_nuevo",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = socioModel.Apellido
+                    });
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public void Delete(int codigoSocio)
         {
-            throw new NotImplementedException();
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+
+                using (MySqlCommand command = connection.CreateCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = "DELETE FROM socios WHERE codigo_socio = @codigoSocio";
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "codigoSocio",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = codigoSocio
+                    });
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public void Edit(SocioModel socioModel)
         {
-            throw new NotImplementedException();
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+
+                using (MySqlCommand command = connection.CreateCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = @"UPDATE socios SET DNI = @DNI_nuevo, nombre = @nombre_nuevo, apellido = @apellido_nuevo
+                                           WHERE codigo_socio = @codigoSocio";
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "codigoSocio",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = socioModel.CodigoSocio
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "DNI_nuevo",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = socioModel.DNI
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "nombre_nuevo",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = socioModel.Nombre
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "apellido_nuevo",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = socioModel.Apellido
+                    });
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public IEnumerable<SocioModel> GetAll()
@@ -56,8 +138,9 @@ namespace DesktopAppGimnasio._Repositories
 
                             socio.CodigoSocio = (int) reader[0];
                             socio.DNI = (String) reader[1];
-                            socio.NombreYApellido = (String) reader[2];
-                            socio.EstaActivo = (bool) reader[3];
+                            socio.Nombre = (String) reader[2];
+                            socio.Apellido = (String) reader[3];
+                            socio.EstaActivo = (bool) reader[4];
 
                             sociosList.Add(socio);
                         }
@@ -81,7 +164,7 @@ namespace DesktopAppGimnasio._Repositories
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"SELECT * FROM socios
-                                            WHERE codigo_socio = @numero_socio OR nombre_y_apellido LIKE @nombre_y_apellido
+                                            WHERE codigo_socio = @numero_socio OR nombre LIKE @nombre_y_apellido OR apellido like @nombre_y_apellido
                                             ORDER BY codigo_socio DESC";
                     command.Parameters.Add(new MySqlParameter(){
                         ParameterName = "@numero_socio",
@@ -103,8 +186,9 @@ namespace DesktopAppGimnasio._Repositories
 
                             socio.CodigoSocio = (int) reader[0];
                             socio.DNI = (String) reader[1];
-                            socio.NombreYApellido = (String) reader[2];
-                            socio.EstaActivo = (bool) reader[3];
+                            socio.Nombre = (String) reader[2];
+                            socio.Apellido = (String) reader[3];
+                            socio.EstaActivo = (bool) reader[4];
 
                             sociosList.Add(socio);
                         }

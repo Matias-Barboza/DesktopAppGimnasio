@@ -10,8 +10,9 @@ namespace DesktopAppGimnasio.Views
     {
         // Properties - Fields
         int CodigoSocio {  get; set; }
-        String dniSocio { get; set; }
-        String NombreYApellidoSocio { get; set; }
+        String DniSocio { get; set; }
+        String NombreSocio { get; set; }
+        String ApellidoSocio { get; set; }
         bool EstaActivo {  get; set; }
 
 

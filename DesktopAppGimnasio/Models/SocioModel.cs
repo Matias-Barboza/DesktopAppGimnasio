@@ -13,7 +13,8 @@ namespace DesktopAppGimnasio.Models
         // Fields
         private int codigoSocio;
         private String dni;
-        private String nombreYApellido;
+        private String nombre;
+        private String apellido;
         private bool estaActivo;
 
         // Properties
@@ -26,11 +27,17 @@ namespace DesktopAppGimnasio.Models
         [StringLength(8)]
         public String DNI { get => dni; set => dni = value; }
 
-        [DisplayName("Nombre y apellido")]
+        [DisplayName("Nombre")]
         [RegularExpression(@"^[A-Za-zÁÉÍÓÚÑáéíóúñ\s]{1,100}$")]
-        [Required(ErrorMessage = "El nombre y apellido del socio es requerido")]
+        [Required(ErrorMessage = "El nombre del socio es requerido")]
         [StringLength(100)]
-        public string NombreYApellido { get => nombreYApellido; set => nombreYApellido = value; }
+        public string Nombre { get => nombre; set => nombre = value; }
+
+        [DisplayName("Apellido")]
+        [RegularExpression(@"^[A-Za-zÁÉÍÓÚÑáéíóúñ\s]{1,100}$")]
+        [Required(ErrorMessage = "El apellido del socio es requerido")]
+        [StringLength(100)]
+        public string Apellido { get => apellido; set => apellido = value; }
 
         [DisplayName("Estado de actividad")]
         [Required]
