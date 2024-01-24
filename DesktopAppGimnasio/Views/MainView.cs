@@ -15,6 +15,14 @@ namespace DesktopAppGimnasio.Views
         public MainView()
         {
             InitializeComponent();
+            AssociateAndRaiseEvents();
+        }
+
+        public event EventHandler ShowSociosView;
+        public event EventHandler ShowCuotasView;
+
+        public void AssociateAndRaiseEvents() 
+        {
             buttonSocios.Click += delegate { ShowSociosView?.Invoke(this, EventArgs.Empty); };
             buttonSocios.KeyDown += (s, e) =>
             {
@@ -23,9 +31,8 @@ namespace DesktopAppGimnasio.Views
                     ShowSociosView?.Invoke(this, EventArgs.Empty);
                 }
             };
-        }
 
-        public event EventHandler ShowSociosView;
-        public event EventHandler ShowCuotasView;
+            buttonClose.Click += delegate { this.Close(); };
+        }
     }
 }

@@ -31,7 +31,7 @@
             buttonSocios = new Button();
             button2 = new Button();
             panel1 = new Panel();
-            button1 = new Button();
+            buttonClose = new Button();
             panel2 = new Panel();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -57,7 +57,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ControlDarkDark;
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(buttonClose);
             panel1.Controls.Add(buttonSocios);
             panel1.Controls.Add(button2);
             panel1.Dock = DockStyle.Left;
@@ -66,14 +66,14 @@
             panel1.Size = new Size(230, 650);
             panel1.TabIndex = 3;
             // 
-            // button1
+            // buttonClose
             // 
-            button1.Location = new Point(3, 603);
-            button1.Name = "button1";
-            button1.Size = new Size(224, 40);
-            button1.TabIndex = 2;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            buttonClose.Location = new Point(3, 603);
+            buttonClose.Name = "buttonClose";
+            buttonClose.Size = new Size(224, 40);
+            buttonClose.TabIndex = 2;
+            buttonClose.Text = "Salir";
+            buttonClose.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -105,6 +105,6 @@
         private Button button2;
         private Panel panel1;
         private Panel panel2;
-        private Button button1;
+        private Button buttonClose;
     }
 }
