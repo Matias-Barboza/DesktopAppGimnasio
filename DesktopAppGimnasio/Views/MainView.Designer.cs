@@ -28,38 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             buttonSocios = new Button();
-            button2 = new Button();
+            buttonCuotas = new Button();
             panel1 = new Panel();
             buttonClose = new Button();
             panel2 = new Panel();
+            labelSections = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // buttonSocios
             // 
-            buttonSocios.Location = new Point(3, 106);
+            buttonSocios.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSocios.Image = (Image)resources.GetObject("buttonSocios.Image");
+            buttonSocios.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonSocios.Location = new Point(3, 156);
             buttonSocios.Name = "buttonSocios";
             buttonSocios.Size = new Size(224, 40);
             buttonSocios.TabIndex = 0;
             buttonSocios.Text = "Socios";
             buttonSocios.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonCuotas
             // 
-            button2.Location = new Point(3, 152);
-            button2.Name = "button2";
-            button2.Size = new Size(224, 40);
-            button2.TabIndex = 1;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            buttonCuotas.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonCuotas.Image = (Image)resources.GetObject("buttonCuotas.Image");
+            buttonCuotas.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonCuotas.Location = new Point(3, 202);
+            buttonCuotas.Name = "buttonCuotas";
+            buttonCuotas.Size = new Size(224, 40);
+            buttonCuotas.TabIndex = 1;
+            buttonCuotas.Text = "Cuotas";
+            buttonCuotas.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ControlDarkDark;
+            panel1.BackColor = SystemColors.WindowFrame;
+            panel1.Controls.Add(labelSections);
             panel1.Controls.Add(buttonClose);
             panel1.Controls.Add(buttonSocios);
-            panel1.Controls.Add(button2);
+            panel1.Controls.Add(buttonCuotas);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -68,6 +77,10 @@
             // 
             // buttonClose
             // 
+            buttonClose.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            buttonClose.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonClose.Image = (Image)resources.GetObject("buttonClose.Image");
+            buttonClose.ImageAlign = ContentAlignment.MiddleLeft;
             buttonClose.Location = new Point(3, 603);
             buttonClose.Name = "buttonClose";
             buttonClose.Size = new Size(224, 40);
@@ -84,6 +97,17 @@
             panel2.Size = new Size(855, 100);
             panel2.TabIndex = 4;
             // 
+            // labelSections
+            // 
+            labelSections.AutoSize = true;
+            labelSections.Font = new Font("Segoe UI", 14F, FontStyle.Underline, GraphicsUnit.Point);
+            labelSections.ForeColor = SystemColors.ButtonHighlight;
+            labelSections.Location = new Point(3, 117);
+            labelSections.Name = "labelSections";
+            labelSections.Size = new Size(95, 25);
+            labelSections.TabIndex = 3;
+            labelSections.Text = "Secciones";
+            // 
             // MainView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -96,15 +120,17 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MainView";
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Button buttonSocios;
-        private Button button2;
+        private Button buttonCuotas;
         private Panel panel1;
         private Panel panel2;
         private Button buttonClose;
+        private Label labelSections;
     }
 }

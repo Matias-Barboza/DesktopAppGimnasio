@@ -20,6 +20,7 @@ namespace DesktopAppGimnasio.Presenters
             this.mainView = mainView;
             this.mySqlConnectionString = mySqlConnectionString;
             this.mainView.ShowSociosView += ShowSociosView;
+            this.mainView.ShowCuotasView += ShowCuotasView;
         }
 
         private void ShowSociosView(object? sender, EventArgs e)
@@ -27,6 +28,13 @@ namespace DesktopAppGimnasio.Presenters
             ISocioView socioView = SocioView.GetInstance((Form) mainView);
             ISocioRepository socioRepository = new SocioRepository(mySqlConnectionString);
             SocioPresenter socioPresenter = new SocioPresenter(socioView, socioRepository);
+        }
+
+        private void ShowCuotasView(object? sender, EventArgs e)
+        {
+            ICuotaView cuotaView = CuotaView.GetInstance((Form) mainView);
+            ICuotaRepository cuotaRepository = new CuotaRepository(mySqlConnectionString);
+            CuotaPresenter cuotaPresenter = new CuotaPresenter(cuotaView, cuotaRepository);
         }
     }
 }

@@ -75,24 +75,24 @@ namespace DesktopAppGimnasio.Views
             };
             buttonClose.Click += delegate { this.Close(); };
             
-            tabControl.KeyDown += (s, e) =>
-            {
-                if (e.KeyCode == Keys.D1)
-                {
-                    tabControl.SelectedTab = tabPageSociosVisualizer;
-                }
-            };
+            //tabControl.KeyDown += (s, e) =>
+            //{
+            //    if (e.KeyCode == Keys.D1)
+            //    {
+            //        tabControl.SelectedTab = tabPageSociosVisualizer;
+            //    }
+            //};
             
-            tabControl.KeyDown += (s, e) =>
-            {
-                if (e.KeyCode == Keys.D2)
-                {
-                    tabControl.SelectedTab = tabPageAddOrEditOrDeleteSocio;
-                }
-            };
+            //tabControl.KeyDown += (s, e) =>
+            //{
+            //    if (e.KeyCode == Keys.D2)
+            //    {
+            //        tabControl.SelectedTab = tabPageAddOrEditOrDeleteSocio;
+            //    }
+            //};
         }
 
-        public int CodigoSocio { get => Convert.ToInt32(textBoxCodigoSocio.Text); set => textBoxCodigoSocio.Text = (value == 0) ? String.Empty : value.ToString(); }
+        public int CodigoSocio { get => (textBoxCodigoSocio.Text == "") ? 0 : Convert.ToInt32(textBoxCodigoSocio.Text); set => textBoxCodigoSocio.Text = (value == 0) ? String.Empty : value.ToString(); }
         public string DniSocio { get => textBoxDNI.Text; set => textBoxDNI.Text = value; }
         public string NombreSocio { get => textBoxName.Text; set => textBoxName.Text = value; }
         public string ApellidoSocio { get => textBoxLastName.Text; set => textBoxLastName.Text = value; }

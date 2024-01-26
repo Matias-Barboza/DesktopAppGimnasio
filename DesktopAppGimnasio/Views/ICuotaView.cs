@@ -6,22 +6,23 @@ using System.Threading.Tasks;
 
 namespace DesktopAppGimnasio.Views
 {
-    public interface ISocioView
+    public interface ICuotaView
     {
         // Properties - Fields
-        int CodigoSocio {  get; set; }
-        String DniSocio { get; set; }
-        String NombreSocio { get; set; }
-        String ApellidoSocio { get; set; }
-        bool EstaActivo {  get; set; }
+        public int CodigoCuota { get; set; }
+        public int CodigoSocio { get; set; }
+        public DateTime FechaDePago { get; set; }
+        public DateTime FechaDeVencimiento { get; set; }
+        public String MesQueAbona { get; set; }
+        public float MontoAbonado { get; set; }
+        public int CodigoTipoCuota { get; set; }
 
 
         string SearchValue { get; set; }
         bool IsEdit { get; set; }
-
         bool IsSuccessful { get; set; }
-        String Message {  get; set; }
-        
+        String Message { get; set; }
+
         // Events
         event EventHandler SearchEvent;
         event EventHandler AddNewEvent;
@@ -30,8 +31,8 @@ namespace DesktopAppGimnasio.Views
         event EventHandler SaveEvent;
         event EventHandler CancelEvent;
 
-        // Methods
-        void SetSocioListBindindSource(BindingSource socioList);
-        void Show();
+        public void SetCuotasBindingSource(BindingSource cuotasList);
+
+        public void Show();
     }
 }

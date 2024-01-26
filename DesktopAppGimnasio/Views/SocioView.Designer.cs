@@ -91,17 +91,17 @@
             buttonEdit.Location = new Point(717, 62);
             buttonEdit.Name = "buttonEdit";
             buttonEdit.Size = new Size(125, 39);
-            buttonEdit.TabIndex = 3;
+            buttonEdit.TabIndex = 2;
             buttonEdit.Text = "Editar";
             buttonEdit.UseVisualStyleBackColor = true;
             // 
             // buttonSearchSocio
             // 
             buttonSearchSocio.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonSearchSocio.Location = new Point(554, 20);
+            buttonSearchSocio.Location = new Point(396, 20);
             buttonSearchSocio.Name = "buttonSearchSocio";
             buttonSearchSocio.Size = new Size(100, 30);
-            buttonSearchSocio.TabIndex = 2;
+            buttonSearchSocio.TabIndex = 1;
             buttonSearchSocio.Text = "Buscar socio";
             buttonSearchSocio.UseVisualStyleBackColor = true;
             // 
@@ -112,7 +112,7 @@
             buttonDelete.Location = new Point(717, 107);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(125, 39);
-            buttonDelete.TabIndex = 7;
+            buttonDelete.TabIndex = 3;
             buttonDelete.Text = "Eliminar";
             buttonDelete.UseVisualStyleBackColor = true;
             // 
@@ -121,8 +121,8 @@
             textBoxSearchSocio.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
             textBoxSearchSocio.Location = new Point(6, 20);
             textBoxSearchSocio.Name = "textBoxSearchSocio";
-            textBoxSearchSocio.Size = new Size(540, 31);
-            textBoxSearchSocio.TabIndex = 1;
+            textBoxSearchSocio.Size = new Size(384, 31);
+            textBoxSearchSocio.TabIndex = 0;
             // 
             // dataGridViewSocios
             // 
@@ -132,11 +132,12 @@
             dataGridViewSocios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewSocios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewSocios.Location = new Point(6, 62);
+            dataGridViewSocios.MultiSelect = false;
             dataGridViewSocios.Name = "dataGridViewSocios";
             dataGridViewSocios.ReadOnly = true;
             dataGridViewSocios.RowTemplate.Height = 25;
             dataGridViewSocios.Size = new Size(705, 407);
-            dataGridViewSocios.TabIndex = 0;
+            dataGridViewSocios.TabIndex = 4;
             // 
             // tabPageAddOrEditOrDeleteSocio
             // 
@@ -192,34 +193,34 @@
             // 
             // buttonCancel
             // 
-            buttonCancel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            buttonCancel.Anchor = AnchorStyles.None;
             buttonCancel.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             buttonCancel.Location = new Point(437, 403);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(165, 34);
-            buttonCancel.TabIndex = 9;
+            buttonCancel.TabIndex = 5;
             buttonCancel.Text = "Cancelar";
             buttonCancel.UseVisualStyleBackColor = true;
             // 
             // buttonSave
             // 
-            buttonSave.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            buttonSave.Anchor = AnchorStyles.None;
             buttonSave.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             buttonSave.Location = new Point(257, 403);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(165, 34);
-            buttonSave.TabIndex = 8;
+            buttonSave.TabIndex = 4;
             buttonSave.Text = "Guardar";
             buttonSave.UseVisualStyleBackColor = true;
             // 
             // buttonAdd
             // 
-            buttonAdd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonAdd.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             buttonAdd.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             buttonAdd.Location = new Point(257, 356);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(345, 39);
-            buttonAdd.TabIndex = 5;
+            buttonAdd.TabIndex = 3;
             buttonAdd.Text = "Añadir";
             buttonAdd.UseVisualStyleBackColor = true;
             // 
@@ -252,7 +253,7 @@
             textBoxDNI.Location = new Point(8, 166);
             textBoxDNI.Name = "textBoxDNI";
             textBoxDNI.Size = new Size(238, 29);
-            textBoxDNI.TabIndex = 1;
+            textBoxDNI.TabIndex = 0;
             // 
             // textBoxLastName
             // 
@@ -261,7 +262,7 @@
             textBoxLastName.Location = new Point(8, 305);
             textBoxLastName.Name = "textBoxLastName";
             textBoxLastName.Size = new Size(295, 29);
-            textBoxLastName.TabIndex = 5;
+            textBoxLastName.TabIndex = 2;
             // 
             // labelName
             // 
@@ -292,7 +293,7 @@
             textBoxName.Location = new Point(8, 234);
             textBoxName.Name = "textBoxName";
             textBoxName.Size = new Size(295, 29);
-            textBoxName.TabIndex = 3;
+            textBoxName.TabIndex = 1;
             // 
             // buttonClose
             // 
@@ -300,7 +301,7 @@
             buttonClose.Location = new Point(770, 10);
             buttonClose.Name = "buttonClose";
             buttonClose.Size = new Size(76, 39);
-            buttonClose.TabIndex = 3;
+            buttonClose.TabIndex = 5;
             buttonClose.Text = "X";
             buttonClose.UseVisualStyleBackColor = true;
             // 

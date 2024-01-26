@@ -31,6 +31,14 @@ namespace DesktopAppGimnasio.Views
                     ShowSociosView?.Invoke(this, EventArgs.Empty);
                 }
             };
+            buttonCuotas.Click += delegate { ShowCuotasView?.Invoke(this, EventArgs.Empty); };
+            buttonCuotas.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.D2)
+                {
+                    ShowCuotasView?.Invoke(this, EventArgs.Empty);
+                }
+            };
 
             buttonClose.Click += delegate { this.Close(); };
         }
