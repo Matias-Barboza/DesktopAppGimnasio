@@ -46,7 +46,18 @@ namespace DesktopAppGimnasio.Presenters
 
         private void SearchCuota(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            bool emptyValue = String.IsNullOrEmpty(this.view.SearchValue);
+
+            if (!emptyValue)
+            {
+                cuotasList = repository.GetByValue(this.view.SearchValue);
+            }
+            else 
+            {
+                cuotasList = repository.GetAll();
+            }
+
+            cuotasBindingSource.DataSource = cuotasList;
         }
 
         private void AddNewCuota(object? sender, EventArgs e)

@@ -28,13 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tabControlCuotas = new TabControl();
-            tabpageCuotasVisualizer = new TabPage();
+            tabControl = new TabControl();
+            tabPageCuotasVisualizer = new TabPage();
             buttonEdit = new Button();
+            buttonDelete = new Button();
             buttonSearchCuota = new Button();
             textBoxSearchCuota = new TextBox();
             dataGridViewCuotas = new DataGridView();
+            tabPageDebtorsVisualizer = new TabPage();
+            dataGridView1 = new DataGridView();
             tabPageAddOrEditOrDeleteCuota = new TabPage();
+            labelCodigoCuota = new Label();
+            textBoxCodigoCuota = new TextBox();
             labelTipoCuota = new Label();
             comboBoxMes = new ComboBox();
             comboBoxTipoCuota = new ComboBox();
@@ -49,38 +54,43 @@
             labelOperation = new Label();
             labelMonto = new Label();
             textBoxMonto = new TextBox();
-            buttonDelete = new Button();
-            tabControlCuotas.SuspendLayout();
-            tabpageCuotasVisualizer.SuspendLayout();
+            buttonClose = new Button();
+            button1 = new Button();
+            textBox1 = new TextBox();
+            tabControl.SuspendLayout();
+            tabPageCuotasVisualizer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCuotas).BeginInit();
+            tabPageDebtorsVisualizer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabPageAddOrEditOrDeleteCuota.SuspendLayout();
             SuspendLayout();
             // 
-            // tabControlCuotas
+            // tabControl
             // 
-            tabControlCuotas.Controls.Add(tabpageCuotasVisualizer);
-            tabControlCuotas.Controls.Add(tabPageAddOrEditOrDeleteCuota);
-            tabControlCuotas.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            tabControlCuotas.Location = new Point(0, 50);
-            tabControlCuotas.Name = "tabControlCuotas";
-            tabControlCuotas.SelectedIndex = 0;
-            tabControlCuotas.Size = new Size(855, 510);
-            tabControlCuotas.TabIndex = 0;
+            tabControl.Controls.Add(tabPageDebtorsVisualizer);
+            tabControl.Controls.Add(tabPageCuotasVisualizer);
+            tabControl.Controls.Add(tabPageAddOrEditOrDeleteCuota);
+            tabControl.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tabControl.Location = new Point(0, 50);
+            tabControl.Name = "tabControl";
+            tabControl.SelectedIndex = 0;
+            tabControl.Size = new Size(855, 510);
+            tabControl.TabIndex = 0;
             // 
-            // tabpageCuotasVisualizer
+            // tabPageCuotasVisualizer
             // 
-            tabpageCuotasVisualizer.Controls.Add(buttonEdit);
-            tabpageCuotasVisualizer.Controls.Add(buttonDelete);
-            tabpageCuotasVisualizer.Controls.Add(buttonSearchCuota);
-            tabpageCuotasVisualizer.Controls.Add(textBoxSearchCuota);
-            tabpageCuotasVisualizer.Controls.Add(dataGridViewCuotas);
-            tabpageCuotasVisualizer.Location = new Point(4, 30);
-            tabpageCuotasVisualizer.Name = "tabpageCuotasVisualizer";
-            tabpageCuotasVisualizer.Padding = new Padding(3);
-            tabpageCuotasVisualizer.Size = new Size(847, 476);
-            tabpageCuotasVisualizer.TabIndex = 0;
-            tabpageCuotasVisualizer.Text = "Administración de cuotas";
-            tabpageCuotasVisualizer.UseVisualStyleBackColor = true;
+            tabPageCuotasVisualizer.Controls.Add(buttonEdit);
+            tabPageCuotasVisualizer.Controls.Add(buttonDelete);
+            tabPageCuotasVisualizer.Controls.Add(buttonSearchCuota);
+            tabPageCuotasVisualizer.Controls.Add(textBoxSearchCuota);
+            tabPageCuotasVisualizer.Controls.Add(dataGridViewCuotas);
+            tabPageCuotasVisualizer.Location = new Point(4, 30);
+            tabPageCuotasVisualizer.Name = "tabPageCuotasVisualizer";
+            tabPageCuotasVisualizer.Padding = new Padding(3);
+            tabPageCuotasVisualizer.Size = new Size(847, 476);
+            tabPageCuotasVisualizer.TabIndex = 0;
+            tabPageCuotasVisualizer.Text = "Administración de cuotas";
+            tabPageCuotasVisualizer.UseVisualStyleBackColor = true;
             // 
             // buttonEdit
             // 
@@ -92,6 +102,17 @@
             buttonEdit.TabIndex = 10;
             buttonEdit.Text = "Editar";
             buttonEdit.UseVisualStyleBackColor = true;
+            // 
+            // buttonDelete
+            // 
+            buttonDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonDelete.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDelete.Location = new Point(714, 12);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(125, 39);
+            buttonDelete.TabIndex = 11;
+            buttonDelete.Text = "Eliminar";
+            buttonDelete.UseVisualStyleBackColor = true;
             // 
             // buttonSearchCuota
             // 
@@ -126,8 +147,38 @@
             dataGridViewCuotas.Size = new Size(835, 407);
             dataGridViewCuotas.TabIndex = 0;
             // 
+            // tabPageDebtorsVisualizer
+            // 
+            tabPageDebtorsVisualizer.Controls.Add(button1);
+            tabPageDebtorsVisualizer.Controls.Add(textBox1);
+            tabPageDebtorsVisualizer.Controls.Add(dataGridView1);
+            tabPageDebtorsVisualizer.Location = new Point(4, 30);
+            tabPageDebtorsVisualizer.Name = "tabPageDebtorsVisualizer";
+            tabPageDebtorsVisualizer.Padding = new Padding(3);
+            tabPageDebtorsVisualizer.Size = new Size(847, 476);
+            tabPageDebtorsVisualizer.TabIndex = 2;
+            tabPageDebtorsVisualizer.Text = "Administración de deudas";
+            tabPageDebtorsVisualizer.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(6, 62);
+            dataGridView1.MultiSelect = false;
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(835, 407);
+            dataGridView1.TabIndex = 1;
+            // 
             // tabPageAddOrEditOrDeleteCuota
             // 
+            tabPageAddOrEditOrDeleteCuota.Controls.Add(labelCodigoCuota);
+            tabPageAddOrEditOrDeleteCuota.Controls.Add(textBoxCodigoCuota);
             tabPageAddOrEditOrDeleteCuota.Controls.Add(labelTipoCuota);
             tabPageAddOrEditOrDeleteCuota.Controls.Add(comboBoxMes);
             tabPageAddOrEditOrDeleteCuota.Controls.Add(comboBoxTipoCuota);
@@ -150,12 +201,33 @@
             tabPageAddOrEditOrDeleteCuota.Text = "Registrar/Editar/Eliminar cuota";
             tabPageAddOrEditOrDeleteCuota.UseVisualStyleBackColor = true;
             // 
+            // labelCodigoCuota
+            // 
+            labelCodigoCuota.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            labelCodigoCuota.AutoSize = true;
+            labelCodigoCuota.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelCodigoCuota.Location = new Point(14, 86);
+            labelCodigoCuota.Name = "labelCodigoCuota";
+            labelCodigoCuota.Size = new Size(105, 21);
+            labelCodigoCuota.TabIndex = 32;
+            labelCodigoCuota.Text = "Código cuota:";
+            // 
+            // textBoxCodigoCuota
+            // 
+            textBoxCodigoCuota.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBoxCodigoCuota.Enabled = false;
+            textBoxCodigoCuota.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxCodigoCuota.Location = new Point(14, 112);
+            textBoxCodigoCuota.Name = "textBoxCodigoCuota";
+            textBoxCodigoCuota.Size = new Size(238, 29);
+            textBoxCodigoCuota.TabIndex = 31;
+            // 
             // labelTipoCuota
             // 
             labelTipoCuota.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelTipoCuota.AutoSize = true;
             labelTipoCuota.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelTipoCuota.Location = new Point(581, 86);
+            labelTipoCuota.Location = new Point(581, 154);
             labelTipoCuota.Name = "labelTipoCuota";
             labelTipoCuota.Size = new Size(106, 21);
             labelTipoCuota.TabIndex = 30;
@@ -165,7 +237,7 @@
             // 
             comboBoxMes.FormattingEnabled = true;
             comboBoxMes.Items.AddRange(new object[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" });
-            comboBoxMes.Location = new Point(14, 246);
+            comboBoxMes.Location = new Point(581, 112);
             comboBoxMes.Name = "comboBoxMes";
             comboBoxMes.Size = new Size(238, 29);
             comboBoxMes.TabIndex = 2;
@@ -174,7 +246,7 @@
             // 
             comboBoxTipoCuota.FormattingEnabled = true;
             comboBoxTipoCuota.Items.AddRange(new object[] { "Mensual", "Semanal", "Diaria" });
-            comboBoxTipoCuota.Location = new Point(581, 113);
+            comboBoxTipoCuota.Location = new Point(581, 181);
             comboBoxTipoCuota.Name = "comboBoxTipoCuota";
             comboBoxTipoCuota.Size = new Size(238, 29);
             comboBoxTipoCuota.TabIndex = 4;
@@ -184,7 +256,7 @@
             labelMes.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelMes.AutoSize = true;
             labelMes.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelMes.Location = new Point(14, 220);
+            labelMes.Location = new Point(581, 86);
             labelMes.Name = "labelMes";
             labelMes.Size = new Size(119, 21);
             labelMes.TabIndex = 26;
@@ -195,7 +267,7 @@
             labelFechaPago.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelFechaPago.AutoSize = true;
             labelFechaPago.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelFechaPago.Location = new Point(298, 86);
+            labelFechaPago.Location = new Point(296, 86);
             labelFechaPago.Name = "labelFechaPago";
             labelFechaPago.Size = new Size(113, 21);
             labelFechaPago.TabIndex = 25;
@@ -203,7 +275,7 @@
             // 
             // monthCalendarFechaPago
             // 
-            monthCalendarFechaPago.Location = new Point(298, 113);
+            monthCalendarFechaPago.Location = new Point(296, 113);
             monthCalendarFechaPago.Name = "monthCalendarFechaPago";
             monthCalendarFechaPago.TabIndex = 3;
             // 
@@ -212,7 +284,7 @@
             labelCodigoSocio.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelCodigoSocio.AutoSize = true;
             labelCodigoSocio.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelCodigoSocio.Location = new Point(14, 86);
+            labelCodigoSocio.Location = new Point(14, 154);
             labelCodigoSocio.Name = "labelCodigoSocio";
             labelCodigoSocio.Size = new Size(132, 21);
             labelCodigoSocio.TabIndex = 22;
@@ -222,7 +294,7 @@
             // 
             textBoxCodigoSocio.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBoxCodigoSocio.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxCodigoSocio.Location = new Point(14, 113);
+            textBoxCodigoSocio.Location = new Point(14, 181);
             textBoxCodigoSocio.Name = "textBoxCodigoSocio";
             textBoxCodigoSocio.Size = new Size(238, 29);
             textBoxCodigoSocio.TabIndex = 0;
@@ -276,7 +348,7 @@
             labelMonto.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelMonto.AutoSize = true;
             labelMonto.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            labelMonto.Location = new Point(14, 155);
+            labelMonto.Location = new Point(14, 222);
             labelMonto.Name = "labelMonto";
             labelMonto.Size = new Size(156, 21);
             labelMonto.TabIndex = 12;
@@ -286,21 +358,38 @@
             // 
             textBoxMonto.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBoxMonto.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxMonto.Location = new Point(14, 181);
+            textBoxMonto.Location = new Point(14, 248);
             textBoxMonto.Name = "textBoxMonto";
             textBoxMonto.Size = new Size(238, 29);
             textBoxMonto.TabIndex = 1;
             // 
-            // buttonDelete
+            // buttonClose
             // 
-            buttonDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonDelete.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonDelete.Location = new Point(714, 12);
-            buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(125, 39);
-            buttonDelete.TabIndex = 11;
-            buttonDelete.Text = "Eliminar";
-            buttonDelete.UseVisualStyleBackColor = true;
+            buttonClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonClose.Location = new Point(770, 10);
+            buttonClose.Name = "buttonClose";
+            buttonClose.Size = new Size(76, 39);
+            buttonClose.TabIndex = 6;
+            buttonClose.Text = "X";
+            buttonClose.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(409, 20);
+            button1.Name = "button1";
+            button1.Size = new Size(100, 30);
+            button1.TabIndex = 11;
+            button1.Text = "Buscar socio";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            textBox1.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.Location = new Point(6, 20);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(397, 31);
+            textBox1.TabIndex = 10;
             // 
             // CuotaView
             // 
@@ -308,14 +397,18 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gold;
             ClientSize = new Size(855, 560);
-            Controls.Add(tabControlCuotas);
+            Controls.Add(buttonClose);
+            Controls.Add(tabControl);
             FormBorderStyle = FormBorderStyle.None;
             Name = "CuotaView";
             Text = "CuotaView";
-            tabControlCuotas.ResumeLayout(false);
-            tabpageCuotasVisualizer.ResumeLayout(false);
-            tabpageCuotasVisualizer.PerformLayout();
+            tabControl.ResumeLayout(false);
+            tabPageCuotasVisualizer.ResumeLayout(false);
+            tabPageCuotasVisualizer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCuotas).EndInit();
+            tabPageDebtorsVisualizer.ResumeLayout(false);
+            tabPageDebtorsVisualizer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tabPageAddOrEditOrDeleteCuota.ResumeLayout(false);
             tabPageAddOrEditOrDeleteCuota.PerformLayout();
             ResumeLayout(false);
@@ -323,8 +416,8 @@
 
         #endregion
 
-        private TabControl tabControlCuotas;
-        private TabPage tabpageCuotasVisualizer;
+        private TabControl tabControl;
+        private TabPage tabPageCuotasVisualizer;
         private TabPage tabPageAddOrEditOrDeleteCuota;
         private DataGridView dataGridViewCuotas;
         private Button buttonEdit;
@@ -345,5 +438,12 @@
         private Label labelMes;
         private ComboBox comboBoxMes;
         private Label labelTipoCuota;
+        private Button buttonClose;
+        private TabPage tabPageDebtorsVisualizer;
+        private DataGridView dataGridView1;
+        private Label labelCodigoCuota;
+        private TextBox textBoxCodigoCuota;
+        private Button button1;
+        private TextBox textBox1;
     }
 }

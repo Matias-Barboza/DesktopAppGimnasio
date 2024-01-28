@@ -62,7 +62,10 @@ namespace DesktopAppGimnasio.Views
 
                 MessageBox.Show(Message);
             };
-            buttonCancel.Click += delegate { CancelEvent?.Invoke(this, EventArgs.Empty); };
+            buttonCancel.Click += delegate { 
+                CancelEvent?.Invoke(this, EventArgs.Empty);
+                labelOperation.Text = "Operación actual:";
+            };
             
             
             // Other Events

@@ -12,9 +12,70 @@ namespace DesktopAppGimnasio.Views
 {
     public partial class CuotaView : Form, ICuotaView
     {
+        // Fields
+        private bool isEdit;
+        private bool isSuccessful;
+        private string message;
+
         public CuotaView()
         {
             InitializeComponent();
+            AssociateAndRaiseEvents();
+        }
+
+        private void AssociateAndRaiseEvents()
+        {
+            // Principal Events
+            buttonSearchCuota.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
+            buttonAdd.Click += delegate
+            {
+                AddNewEvent?.Invoke(this, EventArgs.Empty);
+                labelOperation.Text = "Operación actual: Añadir cuota";
+            };
+            buttonEdit.Click += delegate
+            {
+                EditEvent?.Invoke(this, EventArgs.Empty);
+                labelOperation.Text = "Operación actual: Editar cuota";
+                tabControl.SelectedTab = tabPageAddOrEditOrDeleteCuota;
+            };
+            buttonDelete.Click += delegate
+            {
+                DialogResult result = MessageBox.Show("¿Está seguro de eliminar el socio?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.Yes)
+                {
+                    DeleteEvent?.Invoke(this, EventArgs.Empty);
+                    MessageBox.Show(Message);
+                }
+            };
+            buttonSave.Click += delegate
+            {
+                SaveEvent?.Invoke(this, EventArgs.Empty);
+
+                if (isSuccessful)
+                {
+                    labelOperation.Text = "Operación actual: Realizada con éxito";
+                    tabControl.SelectedTab = tabPageCuotasVisualizer;
+                    labelOperation.Text = "Operación actual:";
+                }
+
+                MessageBox.Show(Message);
+            };
+            buttonCancel.Click += delegate { 
+                CancelEvent?.Invoke(this, EventArgs.Empty);
+                labelOperation.Text = "Operación actual:";
+            };
+
+
+            // Other Events
+            textBoxSearchCuota.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    SearchEvent?.Invoke(this, EventArgs.Empty);
+                }
+            };
+            buttonClose.Click += delegate { this.Close(); };
         }
 
         public int CodigoCuota { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -25,9 +86,9 @@ namespace DesktopAppGimnasio.Views
         public float MontoAbonado { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int CodigoTipoCuota { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string SearchValue { get => textBoxSearchCuota.Text; set => textBoxSearchCuota.Text = value; }
-        public bool IsEdit { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool IsSuccessful { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Message { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool IsEdit { get => isEdit; set => isEdit = value; }
+        public bool IsSuccessful { get => isSuccessful; set => isSuccessful = value; }
+        public string Message { get => message; set => message = value; }
 
         public event EventHandler SearchEvent;
         public event EventHandler AddNewEvent;
