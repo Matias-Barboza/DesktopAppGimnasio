@@ -16,6 +16,7 @@ namespace DesktopAppGimnasio.Views
         private bool isEdit;
         private bool isSuccessful;
         private string message;
+        private string caption;
 
         public CuotaView()
         {
@@ -59,7 +60,7 @@ namespace DesktopAppGimnasio.Views
                     labelOperation.Text = "Operación actual:";
                 }
 
-                MessageBox.Show(Message);
+                MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
             buttonCancel.Click += delegate { 
                 CancelEvent?.Invoke(this, EventArgs.Empty);
@@ -78,17 +79,18 @@ namespace DesktopAppGimnasio.Views
             buttonClose.Click += delegate { this.Close(); };
         }
 
-        public int CodigoCuota { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int CodigoSocio { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public DateTime FechaDePago { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int CodigoCuota { get => (textBoxCodigoCuota.Text == "") ? 0 : Convert.ToInt32(textBoxCodigoCuota.Text); set => textBoxCodigoCuota.Text = (value == 0) ? String.Empty : value.ToString(); }
+        public int CodigoSocio { get => (textBoxCodigoSocio.Text == "") ? 0 : Convert.ToInt32(textBoxCodigoSocio.Text); set => textBoxCodigoSocio.Text = (value == 0) ? String.Empty : value.ToString(); }
+        public DateTime FechaDePago { get => monthCalendarFechaPago.SelectionStart; set => monthCalendarFechaPago.SetDate(value); }
         public DateTime FechaDeVencimiento { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string MesQueAbona { get => (String) comboBoxMes.SelectedItem; set => comboBoxMes.SelectedText = value; }
-        public float MontoAbonado { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int CodigoTipoCuota { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string MesQueAbona { get => (String) comboBoxMes.SelectedItem; set => comboBoxMes.SelectedIndex = (value == "") ? -1 : ConvertMonthToInt(value); }
+        public float MontoAbonado { get => (textBoxMonto.Text == "") ? 0 : float.Parse(textBoxMonto.Text); set => textBoxMonto.Text = (value == 0) ? String.Empty : value.ToString(); }
+        public int IdTipoCuota { get => comboBoxTipoCuota.SelectedIndex; set => comboBoxTipoCuota.SelectedIndex = value; }
         public string SearchValue { get => textBoxSearchCuota.Text; set => textBoxSearchCuota.Text = value; }
         public bool IsEdit { get => isEdit; set => isEdit = value; }
         public bool IsSuccessful { get => isSuccessful; set => isSuccessful = value; }
         public string Message { get => message; set => message = value; }
+        public string Caption { get => caption; set => caption = value; }
 
         public event EventHandler SearchEvent;
         public event EventHandler AddNewEvent;
@@ -100,6 +102,11 @@ namespace DesktopAppGimnasio.Views
         public void SetCuotasBindingSource(BindingSource cuotasList)
         {
             dataGridViewCuotas.DataSource = cuotasList;
+        }
+
+        public void HideColumn(int index) 
+        {
+            dataGridViewCuotas.Columns[index].Visible = false;
         }
 
         private static CuotaView instance;
@@ -124,5 +131,18 @@ namespace DesktopAppGimnasio.Views
 
             return instance;
         }
+
+        public int ConvertMonthToInt(string Month) 
+        {
+            List<String> months = new List<String>()
+            {
+                "Enero", "Febrero", "Marzo", "Abril", "Mayo",
+                "Junio", "Julio", "Agosto", "Septiembre", "Octubre",
+                "Noviembre", "Diciembre"
+            };
+
+            return months.IndexOf(Month);
+        }
+
     }
 }

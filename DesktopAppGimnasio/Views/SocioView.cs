@@ -16,6 +16,7 @@ namespace DesktopAppGimnasio.Views
         private bool isEdit;
         private bool isSuccessful;
         private string message;
+        private string caption;
 
         // Constructors
         public SocioView()
@@ -46,7 +47,7 @@ namespace DesktopAppGimnasio.Views
                 if (result == DialogResult.Yes) 
                 {
                     DeleteEvent?.Invoke(this, EventArgs.Empty);
-                    MessageBox.Show(Message);
+                    MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             };
             buttonSave.Click += delegate 
@@ -60,7 +61,7 @@ namespace DesktopAppGimnasio.Views
                     labelOperation.Text = "Operación actual:";
                 }
 
-                MessageBox.Show(Message);
+                MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
             buttonCancel.Click += delegate { 
                 CancelEvent?.Invoke(this, EventArgs.Empty);
@@ -104,6 +105,7 @@ namespace DesktopAppGimnasio.Views
         public bool IsEdit { get => isEdit; set => isEdit = value; }
         public bool IsSuccessful { get => isSuccessful; set => isSuccessful = value; }
         public string Message { get => message; set => message = value; }
+        public string Caption { get => caption; set => caption = value; }
 
         public event EventHandler SearchEvent;
         public event EventHandler AddNewEvent;

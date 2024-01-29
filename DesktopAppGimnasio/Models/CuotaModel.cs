@@ -21,7 +21,7 @@ namespace DesktopAppGimnasio.Models
         private DateTime fechaDeVencimiento;
         private String mesQueAbona;
         private float montoAbonado;
-        //private int codigoTipoCuota;
+        private int idTipoCuota;
 
 
         [DisplayName("Código de cuota")]
@@ -51,12 +51,12 @@ namespace DesktopAppGimnasio.Models
         [Required(ErrorMessage = "El campo MES QUE ABONA es obligatorio.")]
         public String MesQueAbona { get => mesQueAbona; set => mesQueAbona = value; }
 
-        [DisplayName("Monto abonado")]
+        [DisplayName("Monto abonado ($)")]
         [Required(ErrorMessage = "El  campo MONTO ABONADO es obligatorio.")]
         public float MontoAbonado { get => montoAbonado; set => montoAbonado = value; }
 
-        //[DisplayName("Tipo de cuota")]
-        //[Required(ErrorMessage = "El tipo de cuota a registrar es obligatorio")]
-        //public int CodigoTipoCuota { get => codigoTipoCuota; set => codigoTipoCuota = value; }
+        [DisplayName("Id tipo de cuota")]
+        [Required(ErrorMessage = "El tipo de cuota a registrar es obligatorio")]
+        public int IdTipoCuota { get => idTipoCuota; set => idTipoCuota = value; }
     }
 }

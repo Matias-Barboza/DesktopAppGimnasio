@@ -58,10 +58,12 @@ namespace DesktopAppGimnasio.Presenters
 
             sociosBindingsource.DataSource = sociosList;
         }
+
         private void AddNewSocio(object? sender, EventArgs e)
         {
             view.IsEdit = false;
         }
+
         private void LoadSelectedSocioToEdit(object? sender, EventArgs e)
         {
             SocioModel socio = (SocioModel) sociosBindingsource.Current;
@@ -73,6 +75,7 @@ namespace DesktopAppGimnasio.Presenters
 
             view.IsEdit = true;
         }
+
         private void DeleteSelectedSocio(object? sender, EventArgs e)
         {
             try
@@ -82,12 +85,14 @@ namespace DesktopAppGimnasio.Presenters
 
                 repository.Delete(socio.CodigoSocio);
                 view.IsSuccessful = true;
-                view.Message = $"El Socio {codigoSocio} fue eliminado exitosamente";
+                view.Caption = "Estado de eliminación de socio";
+                view.Message = $"El socio {codigoSocio} fue eliminado exitosamente";
                 LoadAllSocioList();
             }
             catch (Exception ex)
             {
                 view.IsSuccessful = false;
+                view.Caption = "Error en la operación actual: Eliminación de socio";
                 view.Message = "No se pudo realizar la acción debido a un error";
             }
         }
@@ -111,11 +116,13 @@ namespace DesktopAppGimnasio.Presenters
                 if (view.IsEdit)
                 {
                     repository.Edit(socio);
+                    view.Caption = "Estado de edición de socio";
                     view.Message = $"Socio {socio.CodigoSocio} editado exitosamente";
                 }
                 else
                 {
                     repository.Add(socio);
+                    view.Caption = "Estado de adición de socio";
                     view.Message = $"Socio agregado exitosamente";
                 }
 
@@ -126,6 +133,7 @@ namespace DesktopAppGimnasio.Presenters
             catch (Exception ex)
             {
                 view.IsSuccessful = false;
+                view.Caption = "Error en la operación actual: Guardar socio";
                 view.Message = ex.Message;
             }
         }

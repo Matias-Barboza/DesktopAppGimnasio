@@ -1,4 +1,5 @@
 ﻿using DesktopAppGimnasio.Models;
+using DesktopAppGimnasio.Presenters.CommonTasks;
 using DesktopAppGimnasio.Views;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,8 @@ namespace DesktopAppGimnasio.Presenters
 
             LoadAllCuotasList();
 
+            this.view.HideColumn(4);
+            this.view.HideColumn(9);
             this.view.Show();
         }
 
@@ -62,27 +65,97 @@ namespace DesktopAppGimnasio.Presenters
 
         private void AddNewCuota(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            view.IsEdit = true;
         }
 
         private void LoadSelectedCuotaToEdit(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            CuotaModel cuota = (CuotaModel) cuotasBindingSource.Current;
+
+            view.CodigoCuota = cuota.CodigoCuota;
+            view.CodigoSocio = cuota.CodigoSocio;
+            view.MontoAbonado = cuota.MontoAbonado;
+            view.FechaDePago = cuota.FechaDePago;
+            view.MesQueAbona = cuota.MesQueAbona;
+            view.IdTipoCuota = cuota.IdTipoCuota;
         }
 
         private void DeleteSelectedCuota(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try 
+            {
+                CuotaModel cuota = (CuotaModel)cuotasBindingSource.Current;
+                int codigoCuota = cuota.CodigoCuota;
+
+                repository.Delete(codigoCuota);
+                view.IsSuccessful = true;
+                view.Caption = "Estado de eliminación de cuota";
+                view.Message = $"Cuota {codigoCuota} eliminado correctamente";
+                LoadAllCuotasList();
+            }
+            catch (Exception ex) 
+            {
+                view.IsSuccessful = false;
+                view.Caption = "Error en la operación actual: Eliminar cuota";
+                view.Message = ex.Message;
+            }
         }
 
         private void SaveCuota(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            CuotaModel cuota = new CuotaModel();
+
+            cuota.CodigoCuota = view.CodigoCuota;
+            cuota.CodigoSocio = view.CodigoSocio;
+            cuota.MontoAbonado = view.MontoAbonado;
+            cuota.FechaDePago = view.FechaDePago;
+            cuota.MesQueAbona = view.MesQueAbona;
+
+            try
+            {
+                ModelDataValidation validator = new ModelDataValidation();
+
+                validator.Validate(cuota);
+
+                if(view.IsEdit) 
+                {
+                    repository.Edit(cuota);
+                    view.Caption = "Estado de edición de cuota";
+                    view.Message = $"Socio {cuota.CodigoCuota} editado exitosamente";
+                }
+                else
+                {
+                    repository.Add(cuota);
+                    view.Caption = "Estado de adición de cuota";
+                    view.Message = $"Cuota añadida exitosamente";
+                }
+
+                view.IsSuccessful = true;
+                LoadAllCuotasList();
+                CleanFieldsView();
+            }
+            catch (Exception ex)
+            {
+                view.IsSuccessful = false;
+                view.Caption = "Error en la operación actual: Guardar cuota";
+                view.Message = ex.Message;
+            }
         }
 
         private void CancelAction(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            CleanFieldsView();
         }
+    
+        private void CleanFieldsView()
+        {
+            view.CodigoCuota = 0;
+            view.CodigoSocio = 0;
+            view.MontoAbonado = 0;
+            view.FechaDePago = DateTime.Today;
+            view.MesQueAbona = "";
+            view.IdTipoCuota = -1;
+        }
+
     }
 }

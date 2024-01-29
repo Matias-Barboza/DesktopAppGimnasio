@@ -15,13 +15,14 @@ namespace DesktopAppGimnasio.Views
         public DateTime FechaDeVencimiento { get; set; }
         public String MesQueAbona { get; set; }
         public float MontoAbonado { get; set; }
-        public int CodigoTipoCuota { get; set; }
+        public int IdTipoCuota { get; set; }
 
 
         string SearchValue { get; set; }
         bool IsEdit { get; set; }
         bool IsSuccessful { get; set; }
         String Message { get; set; }
+        String Caption {  get; set; }
 
         // Events
         event EventHandler SearchEvent;
@@ -32,6 +33,8 @@ namespace DesktopAppGimnasio.Views
         event EventHandler CancelEvent;
 
         public void SetCuotasBindingSource(BindingSource cuotasList);
+
+        public void HideColumn(int index);
 
         public void Show();
     }
