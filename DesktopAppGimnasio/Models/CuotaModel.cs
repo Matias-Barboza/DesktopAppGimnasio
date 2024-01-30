@@ -49,14 +49,18 @@ namespace DesktopAppGimnasio.Models
 
         [DisplayName("Mes que abona")]
         [Required(ErrorMessage = "El campo MES QUE ABONA es obligatorio.")]
+        [RegularExpression(@"^[A-Za-zÁÉÍÓÚÑáéíóúñ\\s]{1,10}$",
+            ErrorMessage = "El campo MES QUE ABONA solo debe contener letras.")]
         public String MesQueAbona { get => mesQueAbona; set => mesQueAbona = value; }
 
         [DisplayName("Monto abonado ($)")]
         [Required(ErrorMessage = "El  campo MONTO ABONADO es obligatorio.")]
+        [RegularExpression(@"^\d{1,8}(\.\d{1,2})?$",
+            ErrorMessage = "El campo MONTO unicamente debe contener números.")]
         public float MontoAbonado { get => montoAbonado; set => montoAbonado = value; }
 
-        [DisplayName("Id tipo de cuota")]
-        [Required(ErrorMessage = "El tipo de cuota a registrar es obligatorio")]
+        [DisplayName("ID tipo de cuota")]
+        [Required(ErrorMessage = "El tipo de cuota a registrar es obligatorio.")]
         public int IdTipoCuota { get => idTipoCuota; set => idTipoCuota = value; }
     }
 }

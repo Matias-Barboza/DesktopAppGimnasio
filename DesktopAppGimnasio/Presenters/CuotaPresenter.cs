@@ -65,7 +65,7 @@ namespace DesktopAppGimnasio.Presenters
 
         private void AddNewCuota(object? sender, EventArgs e)
         {
-            view.IsEdit = true;
+            view.IsEdit = false;
         }
 
         private void LoadSelectedCuotaToEdit(object? sender, EventArgs e)
@@ -78,19 +78,21 @@ namespace DesktopAppGimnasio.Presenters
             view.FechaDePago = cuota.FechaDePago;
             view.MesQueAbona = cuota.MesQueAbona;
             view.IdTipoCuota = cuota.IdTipoCuota;
+
+            view.IsEdit = true;
         }
 
         private void DeleteSelectedCuota(object? sender, EventArgs e)
         {
             try 
             {
-                CuotaModel cuota = (CuotaModel)cuotasBindingSource.Current;
+                CuotaModel cuota = (CuotaModel) cuotasBindingSource.Current;
                 int codigoCuota = cuota.CodigoCuota;
 
                 repository.Delete(codigoCuota);
                 view.IsSuccessful = true;
                 view.Caption = "Estado de eliminación de cuota";
-                view.Message = $"Cuota {codigoCuota} eliminado correctamente";
+                view.Message = $"Cuota {codigoCuota} eliminada correctamente";
                 LoadAllCuotasList();
             }
             catch (Exception ex) 
@@ -110,6 +112,20 @@ namespace DesktopAppGimnasio.Presenters
             cuota.MontoAbonado = view.MontoAbonado;
             cuota.FechaDePago = view.FechaDePago;
             cuota.MesQueAbona = view.MesQueAbona;
+            cuota.IdTipoCuota = (view.IdTipoCuota != -1) ? view.IdTipoCuota + 1 : -1;
+
+            if (cuota.IdTipoCuota == 1)
+            {
+                cuota.FechaDeVencimiento = cuota.FechaDePago.AddMonths(1);
+            }
+            else if (cuota.IdTipoCuota == 2)
+            {
+                cuota.FechaDeVencimiento = cuota.FechaDePago.AddDays(7);
+            }
+            else 
+            {
+                cuota.FechaDeVencimiento = cuota.FechaDePago.AddDays(1);
+            }
 
             try
             {
@@ -121,7 +137,7 @@ namespace DesktopAppGimnasio.Presenters
                 {
                     repository.Edit(cuota);
                     view.Caption = "Estado de edición de cuota";
-                    view.Message = $"Socio {cuota.CodigoCuota} editado exitosamente";
+                    view.Message = $"Cuota {cuota.CodigoCuota} editada exitosamente";
                 }
                 else
                 {

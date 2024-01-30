@@ -30,8 +30,8 @@
         {
             tabControl = new TabControl();
             tabPageDebtorsVisualizer = new TabPage();
-            button1 = new Button();
-            textBox1 = new TextBox();
+            buttonSearchDebt = new Button();
+            textBoxSearchDebt = new TextBox();
             dataGridView1 = new DataGridView();
             tabPageCuotasVisualizer = new TabPage();
             buttonEdit = new Button();
@@ -40,6 +40,7 @@
             textBoxSearchCuota = new TextBox();
             dataGridViewCuotas = new DataGridView();
             tabPageAddOrEditOrDeleteCuota = new TabPage();
+            labelPesos = new Label();
             labelCodigoCuota = new Label();
             textBoxCodigoCuota = new TextBox();
             labelTipoCuota = new Label();
@@ -57,7 +58,6 @@
             labelMonto = new Label();
             textBoxMonto = new TextBox();
             buttonClose = new Button();
-            labelPesos = new Label();
             tabControl.SuspendLayout();
             tabPageDebtorsVisualizer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -80,8 +80,8 @@
             // 
             // tabPageDebtorsVisualizer
             // 
-            tabPageDebtorsVisualizer.Controls.Add(button1);
-            tabPageDebtorsVisualizer.Controls.Add(textBox1);
+            tabPageDebtorsVisualizer.Controls.Add(buttonSearchDebt);
+            tabPageDebtorsVisualizer.Controls.Add(textBoxSearchDebt);
             tabPageDebtorsVisualizer.Controls.Add(dataGridView1);
             tabPageDebtorsVisualizer.Location = new Point(4, 30);
             tabPageDebtorsVisualizer.Name = "tabPageDebtorsVisualizer";
@@ -91,23 +91,23 @@
             tabPageDebtorsVisualizer.Text = "Administración de deudas";
             tabPageDebtorsVisualizer.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // buttonSearchDebt
             // 
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(409, 20);
-            button1.Name = "button1";
-            button1.Size = new Size(100, 30);
-            button1.TabIndex = 11;
-            button1.Text = "Buscar socio";
-            button1.UseVisualStyleBackColor = true;
+            buttonSearchDebt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSearchDebt.Location = new Point(409, 20);
+            buttonSearchDebt.Name = "buttonSearchDebt";
+            buttonSearchDebt.Size = new Size(100, 30);
+            buttonSearchDebt.TabIndex = 11;
+            buttonSearchDebt.Text = "Buscar socio";
+            buttonSearchDebt.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textBoxSearchDebt
             // 
-            textBox1.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(6, 20);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(397, 31);
-            textBox1.TabIndex = 10;
+            textBoxSearchDebt.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxSearchDebt.Location = new Point(6, 20);
+            textBoxSearchDebt.Name = "textBoxSearchDebt";
+            textBoxSearchDebt.Size = new Size(397, 31);
+            textBoxSearchDebt.TabIndex = 10;
             // 
             // dataGridView1
             // 
@@ -220,6 +220,17 @@
             tabPageAddOrEditOrDeleteCuota.TabIndex = 1;
             tabPageAddOrEditOrDeleteCuota.Text = "Registrar/Editar/Eliminar cuota";
             tabPageAddOrEditOrDeleteCuota.UseVisualStyleBackColor = true;
+            // 
+            // labelPesos
+            // 
+            labelPesos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            labelPesos.AutoSize = true;
+            labelPesos.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            labelPesos.Location = new Point(176, 250);
+            labelPesos.Name = "labelPesos";
+            labelPesos.Size = new Size(22, 25);
+            labelPesos.TabIndex = 33;
+            labelPesos.Text = "$";
             // 
             // labelCodigoCuota
             // 
@@ -394,17 +405,6 @@
             buttonClose.Text = "X";
             buttonClose.UseVisualStyleBackColor = true;
             // 
-            // labelPesos
-            // 
-            labelPesos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            labelPesos.AutoSize = true;
-            labelPesos.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            labelPesos.Location = new Point(176, 250);
-            labelPesos.Name = "labelPesos";
-            labelPesos.Size = new Size(22, 25);
-            labelPesos.TabIndex = 33;
-            labelPesos.Text = "$";
-            // 
             // CuotaView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -457,8 +457,8 @@
         private DataGridView dataGridView1;
         private Label labelCodigoCuota;
         private TextBox textBoxCodigoCuota;
-        private Button button1;
-        private TextBox textBox1;
+        private Button buttonSearchDebt;
+        private TextBox textBoxSearchDebt;
         private Label labelPesos;
     }
 }

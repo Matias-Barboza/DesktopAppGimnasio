@@ -32,15 +32,21 @@
             buttonSocios = new Button();
             buttonCuotas = new Button();
             panel1 = new Panel();
+            labelSections = new Label();
             buttonClose = new Button();
             panel2 = new Panel();
-            labelSections = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // buttonSocios
             // 
-            buttonSocios.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSocios.BackColor = Color.DimGray;
+            buttonSocios.Cursor = Cursors.Hand;
+            buttonSocios.FlatAppearance.BorderColor = Color.Yellow;
+            buttonSocios.FlatAppearance.BorderSize = 2;
+            buttonSocios.FlatStyle = FlatStyle.Flat;
+            buttonSocios.Font = new Font("Arial Rounded MT Bold", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonSocios.ForeColor = Color.Yellow;
             buttonSocios.Image = (Image)resources.GetObject("buttonSocios.Image");
             buttonSocios.ImageAlign = ContentAlignment.MiddleLeft;
             buttonSocios.Location = new Point(3, 156);
@@ -48,11 +54,17 @@
             buttonSocios.Size = new Size(224, 40);
             buttonSocios.TabIndex = 0;
             buttonSocios.Text = "Socios";
-            buttonSocios.UseVisualStyleBackColor = true;
+            buttonSocios.UseVisualStyleBackColor = false;
             // 
             // buttonCuotas
             // 
-            buttonCuotas.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonCuotas.BackColor = Color.DimGray;
+            buttonCuotas.Cursor = Cursors.Hand;
+            buttonCuotas.FlatAppearance.BorderColor = Color.Yellow;
+            buttonCuotas.FlatAppearance.BorderSize = 2;
+            buttonCuotas.FlatStyle = FlatStyle.Flat;
+            buttonCuotas.Font = new Font("Arial Rounded MT Bold", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonCuotas.ForeColor = Color.Yellow;
             buttonCuotas.Image = (Image)resources.GetObject("buttonCuotas.Image");
             buttonCuotas.ImageAlign = ContentAlignment.MiddleLeft;
             buttonCuotas.Location = new Point(3, 202);
@@ -60,11 +72,12 @@
             buttonCuotas.Size = new Size(224, 40);
             buttonCuotas.TabIndex = 1;
             buttonCuotas.Text = "Cuotas";
-            buttonCuotas.UseVisualStyleBackColor = true;
+            buttonCuotas.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.WindowFrame;
+            panel1.BackColor = Color.DimGray;
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(labelSections);
             panel1.Controls.Add(buttonClose);
             panel1.Controls.Add(buttonSocios);
@@ -75,10 +88,27 @@
             panel1.Size = new Size(230, 650);
             panel1.TabIndex = 3;
             // 
+            // labelSections
+            // 
+            labelSections.AutoSize = true;
+            labelSections.Font = new Font("Arial Rounded MT Bold", 14.25F, FontStyle.Underline, GraphicsUnit.Point);
+            labelSections.ForeColor = SystemColors.ButtonHighlight;
+            labelSections.Location = new Point(3, 117);
+            labelSections.Name = "labelSections";
+            labelSections.Size = new Size(104, 22);
+            labelSections.TabIndex = 3;
+            labelSections.Text = "Secciones";
+            // 
             // buttonClose
             // 
             buttonClose.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            buttonClose.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonClose.BackColor = Color.IndianRed;
+            buttonClose.Cursor = Cursors.Hand;
+            buttonClose.FlatAppearance.BorderColor = Color.Red;
+            buttonClose.FlatAppearance.BorderSize = 2;
+            buttonClose.FlatStyle = FlatStyle.Flat;
+            buttonClose.Font = new Font("Arial Rounded MT Bold", 12.75F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonClose.ForeColor = SystemColors.Control;
             buttonClose.Image = (Image)resources.GetObject("buttonClose.Image");
             buttonClose.ImageAlign = ContentAlignment.MiddleLeft;
             buttonClose.Location = new Point(3, 603);
@@ -86,7 +116,7 @@
             buttonClose.Size = new Size(224, 40);
             buttonClose.TabIndex = 2;
             buttonClose.Text = "Salir";
-            buttonClose.UseVisualStyleBackColor = true;
+            buttonClose.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
@@ -96,17 +126,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(855, 100);
             panel2.TabIndex = 4;
-            // 
-            // labelSections
-            // 
-            labelSections.AutoSize = true;
-            labelSections.Font = new Font("Segoe UI", 14F, FontStyle.Underline, GraphicsUnit.Point);
-            labelSections.ForeColor = SystemColors.ButtonHighlight;
-            labelSections.Location = new Point(3, 117);
-            labelSections.Name = "labelSections";
-            labelSections.Size = new Size(95, 25);
-            labelSections.TabIndex = 3;
-            labelSections.Text = "Secciones";
             // 
             // MainView
             // 

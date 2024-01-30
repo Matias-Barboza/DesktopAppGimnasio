@@ -62,7 +62,8 @@ namespace DesktopAppGimnasio._Repositories
                 {
                     connection.Open();
                     command.Connection = connection;
-                    command.CommandText = "DELETE FROM socios WHERE codigo_socio = @codigoSocio";
+                    command.CommandText = @"DELETE FROM socios
+                                            WHERE codigo_socio = @codigoSocio";
                     command.Parameters.Add(new MySqlParameter()
                     {
                         ParameterName = "codigoSocio",

@@ -11,26 +11,150 @@ namespace DesktopAppGimnasio._Repositories
     public class CuotaRepository : BaseRepository, ICuotaRepository
     {
         // Constructor
-        public CuotaRepository(String connectionString) 
+        public CuotaRepository(String connectionString)
         {
             this.connectionString = connectionString;
         }
 
-
         // Methods
         public void Add(CuotaModel cuotaModel)
         {
-            throw new NotImplementedException();
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+
+                using (MySqlCommand command = connection.CreateCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = @"INSERT INTO cuotas (codigo_socio_fk, id_tipo_fk, fecha_pago, fecha_vencimiento, mes_abonado, monto_abonado)
+                                            VALUES (@codigoSocio, @id_tipo_nuevo, @fecha_pago_nuevo, @fecha_vencimiento_nuevo, @mes_abonado_nuevo, @monto_abonado_nuevo)";
+
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "codigoSocio",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = cuotaModel.CodigoSocio
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "id_tipo_nuevo",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = cuotaModel.IdTipoCuota
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "fecha_pago_nuevo",
+                        MySqlDbType = MySqlDbType.Date,
+                        Value = cuotaModel.FechaDePago
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "fecha_vencimiento_nuevo",
+                        MySqlDbType = MySqlDbType.Date,
+                        Value = cuotaModel.FechaDeVencimiento
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "mes_abonado_nuevo",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = cuotaModel.MesQueAbona
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "monto_abonado_nuevo",
+                        MySqlDbType = MySqlDbType.Float,
+                        Value = cuotaModel.MontoAbonado
+                    });
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public void Delete(int codigoCuota)
         {
-            throw new NotImplementedException();
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+
+                using (MySqlCommand command = connection.CreateCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = @"DELETE FROM cuotas
+                                            WHERE codigo_cuota = @codigoCuota";
+
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "codigoCuota",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = codigoCuota
+                    });
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public void Edit(CuotaModel cuotaModel)
         {
-            throw new NotImplementedException();
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+
+                using (MySqlCommand command = connection.CreateCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = @"UPDATE cuotas SET codigo_socio_fk = @codigoSocio, id_tipo_fk = @id_tipo_nuevo, fecha_pago = @fecha_pago_nuevo,
+                                                    fecha_vencimiento = @fecha_vencimiento_nuevo,
+                                                    mes_abonado = @mes_abonado_nuevo, monto_abonado = @monto_abonado_nuevo
+                                            WHERE codigo_cuota = @codigoCuota";
+
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "codigoSocio",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = cuotaModel.CodigoSocio
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "codigoCuota",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = cuotaModel.CodigoCuota
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "id_tipo_nuevo",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = cuotaModel.IdTipoCuota
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "fecha_pago_nuevo",
+                        MySqlDbType = MySqlDbType.Date,
+                        Value = cuotaModel.FechaDePago
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "fecha_vencimiento_nuevo",
+                        MySqlDbType = MySqlDbType.Date,
+                        Value = cuotaModel.FechaDeVencimiento
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "mes_abonado_nuevo",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = cuotaModel.MesQueAbona
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "monto_abonado_nuevo",
+                        MySqlDbType = MySqlDbType.Float,
+                        Value = cuotaModel.MontoAbonado
+                    });
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public IEnumerable<CuotaModel> GetAll()
