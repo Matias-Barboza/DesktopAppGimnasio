@@ -62,7 +62,8 @@ namespace DesktopAppGimnasio.Views
 
                 MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
-            buttonCancel.Click += delegate { 
+            buttonCancel.Click += delegate
+            {
                 CancelEvent?.Invoke(this, EventArgs.Empty);
                 labelOperation.Text = "Operación actual:";
             };
@@ -84,7 +85,7 @@ namespace DesktopAppGimnasio.Views
         public int CodigoSocio { get => (textBoxCodigoSocio.Text == "") ? 0 : Convert.ToInt32(textBoxCodigoSocio.Text); set => textBoxCodigoSocio.Text = (value == 0) ? String.Empty : value.ToString(); }
         public DateTime FechaDePago { get => monthCalendarFechaPago.SelectionStart; set => monthCalendarFechaPago.SetDate(value); }
         public DateTime FechaDeVencimiento { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string MesQueAbona { get => (String) comboBoxMes.SelectedItem; set => comboBoxMes.SelectedIndex = (value == "") ? -1 : ConvertMonthToInt(value); }
+        public string MesQueAbona { get => (String)comboBoxMes.SelectedItem; set => comboBoxMes.SelectedIndex = (value == "") ? -1 : ConvertMonthToInt(value); }
         public float MontoAbonado { get => (textBoxMonto.Text == "") ? 0 : float.Parse(textBoxMonto.Text); set => textBoxMonto.Text = (value == 0) ? String.Empty : value.ToString(); }
         public int IdTipoCuota { get => comboBoxTipoCuota.SelectedIndex; set => comboBoxTipoCuota.SelectedIndex = value; }
         public string SearchValue { get => textBoxSearchCuota.Text; set => textBoxSearchCuota.Text = value; }
@@ -105,7 +106,7 @@ namespace DesktopAppGimnasio.Views
             dataGridViewCuotas.DataSource = cuotasList;
         }
 
-        public void HideColumn(int index) 
+        public void HideColumn(int index)
         {
             dataGridViewCuotas.Columns[index].Visible = false;
         }
@@ -133,7 +134,7 @@ namespace DesktopAppGimnasio.Views
             return instance;
         }
 
-        public int ConvertMonthToInt(string Month) 
+        public int ConvertMonthToInt(string Month)
         {
             List<String> months = new List<String>()
             {
@@ -144,6 +145,5 @@ namespace DesktopAppGimnasio.Views
 
             return months.IndexOf(Month);
         }
-
     }
 }
