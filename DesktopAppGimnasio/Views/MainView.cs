@@ -20,10 +20,13 @@ namespace DesktopAppGimnasio.Views
 
         public event EventHandler ShowSociosView;
         public event EventHandler ShowCuotasView;
+        public event EventHandler ShowTiposCuotasView;
 
         public void AssociateAndRaiseEvents() 
         {
-            buttonSocios.Click += delegate { ShowSociosView?.Invoke(this, EventArgs.Empty); };
+            buttonSocios.Click += delegate { 
+                ShowSociosView?.Invoke(this, EventArgs.Empty);
+            };
             buttonSocios.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.D1)
@@ -31,7 +34,9 @@ namespace DesktopAppGimnasio.Views
                     ShowSociosView?.Invoke(this, EventArgs.Empty);
                 }
             };
-            buttonCuotas.Click += delegate { ShowCuotasView?.Invoke(this, EventArgs.Empty); };
+            buttonCuotas.Click += delegate {
+                ShowCuotasView?.Invoke(this, EventArgs.Empty);
+            };
             buttonCuotas.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.D2)
@@ -39,6 +44,17 @@ namespace DesktopAppGimnasio.Views
                     ShowCuotasView?.Invoke(this, EventArgs.Empty);
                 }
             };
+            buttonTiposCuotas.Click += delegate {
+                ShowTiposCuotasView?.Invoke(this, EventArgs.Empty);
+            };
+            buttonTiposCuotas.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.D3)
+                {
+                    ShowTiposCuotasView?.Invoke(this, EventArgs.Empty);
+                }
+            };
+
 
             buttonClose.Click += delegate { this.Close(); };
         }

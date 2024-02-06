@@ -21,6 +21,14 @@ namespace DesktopAppGimnasio.Presenters
             this.mySqlConnectionString = mySqlConnectionString;
             this.mainView.ShowSociosView += ShowSociosView;
             this.mainView.ShowCuotasView += ShowCuotasView;
+            this.mainView.ShowTiposCuotasView += ShowTiposCuotasView;
+        }
+
+        private void ShowTiposCuotasView(object? sender, EventArgs e)
+        {
+            ITipoCuotaView tipoCuotaView = TipoCuotaView.GetInstance((Form) mainView);
+            ITipoCuotaRepository tipoCuotaRepository = new TipoCuotaRepository(mySqlConnectionString);
+            TipoCuotaPresenter tipoCuotaPresenter = new TipoCuotaPresenter(tipoCuotaView, tipoCuotaRepository);
         }
 
         private void ShowSociosView(object? sender, EventArgs e)

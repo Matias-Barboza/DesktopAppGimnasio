@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CuotaView));
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             tabControl = new TabControl();
             tabPageDebtorsVisualizer = new TabPage();
             buttonSearchDebt = new Button();
@@ -45,6 +45,8 @@
             textBoxSearchCuota = new TextBox();
             dataGridViewCuotas = new DataGridView();
             tabPageAddOrEditOrDeleteCuota = new TabPage();
+            comboBoxCantidad = new ComboBox();
+            labelCantidad = new Label();
             labelPesos = new Label();
             labelCodigoCuota = new Label();
             textBoxCodigoCuota = new TextBox();
@@ -73,6 +75,7 @@
             // 
             // tabControl
             // 
+            tabControl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControl.Controls.Add(tabPageDebtorsVisualizer);
             tabControl.Controls.Add(tabPageCuotasVisualizer);
             tabControl.Controls.Add(tabPageAddOrEditOrDeleteCuota);
@@ -135,21 +138,22 @@
             dataGridViewCuotasVencidas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCuotasVencidas.BackgroundColor = Color.FromArgb(99, 111, 113);
             dataGridViewCuotasVencidas.BorderStyle = BorderStyle.None;
-            dataGridViewCuotasVencidas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCuotasVencidas.ColumnHeadersHeight = 20;
+            dataGridViewCuotasVencidas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCuotasVencidas.GridColor = Color.FromArgb(108, 103, 134);
             dataGridViewCuotasVencidas.Location = new Point(6, 62);
             dataGridViewCuotasVencidas.MultiSelect = false;
             dataGridViewCuotasVencidas.Name = "dataGridViewCuotasVencidas";
             dataGridViewCuotasVencidas.ReadOnly = true;
             dataGridViewCuotasVencidas.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.Yellow;
-            dataGridViewCellStyle5.Font = new Font("Arial Rounded MT Bold", 13F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(108, 103, 134);
-            dataGridViewCellStyle5.SelectionForeColor = Color.Yellow;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dataGridViewCuotasVencidas.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.Yellow;
+            dataGridViewCellStyle1.Font = new Font("Arial Rounded MT Bold", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(108, 103, 134);
+            dataGridViewCellStyle1.SelectionForeColor = Color.Yellow;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridViewCuotasVencidas.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCuotasVencidas.RowTemplate.Height = 30;
             dataGridViewCuotasVencidas.Size = new Size(835, 400);
             dataGridViewCuotasVencidas.TabIndex = 1;
@@ -242,20 +246,20 @@
             dataGridViewCuotas.AllowUserToResizeColumns = false;
             dataGridViewCuotas.AllowUserToResizeRows = false;
             dataGridViewCuotas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridViewCuotas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCuotas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
             dataGridViewCuotas.BackgroundColor = Color.FromArgb(113, 127, 129);
             dataGridViewCuotas.BorderStyle = BorderStyle.None;
             dataGridViewCuotas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = Color.Gold;
-            dataGridViewCellStyle6.Font = new Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.Padding = new Padding(5, 0, 0, 0);
-            dataGridViewCellStyle6.SelectionBackColor = Color.Gold;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dataGridViewCuotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            dataGridViewCuotas.ColumnHeadersHeight = 50;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.Gold;
+            dataGridViewCellStyle2.Font = new Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.Padding = new Padding(5, 0, 0, 0);
+            dataGridViewCellStyle2.SelectionBackColor = Color.Gold;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewCuotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCuotas.ColumnHeadersHeight = 30;
             dataGridViewCuotas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCuotas.EnableHeadersVisualStyles = false;
             dataGridViewCuotas.GridColor = Color.Goldenrod;
@@ -264,25 +268,25 @@
             dataGridViewCuotas.Name = "dataGridViewCuotas";
             dataGridViewCuotas.ReadOnly = true;
             dataGridViewCuotas.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.FromArgb(99, 111, 113);
-            dataGridViewCellStyle7.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = Color.Yellow;
-            dataGridViewCellStyle7.SelectionBackColor = Color.Yellow;
-            dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(99, 111, 113);
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dataGridViewCuotas.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(99, 111, 113);
+            dataGridViewCellStyle3.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.Yellow;
+            dataGridViewCellStyle3.SelectionBackColor = Color.Yellow;
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(99, 111, 113);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewCuotas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCuotas.RowHeadersVisible = false;
             dataGridViewCuotas.RowHeadersWidth = 20;
             dataGridViewCuotas.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(113, 127, 129);
-            dataGridViewCellStyle8.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = Color.Yellow;
-            dataGridViewCellStyle8.NullValue = null;
-            dataGridViewCellStyle8.SelectionBackColor = Color.Yellow;
-            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(113, 127, 129);
-            dataGridViewCuotas.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(113, 127, 129);
+            dataGridViewCellStyle4.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.Yellow;
+            dataGridViewCellStyle4.NullValue = null;
+            dataGridViewCellStyle4.SelectionBackColor = Color.Yellow;
+            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(113, 127, 129);
+            dataGridViewCuotas.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewCuotas.RowTemplate.Height = 30;
             dataGridViewCuotas.RowTemplate.Resizable = DataGridViewTriState.False;
             dataGridViewCuotas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -292,6 +296,8 @@
             // tabPageAddOrEditOrDeleteCuota
             // 
             tabPageAddOrEditOrDeleteCuota.BackColor = Color.FromArgb(136, 150, 151);
+            tabPageAddOrEditOrDeleteCuota.Controls.Add(comboBoxCantidad);
+            tabPageAddOrEditOrDeleteCuota.Controls.Add(labelCantidad);
             tabPageAddOrEditOrDeleteCuota.Controls.Add(labelPesos);
             tabPageAddOrEditOrDeleteCuota.Controls.Add(labelCodigoCuota);
             tabPageAddOrEditOrDeleteCuota.Controls.Add(textBoxCodigoCuota);
@@ -316,13 +322,39 @@
             tabPageAddOrEditOrDeleteCuota.TabIndex = 1;
             tabPageAddOrEditOrDeleteCuota.Text = "Registrar/Editar/Eliminar cuota";
             // 
+            // comboBoxCantidad
+            // 
+            comboBoxCantidad.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            comboBoxCantidad.BackColor = Color.DimGray;
+            comboBoxCantidad.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxCantidad.FlatStyle = FlatStyle.Flat;
+            comboBoxCantidad.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            comboBoxCantidad.ForeColor = Color.White;
+            comboBoxCantidad.FormattingEnabled = true;
+            comboBoxCantidad.Location = new Point(581, 179);
+            comboBoxCantidad.Name = "comboBoxCantidad";
+            comboBoxCantidad.Size = new Size(238, 27);
+            comboBoxCantidad.TabIndex = 34;
+            // 
+            // labelCantidad
+            // 
+            labelCantidad.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            labelCantidad.AutoSize = true;
+            labelCantidad.Font = new Font("Century Gothic", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            labelCantidad.ForeColor = Color.White;
+            labelCantidad.Location = new Point(581, 152);
+            labelCantidad.Name = "labelCantidad";
+            labelCantidad.Size = new Size(139, 23);
+            labelCantidad.TabIndex = 35;
+            labelCantidad.Text = "Cantidad de :";
+            // 
             // labelPesos
             // 
-            labelPesos.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            labelPesos.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             labelPesos.AutoSize = true;
             labelPesos.Font = new Font("Century Gothic", 14F, FontStyle.Bold, GraphicsUnit.Point);
             labelPesos.ForeColor = Color.White;
-            labelPesos.Location = new Point(242, 242);
+            labelPesos.Location = new Point(801, 245);
             labelPesos.Name = "labelPesos";
             labelPesos.Size = new Size(21, 23);
             labelPesos.TabIndex = 33;
@@ -330,7 +362,6 @@
             // 
             // labelCodigoCuota
             // 
-            labelCodigoCuota.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelCodigoCuota.AutoSize = true;
             labelCodigoCuota.Font = new Font("Century Gothic", 14F, FontStyle.Bold, GraphicsUnit.Point);
             labelCodigoCuota.ForeColor = Color.White;
@@ -342,7 +373,6 @@
             // 
             // textBoxCodigoCuota
             // 
-            textBoxCodigoCuota.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBoxCodigoCuota.BackColor = Color.DimGray;
             textBoxCodigoCuota.BorderStyle = BorderStyle.FixedSingle;
             textBoxCodigoCuota.Enabled = false;
@@ -355,11 +385,11 @@
             // 
             // labelTipoCuota
             // 
-            labelTipoCuota.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            labelTipoCuota.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             labelTipoCuota.AutoSize = true;
             labelTipoCuota.Font = new Font("Century Gothic", 14F, FontStyle.Bold, GraphicsUnit.Point);
             labelTipoCuota.ForeColor = Color.White;
-            labelTipoCuota.Location = new Point(581, 152);
+            labelTipoCuota.Location = new Point(581, 84);
             labelTipoCuota.Name = "labelTipoCuota";
             labelTipoCuota.Size = new Size(142, 23);
             labelTipoCuota.TabIndex = 30;
@@ -368,36 +398,38 @@
             // comboBoxMes
             // 
             comboBoxMes.BackColor = Color.DimGray;
+            comboBoxMes.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxMes.FlatStyle = FlatStyle.Flat;
             comboBoxMes.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             comboBoxMes.ForeColor = Color.White;
             comboBoxMes.FormattingEnabled = true;
             comboBoxMes.Items.AddRange(new object[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" });
-            comboBoxMes.Location = new Point(581, 111);
+            comboBoxMes.Location = new Point(22, 247);
             comboBoxMes.Name = "comboBoxMes";
             comboBoxMes.Size = new Size(238, 27);
             comboBoxMes.TabIndex = 2;
             // 
             // comboBoxTipoCuota
             // 
+            comboBoxTipoCuota.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             comboBoxTipoCuota.BackColor = Color.DimGray;
+            comboBoxTipoCuota.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTipoCuota.FlatStyle = FlatStyle.Flat;
             comboBoxTipoCuota.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             comboBoxTipoCuota.ForeColor = Color.White;
             comboBoxTipoCuota.FormattingEnabled = true;
             comboBoxTipoCuota.Items.AddRange(new object[] { "Mensual", "Semanal", "Diaria" });
-            comboBoxTipoCuota.Location = new Point(581, 179);
+            comboBoxTipoCuota.Location = new Point(581, 111);
             comboBoxTipoCuota.Name = "comboBoxTipoCuota";
             comboBoxTipoCuota.Size = new Size(238, 27);
             comboBoxTipoCuota.TabIndex = 4;
             // 
             // labelMes
             // 
-            labelMes.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelMes.AutoSize = true;
             labelMes.Font = new Font("Century Gothic", 14F, FontStyle.Bold, GraphicsUnit.Point);
             labelMes.ForeColor = Color.White;
-            labelMes.Location = new Point(581, 84);
+            labelMes.Location = new Point(22, 220);
             labelMes.Name = "labelMes";
             labelMes.Size = new Size(160, 23);
             labelMes.TabIndex = 26;
@@ -417,6 +449,7 @@
             // 
             // monthCalendarFechaPago
             // 
+            monthCalendarFechaPago.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             monthCalendarFechaPago.BackColor = Color.FromArgb(168, 178, 179);
             monthCalendarFechaPago.ForeColor = Color.Black;
             monthCalendarFechaPago.Location = new Point(296, 111);
@@ -426,7 +459,6 @@
             // 
             // labelCodigoSocio
             // 
-            labelCodigoSocio.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             labelCodigoSocio.AutoSize = true;
             labelCodigoSocio.Font = new Font("Century Gothic", 14F, FontStyle.Bold, GraphicsUnit.Point);
             labelCodigoSocio.ForeColor = Color.White;
@@ -438,7 +470,6 @@
             // 
             // textBoxCodigoSocio
             // 
-            textBoxCodigoSocio.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBoxCodigoSocio.BackColor = Color.DimGray;
             textBoxCodigoSocio.BorderStyle = BorderStyle.FixedSingle;
             textBoxCodigoSocio.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
@@ -450,7 +481,7 @@
             // 
             // buttonCancel
             // 
-            buttonCancel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            buttonCancel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             buttonCancel.BackColor = Color.FromArgb(128, 128, 255);
             buttonCancel.FlatAppearance.BorderColor = Color.DarkSlateBlue;
             buttonCancel.FlatAppearance.BorderSize = 2;
@@ -468,7 +499,7 @@
             // 
             // buttonSave
             // 
-            buttonSave.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            buttonSave.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             buttonSave.BackColor = Color.FromArgb(128, 128, 255);
             buttonSave.FlatAppearance.BorderColor = Color.DarkSlateBlue;
             buttonSave.FlatAppearance.BorderSize = 2;
@@ -486,7 +517,7 @@
             // 
             // buttonAdd
             // 
-            buttonAdd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonAdd.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             buttonAdd.BackColor = Color.FromArgb(128, 128, 255);
             buttonAdd.FlatAppearance.BorderColor = Color.DarkSlateBlue;
             buttonAdd.FlatAppearance.BorderSize = 2;
@@ -520,11 +551,11 @@
             // 
             // labelMonto
             // 
-            labelMonto.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            labelMonto.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             labelMonto.AutoSize = true;
             labelMonto.Font = new Font("Century Gothic", 14F, FontStyle.Bold, GraphicsUnit.Point);
             labelMonto.ForeColor = Color.White;
-            labelMonto.Location = new Point(22, 217);
+            labelMonto.Location = new Point(581, 220);
             labelMonto.Name = "labelMonto";
             labelMonto.Size = new Size(164, 23);
             labelMonto.TabIndex = 12;
@@ -532,13 +563,13 @@
             // 
             // textBoxMonto
             // 
-            textBoxMonto.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBoxMonto.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             textBoxMonto.BackColor = Color.DimGray;
             textBoxMonto.BorderStyle = BorderStyle.FixedSingle;
             textBoxMonto.Enabled = false;
             textBoxMonto.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             textBoxMonto.ForeColor = Color.White;
-            textBoxMonto.Location = new Point(22, 241);
+            textBoxMonto.Location = new Point(581, 244);
             textBoxMonto.Name = "textBoxMonto";
             textBoxMonto.Size = new Size(212, 27);
             textBoxMonto.TabIndex = 1;
@@ -614,5 +645,7 @@
         private Button buttonSearchDebt;
         private TextBox textBoxSearchDebt;
         private Label labelPesos;
+        private ComboBox comboBoxCantidad;
+        private Label labelCantidad;
     }
 }

@@ -9,15 +9,15 @@ namespace DesktopAppGimnasio.Views
     public interface ICuotaView
     {
         // Properties - Fields
-        public int CodigoCuota { get; set; }
-        public int CodigoSocio { get; set; }
-        public DateTime FechaDePago { get; set; }
-        public DateTime FechaDeVencimiento { get; set; }
-        public String MesQueAbona { get; set; }
-        public float MontoAbonado { get; set; }
-        public int IdTipoCuota { get; set; }
+        int CodigoCuota { get; set; }
+        int CodigoSocio { get; set; }
+        DateTime FechaDePago { get; set; }
+        DateTime FechaDeVencimiento { get; set; }
+        String MesQueAbona { get; set; }
+        float MontoAbonado { get; set; }
+        int IdTipoCuota { get; set; }
 
-
+        int Cantidad { get; set; }
         string SearchValue { get; set; }
         bool IsEdit { get; set; }
         bool IsSuccessful { get; set; }

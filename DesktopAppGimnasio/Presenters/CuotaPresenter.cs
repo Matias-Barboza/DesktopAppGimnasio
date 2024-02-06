@@ -114,26 +114,26 @@ namespace DesktopAppGimnasio.Presenters
             cuota.MesQueAbona = view.MesQueAbona;
             cuota.IdTipoCuota = (view.IdTipoCuota != -1) ? view.IdTipoCuota + 1 : -1;
 
-            if (cuota.IdTipoCuota == 1)
-            {
-                cuota.FechaDeVencimiento = cuota.FechaDePago.AddMonths(1);
-            }
-            else if (cuota.IdTipoCuota == 2)
-            {
-                cuota.FechaDeVencimiento = cuota.FechaDePago.AddDays(7);
-            }
-            else 
-            {
-                cuota.FechaDeVencimiento = cuota.FechaDePago.AddDays(1);
-            }
-
             try
             {
                 ModelDataValidation validator = new ModelDataValidation();
 
                 validator.Validate(cuota);
 
-                if(view.IsEdit) 
+                if (cuota.IdTipoCuota == 1)
+                {
+                    cuota.FechaDeVencimiento = cuota.FechaDePago.AddMonths(1);
+                }
+                else if (cuota.IdTipoCuota == 2)
+                {
+                    cuota.FechaDeVencimiento = cuota.FechaDePago.AddDays((view.Cantidad * 7));
+                }
+                else
+                {
+                    cuota.FechaDeVencimiento = cuota.FechaDePago.AddDays(view.Cantidad);
+                }
+
+                if (view.IsEdit) 
                 {
                     repository.Edit(cuota);
                     view.Caption = "Estado de edición de cuota";

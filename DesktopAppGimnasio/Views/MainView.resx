@@ -135,6 +135,14 @@
         aS6DxRmyAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="buttonTiposCuotas.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAItJREFUSEvt
+        jlEKgCAQRL1N979XdzCUGRAdc9nVvnowEPl8lX7C5PvKeNxHic4GJYYKc1BibI0pPvuAGhSJxam0wX5Q
+        BqzelNXFNr5yJZZLbfzV7cV2UCrWdwOU1KDY/3aFutzHORzHUGEOih8V5aD4UVEOih8V5aD4UVEOSgwV
+        LsNxnKPxwtF4nJQegWGRw/p2LPUAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="pictureBoxLogo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAA+wAAAD4CAYAAAB2dmyYAAAABGdBTUEAALGPC/xhBQAA/8dJREFUeF7s

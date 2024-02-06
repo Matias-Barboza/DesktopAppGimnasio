@@ -23,9 +23,6 @@ namespace DesktopAppGimnasio
             Application.SetCompatibleTextRenderingDefault(false);
 
             String mySqlConnectionString = ConfigurationManager.ConnectionStrings["DesktopAppGimnasio.Properties.Settings.MySQLConnection"].ConnectionString;
-            //ISocioView socioView = new SocioView();
-            //ISocioRepository socioRepository = new SocioRepository(mySQLConnection);
-            //SocioPresenter socioPresenter = new SocioPresenter(socioView, socioRepository);
 
             IMainView mainView = new MainView();
             new MainPresenter(mainView, mySqlConnectionString);

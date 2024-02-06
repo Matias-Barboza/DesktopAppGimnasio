@@ -67,6 +67,28 @@ namespace DesktopAppGimnasio.Views
                 CancelEvent?.Invoke(this, EventArgs.Empty);
                 labelOperation.Text = "Operación actual:";
             };
+            comboBoxTipoCuota.SelectedIndexChanged += delegate
+            {
+                comboBoxCantidad.Items.Clear();
+                comboBoxCantidad.Text = "";
+
+                if (comboBoxTipoCuota.SelectedIndex == 0)
+                {
+                    labelCantidad.Text = "Cantidad de meses";
+                    comboBoxCantidad.Items.Add(1);
+                    comboBoxCantidad.SelectedIndex = 0;
+                }
+                else if (comboBoxTipoCuota.SelectedIndex == 1)
+                {
+                    labelCantidad.Text = "Cantidad de semanas:";
+                    comboBoxCantidad.Items.AddRange(new object[3] { 1, 2, 3 });
+                }
+                else if (comboBoxTipoCuota.SelectedIndex == 2) 
+                {
+                    labelCantidad.Text = "Cantidad de días:";
+                    comboBoxCantidad.Items.AddRange(new object[6] { 1, 2, 3, 4, 5, 6 });
+                }
+            };
 
 
             // Other Events
@@ -81,13 +103,13 @@ namespace DesktopAppGimnasio.Views
         }
 
         public int CodigoCuota { get => (textBoxCodigoCuota.Text == "") ? 0 : Convert.ToInt32(textBoxCodigoCuota.Text); set => textBoxCodigoCuota.Text = (value == 0) ? String.Empty : value.ToString(); }
-        // To Do: - Validar codigo socio, Mes que abona, Monto abonado, Id Tipo Cuota
         public int CodigoSocio { get => (textBoxCodigoSocio.Text == "") ? 0 : Convert.ToInt32(textBoxCodigoSocio.Text); set => textBoxCodigoSocio.Text = (value == 0) ? String.Empty : value.ToString(); }
         public DateTime FechaDePago { get => monthCalendarFechaPago.SelectionStart; set => monthCalendarFechaPago.SetDate(value); }
         public DateTime FechaDeVencimiento { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string MesQueAbona { get => (String)comboBoxMes.SelectedItem; set => comboBoxMes.SelectedIndex = (value == "") ? -1 : ConvertMonthToInt(value); }
-        public float MontoAbonado { get => (textBoxMonto.Text == "") ? 0 : float.Parse(textBoxMonto.Text); set => textBoxMonto.Text = (value == 0) ? String.Empty : value.ToString(); }
+        public string MesQueAbona { get => (String) comboBoxMes.SelectedItem; set => comboBoxMes.SelectedIndex = (value == "") ? -1 : ConvertMonthToInt(value); }
+        public float MontoAbonado { get => (textBoxMonto.Text == "") ? 0 : float.Parse(textBoxMonto.Text); set => textBoxMonto.Text = (value == 0) ? String.Empty : value.ToString("0.00"); }
         public int IdTipoCuota { get => comboBoxTipoCuota.SelectedIndex; set => comboBoxTipoCuota.SelectedIndex = value; }
+        public int Cantidad { get => (comboBoxCantidad.SelectedItem == "") ? -1 : Convert.ToInt32(comboBoxCantidad.SelectedItem); set => comboBoxCantidad.SelectedIndex = value; }
         public string SearchValue { get => textBoxSearchCuota.Text; set => textBoxSearchCuota.Text = value; }
         public bool IsEdit { get => isEdit; set => isEdit = value; }
         public bool IsSuccessful { get => isSuccessful; set => isSuccessful = value; }

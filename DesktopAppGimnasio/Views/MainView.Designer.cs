@@ -32,6 +32,7 @@
             buttonSocios = new Button();
             buttonCuotas = new Button();
             panel1 = new Panel();
+            buttonTiposCuotas = new Button();
             pictureBoxLogo = new PictureBox();
             labelSections = new Label();
             buttonClose = new Button();
@@ -86,6 +87,7 @@
             // 
             panel1.BackColor = Color.FromArgb(78, 87, 89);
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(buttonTiposCuotas);
             panel1.Controls.Add(pictureBoxLogo);
             panel1.Controls.Add(labelSections);
             panel1.Controls.Add(buttonClose);
@@ -96,6 +98,27 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(300, 700);
             panel1.TabIndex = 3;
+            // 
+            // buttonTiposCuotas
+            // 
+            buttonTiposCuotas.BackColor = Color.Transparent;
+            buttonTiposCuotas.Cursor = Cursors.Hand;
+            buttonTiposCuotas.FlatAppearance.BorderColor = Color.Yellow;
+            buttonTiposCuotas.FlatAppearance.BorderSize = 2;
+            buttonTiposCuotas.FlatAppearance.CheckedBackColor = Color.Transparent;
+            buttonTiposCuotas.FlatAppearance.MouseDownBackColor = Color.FromArgb(105, 119, 121);
+            buttonTiposCuotas.FlatAppearance.MouseOverBackColor = Color.FromArgb(91, 103, 105);
+            buttonTiposCuotas.FlatStyle = FlatStyle.Flat;
+            buttonTiposCuotas.Font = new Font("Arial Rounded MT Bold", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonTiposCuotas.ForeColor = Color.Yellow;
+            buttonTiposCuotas.Image = (Image)resources.GetObject("buttonTiposCuotas.Image");
+            buttonTiposCuotas.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonTiposCuotas.Location = new Point(5, 282);
+            buttonTiposCuotas.Name = "buttonTiposCuotas";
+            buttonTiposCuotas.Size = new Size(292, 40);
+            buttonTiposCuotas.TabIndex = 3;
+            buttonTiposCuotas.Text = "     Modificar valor de cuota";
+            buttonTiposCuotas.UseVisualStyleBackColor = false;
             // 
             // pictureBoxLogo
             // 
@@ -179,5 +202,6 @@
         private Button buttonClose;
         private Label labelSections;
         private PictureBox pictureBoxLogo;
+        private Button buttonTiposCuotas;
     }
 }

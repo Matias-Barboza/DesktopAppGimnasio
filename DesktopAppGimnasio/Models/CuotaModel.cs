@@ -25,10 +25,12 @@ namespace DesktopAppGimnasio.Models
 
 
         [DisplayName("Código de cuota")]
+        [Required(ErrorMessage = "El CÓDIGO DE CUOTA es obligatorio para registrar la cuota.")]
         public int CodigoCuota { get => codigoCuota; set => codigoCuota = value; }
 
         [DisplayName("Número de socio")]
         [Required(ErrorMessage = "El NÚMERO DE SOCIO es obligatorio para registrar la cuota.")]
+        [Range(1000, 100000, ErrorMessage = "El NÚMERO DE SOCIO es obligatorio para registrar la cuota y solamente puede contener números.")]
         public int CodigoSocio { get => codigoSocio; set => codigoSocio = value; }
 
         [DisplayName("Nombre")]
@@ -41,10 +43,11 @@ namespace DesktopAppGimnasio.Models
         public string DescripcionCuota { get => descripcionCuota; set => descripcionCuota = value; }
 
         [DisplayName("Fecha de pago")]
-        [Required(ErrorMessage = "La fecha de pago es obligatoria")]
+        [Required(ErrorMessage = "El campo FECHA DE PAGO es obligatorio.")]
         public DateTime FechaDePago { get => fechaDePago; set => fechaDePago = value; }
 
         [DisplayName("Fecha de vencimiento del pago")]
+        [Required(ErrorMessage = "El campo FECHA DE VENCIMIENTO DEL PAGO es obligatorio.")]
         public DateTime FechaDeVencimiento { get => fechaDeVencimiento; set => fechaDeVencimiento = value; }
 
         [DisplayName("Mes que abona")]
@@ -54,13 +57,11 @@ namespace DesktopAppGimnasio.Models
         public String MesQueAbona { get => mesQueAbona; set => mesQueAbona = value; }
 
         [DisplayName("Monto abonado ($)")]
-        [Required(ErrorMessage = "El  campo MONTO ABONADO es obligatorio.")]
-        [RegularExpression(@"^\d{1,8}(\.\d{1,2})?$",
-            ErrorMessage = "El campo MONTO unicamente debe contener números.")]
         public float MontoAbonado { get => montoAbonado; set => montoAbonado = value; }
 
         [DisplayName("ID tipo de cuota")]
         [Required(ErrorMessage = "El tipo de cuota a registrar es obligatorio.")]
+        [Range(1, 3, ErrorMessage = "El TIPO DE CUOTA elegido no es valido.")]
         public int IdTipoCuota { get => idTipoCuota; set => idTipoCuota = value; }
     }
 }
