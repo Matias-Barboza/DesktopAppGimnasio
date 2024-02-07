@@ -1,4 +1,5 @@
-﻿using DesktopAppGimnasio.Models;
+﻿using DesktopAppGimnasio._Repositories;
+using DesktopAppGimnasio.Models;
 using DesktopAppGimnasio.Presenters.CommonTasks;
 using DesktopAppGimnasio.Views;
 using System;
@@ -15,6 +16,7 @@ namespace DesktopAppGimnasio.Presenters
         private ICuotaRepository repository;
         private BindingSource cuotasBindingSource;
         private IEnumerable<CuotaModel> cuotasList;
+        //private IEnumerable<float> amountsList;
 
         public CuotaPresenter(ICuotaView view, ICuotaRepository repository) 
         {
@@ -31,15 +33,18 @@ namespace DesktopAppGimnasio.Presenters
             this.view.DeleteEvent += DeleteSelectedCuota;
             this.view.SaveEvent += SaveCuota;
             this.view.CancelEvent += CancelAction;
+            this.view.GetAmountsEvent += GetAmounts;
 
             this.view.SetCuotasBindingSource(cuotasBindingSource);
 
             LoadAllCuotasList();
+            //amountsList = GetAllQuotesAmount();
 
             this.view.HideColumn(4);
             this.view.HideColumn(9);
             this.view.Show();
         }
+
 
         private void LoadAllCuotasList()
         {
@@ -66,6 +71,13 @@ namespace DesktopAppGimnasio.Presenters
         private void AddNewCuota(object? sender, EventArgs e)
         {
             view.IsEdit = false;
+        }
+
+        private IEnumerable<float> GetAllQuotesAmount()
+        {
+            ITipoCuotaRepository tiposRepository = new TipoCuotaRepository(repository.GetConnectionString());
+
+            return tiposRepository.GetAllAmounts();
         }
 
         private void LoadSelectedCuotaToEdit(object? sender, EventArgs e)
@@ -161,6 +173,11 @@ namespace DesktopAppGimnasio.Presenters
         private void CancelAction(object? sender, EventArgs e)
         {
             CleanFieldsView();
+        }
+
+        private void GetAmounts(object? sender, EventArgs e)
+        {
+            view.Amounts = GetAllQuotesAmount();
         }
     
         private void CleanFieldsView()

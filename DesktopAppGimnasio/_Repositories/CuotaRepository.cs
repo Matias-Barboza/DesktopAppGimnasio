@@ -17,6 +17,11 @@ namespace DesktopAppGimnasio._Repositories
         }
 
         // Methods
+        public string GetConnectionString()
+        {
+            return connectionString;
+        }
+
         public void Add(CuotaModel cuotaModel)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))

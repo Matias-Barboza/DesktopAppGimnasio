@@ -13,6 +13,7 @@ namespace DesktopAppGimnasio.Views
     public partial class CuotaView : Form, ICuotaView
     {
         // Fields
+        private IEnumerable<float> amounts;
         private bool isEdit;
         private bool isSuccessful;
         private string message;
@@ -27,19 +28,20 @@ namespace DesktopAppGimnasio.Views
         private void AssociateAndRaiseEvents()
         {
             // Principal Events
-            buttonSearchCuota.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
-            buttonAdd.Click += delegate
+            buttonSearchCuota.MouseClick += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
+            buttonAdd.MouseClick += delegate
             {
                 AddNewEvent?.Invoke(this, EventArgs.Empty);
                 labelOperation.Text = "Operación actual: Añadir cuota";
             };
-            buttonEdit.Click += delegate
+            buttonEdit.MouseClick += delegate
             {
                 EditEvent?.Invoke(this, EventArgs.Empty);
                 labelOperation.Text = "Operación actual: Editar cuota";
                 tabControl.SelectedTab = tabPageAddOrEditOrDeleteCuota;
+                buttonAdd.Enabled = false;
             };
-            buttonDelete.Click += delegate
+            buttonDelete.MouseClick += delegate
             {
                 DialogResult result = MessageBox.Show("¿Está seguro de eliminar la cuota?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
@@ -49,7 +51,7 @@ namespace DesktopAppGimnasio.Views
                     MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             };
-            buttonSave.Click += delegate
+            buttonSave.MouseClick += delegate
             {
                 SaveEvent?.Invoke(this, EventArgs.Empty);
 
@@ -57,20 +59,32 @@ namespace DesktopAppGimnasio.Views
                 {
                     labelOperation.Text = "Operación actual: Realizada con éxito";
                     tabControl.SelectedTab = tabPageCuotasVisualizer;
-                    labelOperation.Text = "Operación actual:";
+                }
+                labelOperation.Text = "Operación actual:";
+
+                if (!buttonAdd.Enabled) 
+                {
+                    buttonAdd.Enabled = true;
                 }
 
                 MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
-            buttonCancel.Click += delegate
+            buttonCancel.MouseClick += delegate
             {
                 CancelEvent?.Invoke(this, EventArgs.Empty);
                 labelOperation.Text = "Operación actual:";
+
+                if (!buttonAdd.Enabled) 
+                {
+                    buttonAdd.Enabled = true;
+                }
             };
             comboBoxTipoCuota.SelectedIndexChanged += delegate
             {
                 comboBoxCantidad.Items.Clear();
                 comboBoxCantidad.Text = "";
+                comboBoxCantidad.SelectedIndex = -1;
+                textBoxMonto.Text = "";
 
                 if (comboBoxTipoCuota.SelectedIndex == 0)
                 {
@@ -83,11 +97,34 @@ namespace DesktopAppGimnasio.Views
                     labelCantidad.Text = "Cantidad de semanas:";
                     comboBoxCantidad.Items.AddRange(new object[3] { 1, 2, 3 });
                 }
-                else if (comboBoxTipoCuota.SelectedIndex == 2) 
+                else if (comboBoxTipoCuota.SelectedIndex == 2)
                 {
                     labelCantidad.Text = "Cantidad de días:";
                     comboBoxCantidad.Items.AddRange(new object[6] { 1, 2, 3, 4, 5, 6 });
                 }
+            };
+
+            comboBoxCantidad.SelectedIndexChanged += delegate
+            {
+                GetAmountsEvent?.Invoke(this, EventArgs.Empty);
+
+                float montoCalculado = 0;
+
+
+                if (comboBoxTipoCuota.SelectedIndex == 0)
+                {
+                    montoCalculado = Convert.ToInt32(comboBoxCantidad.SelectedItem) * amounts.ElementAt(0);
+                }
+                else if (comboBoxTipoCuota.SelectedIndex == 1)
+                {
+                    montoCalculado = Convert.ToInt32(comboBoxCantidad.SelectedItem) * amounts.ElementAt(1);
+                }
+                else if (comboBoxTipoCuota.SelectedIndex == 2) 
+                {
+                    montoCalculado = Convert.ToInt32(comboBoxCantidad.SelectedItem) * amounts.ElementAt(2);
+                }
+
+                textBoxMonto.Text = montoCalculado.ToString("0.00");
             };
 
 
@@ -106,9 +143,10 @@ namespace DesktopAppGimnasio.Views
         public int CodigoSocio { get => (textBoxCodigoSocio.Text == "") ? 0 : Convert.ToInt32(textBoxCodigoSocio.Text); set => textBoxCodigoSocio.Text = (value == 0) ? String.Empty : value.ToString(); }
         public DateTime FechaDePago { get => monthCalendarFechaPago.SelectionStart; set => monthCalendarFechaPago.SetDate(value); }
         public DateTime FechaDeVencimiento { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string MesQueAbona { get => (String) comboBoxMes.SelectedItem; set => comboBoxMes.SelectedIndex = (value == "") ? -1 : ConvertMonthToInt(value); }
+        public string MesQueAbona { get => (String)comboBoxMes.SelectedItem; set => comboBoxMes.SelectedIndex = (value == "") ? -1 : ConvertMonthToInt(value); }
         public float MontoAbonado { get => (textBoxMonto.Text == "") ? 0 : float.Parse(textBoxMonto.Text); set => textBoxMonto.Text = (value == 0) ? String.Empty : value.ToString("0.00"); }
         public int IdTipoCuota { get => comboBoxTipoCuota.SelectedIndex; set => comboBoxTipoCuota.SelectedIndex = value; }
+        public IEnumerable<float> Amounts { get => amounts; set => amounts = value; }
         public int Cantidad { get => (comboBoxCantidad.SelectedItem == "") ? -1 : Convert.ToInt32(comboBoxCantidad.SelectedItem); set => comboBoxCantidad.SelectedIndex = value; }
         public string SearchValue { get => textBoxSearchCuota.Text; set => textBoxSearchCuota.Text = value; }
         public bool IsEdit { get => isEdit; set => isEdit = value; }
@@ -122,6 +160,8 @@ namespace DesktopAppGimnasio.Views
         public event EventHandler DeleteEvent;
         public event EventHandler SaveEvent;
         public event EventHandler CancelEvent;
+
+        public event EventHandler GetAmountsEvent;
 
         public void SetCuotasBindingSource(BindingSource cuotasList)
         {

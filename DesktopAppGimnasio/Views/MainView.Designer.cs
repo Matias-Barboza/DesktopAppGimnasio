@@ -116,7 +116,7 @@
             buttonTiposCuotas.Location = new Point(5, 282);
             buttonTiposCuotas.Name = "buttonTiposCuotas";
             buttonTiposCuotas.Size = new Size(292, 40);
-            buttonTiposCuotas.TabIndex = 3;
+            buttonTiposCuotas.TabIndex = 2;
             buttonTiposCuotas.Text = "     Modificar valor de cuota";
             buttonTiposCuotas.UseVisualStyleBackColor = false;
             // 
@@ -162,7 +162,7 @@
             buttonClose.Location = new Point(3, 648);
             buttonClose.Name = "buttonClose";
             buttonClose.Size = new Size(294, 40);
-            buttonClose.TabIndex = 2;
+            buttonClose.TabIndex = 3;
             buttonClose.Text = "Salir";
             buttonClose.UseVisualStyleBackColor = false;
             // 

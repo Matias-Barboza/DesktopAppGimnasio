@@ -18,6 +18,7 @@ namespace DesktopAppGimnasio.Views
         int IdTipoCuota { get; set; }
 
         int Cantidad { get; set; }
+        IEnumerable<float> Amounts { get; set; }
         string SearchValue { get; set; }
         bool IsEdit { get; set; }
         bool IsSuccessful { get; set; }
@@ -31,6 +32,8 @@ namespace DesktopAppGimnasio.Views
         event EventHandler DeleteEvent;
         event EventHandler SaveEvent;
         event EventHandler CancelEvent;
+
+        event EventHandler GetAmountsEvent;
 
         public void SetCuotasBindingSource(BindingSource cuotasList);
 

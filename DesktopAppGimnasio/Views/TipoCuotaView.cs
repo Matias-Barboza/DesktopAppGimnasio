@@ -26,13 +26,13 @@ namespace DesktopAppGimnasio.Views
         private void AssociateAndRaiseEvents()
         {
             // Principal Events
-            buttonEdit.Click += delegate
+            buttonEdit.MouseClick += delegate
             {
                 EditEvent?.Invoke(this, EventArgs.Empty);
                 labelOperation.Text = "Operación actual: Editar cuota";
                 tabControl.SelectedTab = tabPageEditCuota;
             };
-            buttonSave.Click += delegate
+            buttonSave.MouseClick += delegate
             {
                 SaveEvent?.Invoke(this, EventArgs.Empty);
 
@@ -40,12 +40,12 @@ namespace DesktopAppGimnasio.Views
                 {
                     labelOperation.Text = "Operación actual: Realizada con éxito";
                     tabControl.SelectedTab = tabPageTiposCuotasVisualizer;
-                    labelOperation.Text = "Operación actual:";
                 }
+                labelOperation.Text = "Operación actual:";
 
                 MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
-            buttonCancel.Click += delegate
+            buttonCancel.MouseClick += delegate
             {
                 CancelEvent?.Invoke(this, EventArgs.Empty);
                 labelOperation.Text = "Operación actual:";
@@ -53,12 +53,12 @@ namespace DesktopAppGimnasio.Views
 
 
             // Other Events
-            buttonClose.Click += delegate { this.Close(); };
+            buttonClose.MouseClick += delegate { this.Close(); };
         }
 
-        public int IdTipoCuota { get => (textBoxIDTipoCuota.Text == "") ? -1 : Convert.ToInt32(textBoxIDTipoCuota.Text); set => textBoxIDTipoCuota.Text = (value == -1) ? String.Empty : textBoxIDTipoCuota.Text = Convert.ToString(value); }
+        public int IdTipoCuota { get => (textBoxIDTipoCuota.Text == "") ? -1 : Convert.ToInt32(textBoxIDTipoCuota.Text); set => textBoxIDTipoCuota.Text = (value == -1) ? String.Empty : value.ToString(); }
         public string Descripcion { get => textBoxDescripcion.Text; set => textBoxDescripcion.Text = value; }
-        public float Monto { get => (textBoxValorActual.Text == "") ? -1 : float.Parse(textBoxValorActual.Text) ; set => throw new NotImplementedException(); }
+        public float Monto { get => (textBoxValorActual.Text == "") ? 0 : float.Parse(textBoxValorActual.Text) ; set => textBoxValorActual.Text = (value == 0) ? String.Empty : value.ToString("0.00"); }
         public bool IsEdit { get => isEdit; set => isEdit = value; }
         public bool IsSuccessful { get => isSuccessful; set => isSuccessful = value; }
         public string Message { get => message; set => message = value; }

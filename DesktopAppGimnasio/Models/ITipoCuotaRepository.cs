@@ -10,5 +10,6 @@ namespace DesktopAppGimnasio.Models
     {
         void Edit(TipoCuotaModel tipoCuotaModel);
         IEnumerable<TipoCuotaModel> GetAll();
+        IEnumerable<float> GetAllAmounts();
     }
 }

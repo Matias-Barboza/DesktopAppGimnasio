@@ -26,7 +26,7 @@ namespace DesktopAppGimnasio.Models
         public string Descripcion { get => descripcion; set => descripcion = value; }
 
         [DisplayName("Valor Actual")]
-        [Range(0, 100000, ErrorMessage = "El MONTO debe ser un número mayor a 0 y no puede contener letras.")]
+        [Range(1, 100000, ErrorMessage = "El MONTO debe ser un número mayor a 0 y no puede contener letras.")]
         public float Monto { get => monto; set => monto = value; }
     }
 }

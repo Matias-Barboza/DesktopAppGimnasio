@@ -29,12 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TipoCuotaView));
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             buttonClose = new Button();
             tabControl = new TabControl();
             tabPageTiposCuotasVisualizer = new TabPage();
@@ -123,14 +120,14 @@
             dataGridViewTiposCuotas.BackgroundColor = Color.FromArgb(99, 111, 113);
             dataGridViewTiposCuotas.BorderStyle = BorderStyle.None;
             dataGridViewTiposCuotas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.Gold;
-            dataGridViewCellStyle7.Font = new Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = Color.Gold;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dataGridViewTiposCuotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.Gold;
+            dataGridViewCellStyle1.Font = new Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Gold;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewTiposCuotas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewTiposCuotas.ColumnHeadersHeight = 50;
             dataGridViewTiposCuotas.EnableHeadersVisualStyles = false;
             dataGridViewTiposCuotas.GridColor = Color.Goldenrod;
@@ -139,23 +136,23 @@
             dataGridViewTiposCuotas.Name = "dataGridViewTiposCuotas";
             dataGridViewTiposCuotas.ReadOnly = true;
             dataGridViewTiposCuotas.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(99, 111, 113);
-            dataGridViewCellStyle8.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = Color.Yellow;
-            dataGridViewCellStyle8.SelectionBackColor = Color.Yellow;
-            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(99, 111, 113);
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dataGridViewTiposCuotas.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(99, 111, 113);
+            dataGridViewCellStyle2.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.Yellow;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Yellow;
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(99, 111, 113);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewTiposCuotas.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewTiposCuotas.RowHeadersVisible = false;
             dataGridViewTiposCuotas.RowHeadersWidth = 20;
             dataGridViewTiposCuotas.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle9.BackColor = Color.FromArgb(99, 111, 113);
-            dataGridViewCellStyle9.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = Color.Yellow;
-            dataGridViewCellStyle9.SelectionBackColor = Color.Yellow;
-            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(99, 111, 113);
-            dataGridViewTiposCuotas.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(99, 111, 113);
+            dataGridViewCellStyle3.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.Yellow;
+            dataGridViewCellStyle3.SelectionBackColor = Color.Yellow;
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(99, 111, 113);
+            dataGridViewTiposCuotas.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewTiposCuotas.RowTemplate.Height = 30;
             dataGridViewTiposCuotas.RowTemplate.Resizable = DataGridViewTriState.False;
             dataGridViewTiposCuotas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -196,7 +193,7 @@
             buttonSave.Location = new Point(303, 358);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(240, 38);
-            buttonSave.TabIndex = 21;
+            buttonSave.TabIndex = 1;
             buttonSave.Text = "Guardar";
             buttonSave.UseVisualStyleBackColor = false;
             // 
@@ -214,7 +211,7 @@
             buttonCancel.Location = new Point(303, 402);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(240, 38);
-            buttonCancel.TabIndex = 17;
+            buttonCancel.TabIndex = 2;
             buttonCancel.Text = "Cancelar";
             buttonCancel.UseVisualStyleBackColor = false;
             // 
@@ -240,7 +237,7 @@
             textBoxValorActual.Location = new Point(22, 241);
             textBoxValorActual.Name = "textBoxValorActual";
             textBoxValorActual.Size = new Size(238, 27);
-            textBoxValorActual.TabIndex = 14;
+            textBoxValorActual.TabIndex = 0;
             // 
             // labelOperation
             // 
@@ -263,7 +260,6 @@
             textBoxIDTipoCuota.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBoxIDTipoCuota.BackColor = Color.DimGray;
             textBoxIDTipoCuota.BorderStyle = BorderStyle.FixedSingle;
-            textBoxIDTipoCuota.Enabled = false;
             textBoxIDTipoCuota.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             textBoxIDTipoCuota.ForeColor = Color.White;
             textBoxIDTipoCuota.Location = new Point(22, 111);

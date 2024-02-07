@@ -334,11 +334,11 @@
             textBoxCodigoSocio.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBoxCodigoSocio.BackColor = Color.DimGray;
             textBoxCodigoSocio.BorderStyle = BorderStyle.FixedSingle;
-            textBoxCodigoSocio.Enabled = false;
             textBoxCodigoSocio.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             textBoxCodigoSocio.ForeColor = Color.White;
             textBoxCodigoSocio.Location = new Point(22, 111);
             textBoxCodigoSocio.Name = "textBoxCodigoSocio";
+            textBoxCodigoSocio.ReadOnly = true;
             textBoxCodigoSocio.Size = new Size(238, 27);
             textBoxCodigoSocio.TabIndex = 11;
             // 

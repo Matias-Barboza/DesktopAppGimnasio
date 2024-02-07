@@ -28,19 +28,20 @@ namespace DesktopAppGimnasio.Views
         private void AssociateAndRaiseEvents()
         {
             // Principal Events
-            buttonSearchSocio.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
-            buttonAdd.Click += delegate 
+            buttonSearchSocio.MouseClick += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
+            buttonAdd.MouseClick += delegate 
             { 
                 AddNewEvent?.Invoke(this, EventArgs.Empty);
                 labelOperation.Text = "Operación actual: Añadir socio";
             };
-            buttonEdit.Click += delegate 
+            buttonEdit.MouseClick += delegate 
             { 
                 EditEvent?.Invoke(this, EventArgs.Empty);
                 labelOperation.Text = "Operación actual: Editar socio";
                 tabControl.SelectedTab = tabPageAddOrEditOrDeleteSocio;
+                buttonAdd.Enabled = false;
             };
-            buttonDelete.Click += delegate 
+            buttonDelete.MouseClick += delegate 
             { 
                 DialogResult result = MessageBox.Show("¿Está seguro de eliminar el socio?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
@@ -50,7 +51,7 @@ namespace DesktopAppGimnasio.Views
                     MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             };
-            buttonSave.Click += delegate 
+            buttonSave.MouseClick += delegate 
             { 
                 SaveEvent?.Invoke(this, EventArgs.Empty);
 
@@ -58,14 +59,24 @@ namespace DesktopAppGimnasio.Views
                 {
                     labelOperation.Text = "Operación actual: Realizada con éxito";
                     tabControl.SelectedTab = tabPageSociosVisualizer;
-                    labelOperation.Text = "Operación actual:";
+                }
+                labelOperation.Text = "Operación actual:";
+
+                if (!buttonAdd.Enabled)
+                {
+                    buttonAdd.Enabled = true;
                 }
 
                 MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
-            buttonCancel.Click += delegate { 
+            buttonCancel.MouseClick += delegate { 
                 CancelEvent?.Invoke(this, EventArgs.Empty);
                 labelOperation.Text = "Operación actual:";
+                
+                if (!buttonAdd.Enabled) 
+                {
+                    buttonAdd.Enabled = true;
+                }
             };
             
             
@@ -78,22 +89,6 @@ namespace DesktopAppGimnasio.Views
                 }
             };
             buttonClose.Click += delegate { this.Close(); };
-            
-            //tabControl.KeyDown += (s, e) =>
-            //{
-            //    if (e.KeyCode == Keys.D1)
-            //    {
-            //        tabControl.SelectedTab = tabPageSociosVisualizer;
-            //    }
-            //};
-            
-            //tabControl.KeyDown += (s, e) =>
-            //{
-            //    if (e.KeyCode == Keys.D2)
-            //    {
-            //        tabControl.SelectedTab = tabPageAddOrEditOrDeleteSocio;
-            //    }
-            //};
         }
 
         public int CodigoSocio { get => (textBoxCodigoSocio.Text == "") ? 0 : Convert.ToInt32(textBoxCodigoSocio.Text); set => textBoxCodigoSocio.Text = (value == 0) ? String.Empty : value.ToString(); }

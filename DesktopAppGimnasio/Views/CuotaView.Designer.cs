@@ -375,11 +375,11 @@
             // 
             textBoxCodigoCuota.BackColor = Color.DimGray;
             textBoxCodigoCuota.BorderStyle = BorderStyle.FixedSingle;
-            textBoxCodigoCuota.Enabled = false;
             textBoxCodigoCuota.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             textBoxCodigoCuota.ForeColor = Color.White;
             textBoxCodigoCuota.Location = new Point(22, 111);
             textBoxCodigoCuota.Name = "textBoxCodigoCuota";
+            textBoxCodigoCuota.ReadOnly = true;
             textBoxCodigoCuota.Size = new Size(238, 27);
             textBoxCodigoCuota.TabIndex = 31;
             // 
@@ -566,11 +566,11 @@
             textBoxMonto.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             textBoxMonto.BackColor = Color.DimGray;
             textBoxMonto.BorderStyle = BorderStyle.FixedSingle;
-            textBoxMonto.Enabled = false;
             textBoxMonto.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             textBoxMonto.ForeColor = Color.White;
             textBoxMonto.Location = new Point(581, 244);
             textBoxMonto.Name = "textBoxMonto";
+            textBoxMonto.ReadOnly = true;
             textBoxMonto.Size = new Size(212, 27);
             textBoxMonto.TabIndex = 1;
             // 
