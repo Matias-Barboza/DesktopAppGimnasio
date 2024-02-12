@@ -24,13 +24,6 @@ namespace DesktopAppGimnasio.Presenters
             this.mainView.ShowTiposCuotasView += ShowTiposCuotasView;
         }
 
-        private void ShowTiposCuotasView(object? sender, EventArgs e)
-        {
-            ITipoCuotaView tipoCuotaView = TipoCuotaView.GetInstance((Form) mainView);
-            ITipoCuotaRepository tipoCuotaRepository = new TipoCuotaRepository(mySqlConnectionString);
-            TipoCuotaPresenter tipoCuotaPresenter = new TipoCuotaPresenter(tipoCuotaView, tipoCuotaRepository);
-        }
-
         private void ShowSociosView(object? sender, EventArgs e)
         {
             ISocioView socioView = SocioView.GetInstance((Form) mainView);
@@ -42,7 +35,15 @@ namespace DesktopAppGimnasio.Presenters
         {
             ICuotaView cuotaView = CuotaView.GetInstance((Form) mainView);
             ICuotaRepository cuotaRepository = new CuotaRepository(mySqlConnectionString);
-            CuotaPresenter cuotaPresenter = new CuotaPresenter(cuotaView, cuotaRepository);
+            ITipoCuotaRepository tipoCuotaRepository = new TipoCuotaRepository(mySqlConnectionString);
+            CuotaPresenter cuotaPresenter = new CuotaPresenter(cuotaView, cuotaRepository, tipoCuotaRepository);
+        }
+
+        private void ShowTiposCuotasView(object? sender, EventArgs e)
+        {
+            ITipoCuotaView tipoCuotaView = TipoCuotaView.GetInstance((Form) mainView);
+            ITipoCuotaRepository tipoCuotaRepository = new TipoCuotaRepository(mySqlConnectionString);
+            TipoCuotaPresenter tipoCuotaPresenter = new TipoCuotaPresenter(tipoCuotaView, tipoCuotaRepository);
         }
     }
 }

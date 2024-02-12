@@ -8,7 +8,6 @@ namespace DesktopAppGimnasio.Models
 {
     public interface ICuotaRepository
     {
-        string GetConnectionString();
         void Add(CuotaModel cuotaModel);
         void Edit(CuotaModel cuotaModel);
         void Delete(int codigoCuota);

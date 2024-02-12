@@ -28,7 +28,7 @@ namespace DesktopAppGimnasio._Repositories
                 {
                     connection.Open();
                     command.Connection = connection;
-                    command.CommandText = "INSERT INTO socios (DNI, nombre, apellido, esta_activo) VALUES (@DNI_nuevo, @nombre_nuevo, @apellido_nuevo, true)";
+                    command.CommandText = "INSERT INTO socios (DNI, nombre, apellido, esta_activo) VALUES (@DNI_nuevo, @nombre_nuevo, @apellido_nuevo, true);";
                     command.Parameters.Add(new MySqlParameter()
                     {
                         ParameterName = "DNI_nuevo",
@@ -63,7 +63,7 @@ namespace DesktopAppGimnasio._Repositories
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"DELETE FROM socios
-                                            WHERE codigo_socio = @codigoSocio";
+                                            WHERE codigo_socio = @codigoSocio;";
                     command.Parameters.Add(new MySqlParameter()
                     {
                         ParameterName = "codigoSocio",
@@ -86,7 +86,7 @@ namespace DesktopAppGimnasio._Repositories
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"UPDATE socios SET DNI = @DNI_nuevo, nombre = @nombre_nuevo, apellido = @apellido_nuevo
-                                           WHERE codigo_socio = @codigoSocio";
+                                           WHERE codigo_socio = @codigoSocio;";
                     command.Parameters.Add(new MySqlParameter()
                     {
                         ParameterName = "codigoSocio",
@@ -128,7 +128,7 @@ namespace DesktopAppGimnasio._Repositories
                 {
                     connection.Open();
                     command.Connection = connection;
-                    command.CommandText = "SELECT * FROM socios ORDER BY codigo_socio DESC";
+                    command.CommandText = "SELECT * FROM socios ORDER BY codigo_socio DESC;";
 
                     using (MySqlDataReader reader = command.ExecuteReader()) 
                     {
@@ -165,8 +165,9 @@ namespace DesktopAppGimnasio._Repositories
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"SELECT * FROM socios
-                                            WHERE codigo_socio = @numero_socio OR nombre LIKE @nombre_y_apellido OR apellido like @nombre_y_apellido
-                                            ORDER BY codigo_socio DESC";
+                                            WHERE codigo_socio = @numero_socio OR nombre LIKE @nombre_y_apellido OR apellido like @nombre_y_apellido OR
+                                                  CONCAT(nombre, ' ', apellido) LIKE @nombre_y_apellido
+                                            ORDER BY codigo_socio DESC;";
                     command.Parameters.Add(new MySqlParameter(){
                         ParameterName = "@numero_socio",
                         MySqlDbType = MySqlDbType.Int32,

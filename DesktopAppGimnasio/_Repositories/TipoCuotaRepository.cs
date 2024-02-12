@@ -26,7 +26,7 @@ namespace DesktopAppGimnasio._Repositories
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"UPDATE tipos SET monto = @monto_nuevo
-                                            WHERE id_tipo = @id_tipo_edit";
+                                            WHERE id_tipo = @id_tipo_edit;";
                     command.Parameters.Add(new MySqlParameter()
                     {
                         ParameterName = "id_tipo_edit",
@@ -42,6 +42,7 @@ namespace DesktopAppGimnasio._Repositories
 
                     command.ExecuteNonQuery();
                 }
+                connection.Close();
             }
         }
 
@@ -56,7 +57,7 @@ namespace DesktopAppGimnasio._Repositories
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"SELECT *
-                                            FROM tipos";
+                                            FROM tipos;";
 
                     using(MySqlDataReader reader = command.ExecuteReader()) 
                     {
@@ -73,6 +74,7 @@ namespace DesktopAppGimnasio._Repositories
                         }
                     }
                 }
+                connection.Close();
             }
 
             return tiposCuotaList;
@@ -89,17 +91,18 @@ namespace DesktopAppGimnasio._Repositories
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"SELECT monto
-                                            FROM tipos";
+                                            FROM tipos;";
 
                     using(MySqlDataReader reader = command.ExecuteReader())
                     {
                         
                         while (reader.Read()) 
                         {
-                            amounts.Add((float)reader[0]);
+                            amounts.Add((float) reader[0]);
                         }
                     }
                 }
+                connection.Close();
             }
 
             return amounts;

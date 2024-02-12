@@ -61,6 +61,8 @@
             buttonSocios.TabIndex = 0;
             buttonSocios.Text = "Socios";
             buttonSocios.UseVisualStyleBackColor = false;
+            buttonSocios.KeyDown += buttonSocios_KeyDown;
+            buttonSocios.MouseClick += buttonSocios_MouseClick;
             // 
             // buttonCuotas
             // 
@@ -82,6 +84,8 @@
             buttonCuotas.TabIndex = 1;
             buttonCuotas.Text = "Cuotas";
             buttonCuotas.UseVisualStyleBackColor = false;
+            buttonCuotas.KeyDown += buttonCuotas_KeyDown;
+            buttonCuotas.MouseClick += buttonCuotas_MouseClick;
             // 
             // panel1
             // 
@@ -119,6 +123,8 @@
             buttonTiposCuotas.TabIndex = 2;
             buttonTiposCuotas.Text = "     Modificar valor de cuota";
             buttonTiposCuotas.UseVisualStyleBackColor = false;
+            buttonTiposCuotas.KeyDown += buttonTiposCuotas_KeyDown;
+            buttonTiposCuotas.MouseClick += buttonTiposCuotas_MouseClick;
             // 
             // pictureBoxLogo
             // 
@@ -165,6 +171,7 @@
             buttonClose.TabIndex = 3;
             buttonClose.Text = "Salir";
             buttonClose.UseVisualStyleBackColor = false;
+            buttonClose.MouseClick += buttonClose_MouseClick;
             // 
             // panel2
             // 

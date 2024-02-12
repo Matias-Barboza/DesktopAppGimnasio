@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,44 +17,11 @@ namespace DesktopAppGimnasio.Views
         private bool isSuccessful;
         private string message;
         private string caption;
+        private bool mustEnter;
 
         public TipoCuotaView()
         {
             InitializeComponent();
-            AssociateAndRaiseEvents();
-        }
-
-        private void AssociateAndRaiseEvents()
-        {
-            // Principal Events
-            buttonEdit.MouseClick += delegate
-            {
-                EditEvent?.Invoke(this, EventArgs.Empty);
-                labelOperation.Text = "Operación actual: Editar cuota";
-                tabControl.SelectedTab = tabPageEditCuota;
-            };
-            buttonSave.MouseClick += delegate
-            {
-                SaveEvent?.Invoke(this, EventArgs.Empty);
-
-                if (isSuccessful)
-                {
-                    labelOperation.Text = "Operación actual: Realizada con éxito";
-                    tabControl.SelectedTab = tabPageTiposCuotasVisualizer;
-                }
-                labelOperation.Text = "Operación actual:";
-
-                MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            };
-            buttonCancel.MouseClick += delegate
-            {
-                CancelEvent?.Invoke(this, EventArgs.Empty);
-                labelOperation.Text = "Operación actual:";
-            };
-
-
-            // Other Events
-            buttonClose.MouseClick += delegate { this.Close(); };
         }
 
         public int IdTipoCuota { get => (textBoxIDTipoCuota.Text == "") ? -1 : Convert.ToInt32(textBoxIDTipoCuota.Text); set => textBoxIDTipoCuota.Text = (value == -1) ? String.Empty : value.ToString(); }
@@ -63,6 +31,7 @@ namespace DesktopAppGimnasio.Views
         public bool IsSuccessful { get => isSuccessful; set => isSuccessful = value; }
         public string Message { get => message; set => message = value; }
         public string Caption { get => caption; set => caption = value; }
+        public bool MustEnter { get => mustEnter; set => mustEnter = value; }
 
         public event EventHandler EditEvent;
         public event EventHandler SaveEvent;
@@ -91,6 +60,7 @@ namespace DesktopAppGimnasio.Views
             }
             else
             {
+
                 if (instance.WindowState == FormWindowState.Minimized)
                 {
                     instance.WindowState = FormWindowState.Normal;
@@ -99,6 +69,39 @@ namespace DesktopAppGimnasio.Views
             }
 
             return instance;
+        }
+
+        private void buttonEditTipoCuota_MouseClick(object sender, MouseEventArgs e)
+        {
+            EditEvent?.Invoke(this, EventArgs.Empty);
+            labelOperation.Text = "Operación actual: Editar cuota";
+            tabControl.SelectedTab = tabPageEditCuota;
+        }
+
+        private void buttonSaveTipoCuota_MouseClick(object sender, MouseEventArgs e)
+        {
+            SaveEvent?.Invoke(this, EventArgs.Empty);
+
+            if (isSuccessful)
+            {
+                tabControl.SelectedTab = tabPageTiposCuotasVisualizer;
+                MustEnter = false;
+            }
+
+            labelOperation.Text = "Operación actual:";
+
+            MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void buttonCancelOperation_MouseClick(object sender, MouseEventArgs e)
+        {
+            CancelEvent?.Invoke(this, EventArgs.Empty);
+            labelOperation.Text = "Operación actual:";
+        }
+
+        private void buttonClose_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.Close();
         }
     }
 }

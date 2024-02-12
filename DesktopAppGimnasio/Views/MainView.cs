@@ -15,16 +15,17 @@ namespace DesktopAppGimnasio.Views
         public MainView()
         {
             InitializeComponent();
-            AssociateAndRaiseEvents();
+            //AssociateAndRaiseEvents();
         }
 
         public event EventHandler ShowSociosView;
         public event EventHandler ShowCuotasView;
         public event EventHandler ShowTiposCuotasView;
 
-        public void AssociateAndRaiseEvents() 
+        public void AssociateAndRaiseEvents()
         {
-            buttonSocios.Click += delegate { 
+            buttonSocios.MouseClick += delegate
+            {
                 ShowSociosView?.Invoke(this, EventArgs.Empty);
             };
             buttonSocios.KeyDown += (s, e) =>
@@ -34,7 +35,8 @@ namespace DesktopAppGimnasio.Views
                     ShowSociosView?.Invoke(this, EventArgs.Empty);
                 }
             };
-            buttonCuotas.Click += delegate {
+            buttonCuotas.MouseClick += delegate
+            {
                 ShowCuotasView?.Invoke(this, EventArgs.Empty);
             };
             buttonCuotas.KeyDown += (s, e) =>
@@ -44,7 +46,8 @@ namespace DesktopAppGimnasio.Views
                     ShowCuotasView?.Invoke(this, EventArgs.Empty);
                 }
             };
-            buttonTiposCuotas.Click += delegate {
+            buttonTiposCuotas.MouseClick += delegate
+            {
                 ShowTiposCuotasView?.Invoke(this, EventArgs.Empty);
             };
             buttonTiposCuotas.KeyDown += (s, e) =>
@@ -56,7 +59,42 @@ namespace DesktopAppGimnasio.Views
             };
 
 
-            buttonClose.Click += delegate { this.Close(); };
+            buttonClose.MouseClick += delegate { this.Close(); };
+        }
+
+        private void buttonSocios_MouseClick(object sender, MouseEventArgs e)
+        {
+            ShowSociosView?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void buttonCuotas_MouseClick(object sender, MouseEventArgs e)
+        {
+            ShowCuotasView?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void buttonTiposCuotas_MouseClick(object sender, MouseEventArgs e)
+        {
+            ShowTiposCuotasView?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void buttonClose_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonSocios_KeyDown(object sender, KeyEventArgs e)
+        {
+            ShowSociosView?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void buttonCuotas_KeyDown(object sender, KeyEventArgs e)
+        {
+            ShowCuotasView?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void buttonTiposCuotas_KeyDown(object sender, KeyEventArgs e)
+        {
+            ShowTiposCuotasView?.Invoke(this, EventArgs.Empty);
         }
     }
 }

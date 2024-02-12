@@ -18,10 +18,11 @@ namespace DesktopAppGimnasio.Views
 
         string SearchValue { get; set; }
         bool IsEdit { get; set; }
-
         bool IsSuccessful { get; set; }
         String Message {  get; set; }
         String Caption {  get; set; }
+        bool MustEnter { get; set; }
+
         
         // Events
         event EventHandler SearchEvent;

@@ -51,11 +51,18 @@ namespace DesktopAppGimnasio.Presenters
             view.Monto = tipoCuotaModel.Monto;
 
             view.IsEdit = true;
+            view.MustEnter = true;
         }
 
 
         private void SaveTipoCuota(object? sender, EventArgs e)
         {
+
+            if (!view.MustEnter) 
+            {
+                return;
+            }
+
             TipoCuotaModel tipoCuotaModel = new TipoCuotaModel();
 
             tipoCuotaModel.IdTipoCuota = view.IdTipoCuota;
@@ -78,6 +85,7 @@ namespace DesktopAppGimnasio.Presenters
                 view.IsSuccessful = true;
                 LoadAllTiposCuotasList();
                 CleanFieldsView();
+                view.MustEnter = false;
             }
             catch (Exception ex)
             {

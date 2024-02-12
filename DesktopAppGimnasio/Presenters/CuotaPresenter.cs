@@ -14,13 +14,13 @@ namespace DesktopAppGimnasio.Presenters
     {
         private ICuotaView view;
         private ICuotaRepository repository;
+        private ITipoCuotaRepository repositoryTC;
         private BindingSource cuotasBindingSource;
         private IEnumerable<CuotaModel> cuotasList;
-        //private IEnumerable<float> amountsList;
 
-        public CuotaPresenter(ICuotaView view, ICuotaRepository repository) 
+        public CuotaPresenter(ICuotaView view, ICuotaRepository repository)
         {
-            
+
             this.view = view;
             this.repository = repository;
             this.cuotasBindingSource = new BindingSource();
@@ -38,14 +38,39 @@ namespace DesktopAppGimnasio.Presenters
             this.view.SetCuotasBindingSource(cuotasBindingSource);
 
             LoadAllCuotasList();
-            //amountsList = GetAllQuotesAmount();
 
-            this.view.HideColumn(4);
             this.view.HideColumn(9);
             this.view.Show();
         }
 
+        public CuotaPresenter(ICuotaView view, ICuotaRepository repository, ITipoCuotaRepository repositoryTC)
+        {
 
+            this.view = view;
+            this.repository = repository;
+            this.repositoryTC = repositoryTC;
+            this.cuotasBindingSource = new BindingSource();
+
+
+            // Subscribe to Events
+            this.view.SearchEvent += SearchCuota;
+            this.view.AddNewEvent += AddNewCuota;
+            this.view.EditEvent += LoadSelectedCuotaToEdit;
+            this.view.DeleteEvent += DeleteSelectedCuota;
+            this.view.SaveEvent += SaveCuota;
+            this.view.CancelEvent += CancelAction;
+            this.view.GetAmountsEvent += GetAmounts;
+
+            this.view.SetCuotasBindingSource(cuotasBindingSource);
+
+            LoadAllCuotasList();
+            view.Amounts = GetAllQuotesAmount();
+
+            this.view.HideColumn(9);
+            this.view.Show();
+        }
+
+        // Common methods
         private void LoadAllCuotasList()
         {
             cuotasList = repository.GetAll();
@@ -71,13 +96,7 @@ namespace DesktopAppGimnasio.Presenters
         private void AddNewCuota(object? sender, EventArgs e)
         {
             view.IsEdit = false;
-        }
-
-        private IEnumerable<float> GetAllQuotesAmount()
-        {
-            ITipoCuotaRepository tiposRepository = new TipoCuotaRepository(repository.GetConnectionString());
-
-            return tiposRepository.GetAllAmounts();
+            view.MustEnter = true;
         }
 
         private void LoadSelectedCuotaToEdit(object? sender, EventArgs e)
@@ -90,8 +109,28 @@ namespace DesktopAppGimnasio.Presenters
             view.FechaDePago = cuota.FechaDePago;
             view.MesQueAbona = cuota.MesQueAbona;
             view.IdTipoCuota = cuota.IdTipoCuota;
+            view.Cantidad = 0;
+
+            if (view.IdTipoCuota != 0)
+            {
+                IEnumerable<float> amounts = GetAllQuotesAmount();
+
+                if (cuota.MontoAbonado == amounts.ElementAt(cuota.IdTipoCuota - 1))
+                {
+                    float amount = amounts.ElementAt(cuota.IdTipoCuota - 1);
+                    int value = (int)(cuota.MontoAbonado / amount);
+
+                    view.Cantidad = value;
+                }
+                else 
+                {
+                    view.MontoAbonado = cuota.MontoAbonado;
+                }
+
+            }
 
             view.IsEdit = true;
+            view.MustEnter = true;
         }
 
         private void DeleteSelectedCuota(object? sender, EventArgs e)
@@ -104,7 +143,7 @@ namespace DesktopAppGimnasio.Presenters
                 repository.Delete(codigoCuota);
                 view.IsSuccessful = true;
                 view.Caption = "Estado de eliminación de cuota";
-                view.Message = $"Cuota {codigoCuota} eliminada correctamente";
+                view.Message = $"La cuota {codigoCuota} fué eliminada correctamente";
                 LoadAllCuotasList();
             }
             catch (Exception ex) 
@@ -117,6 +156,12 @@ namespace DesktopAppGimnasio.Presenters
 
         private void SaveCuota(object? sender, EventArgs e)
         {
+            if (!view.MustEnter) 
+            {
+                return;
+            }
+
+
             CuotaModel cuota = new CuotaModel();
 
             cuota.CodigoCuota = view.CodigoCuota;
@@ -124,7 +169,7 @@ namespace DesktopAppGimnasio.Presenters
             cuota.MontoAbonado = view.MontoAbonado;
             cuota.FechaDePago = view.FechaDePago;
             cuota.MesQueAbona = view.MesQueAbona;
-            cuota.IdTipoCuota = (view.IdTipoCuota != -1) ? view.IdTipoCuota + 1 : -1;
+            cuota.IdTipoCuota = (view.IdTipoCuota > 0) ? view.IdTipoCuota : -1;
 
             try
             {
@@ -161,6 +206,7 @@ namespace DesktopAppGimnasio.Presenters
                 view.IsSuccessful = true;
                 LoadAllCuotasList();
                 CleanFieldsView();
+                view.MustEnter = false;
             }
             catch (Exception ex)
             {
@@ -174,11 +220,6 @@ namespace DesktopAppGimnasio.Presenters
         {
             CleanFieldsView();
         }
-
-        private void GetAmounts(object? sender, EventArgs e)
-        {
-            view.Amounts = GetAllQuotesAmount();
-        }
     
         private void CleanFieldsView()
         {
@@ -187,8 +228,22 @@ namespace DesktopAppGimnasio.Presenters
             view.MontoAbonado = 0;
             view.FechaDePago = DateTime.Today;
             view.MesQueAbona = "";
-            view.IdTipoCuota = -1;
+            view.IdTipoCuota = 0;
+            view.Cantidad = 0;
         }
 
+
+        // Other methods
+        private void GetAmounts(object? sender, EventArgs e)
+        {
+            view.Amounts = GetAllQuotesAmount();
+        }
+
+        private IEnumerable<float> GetAllQuotesAmount()
+        {
+            IEnumerable<float> amountsList = repositoryTC.GetAllAmounts(); 
+
+            return amountsList;
+        }
     }
 }

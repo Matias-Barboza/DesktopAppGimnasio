@@ -126,7 +126,7 @@
         gg==
 </value>
   </data>
-  <data name="buttonEdit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="buttonEditTipoCuota.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAI9JREFUSEvt
         0MENgCAMhWG2cwxdw8QF9OqGLOHJYB+0BCJeaj3JlzQxoD8G130uhDDQeJqNl+xw/KARO2/ZoOCcupWV
@@ -134,7 +134,7 @@
         jU0cUq9iF4fUzGzjXZtzFwP4/GIQ8pz9AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="buttonSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="buttonSaveTipoCuota.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAKdJREFUSEvt
         1UEKwkAMheE5ht5IL6TL3rWewtWYMH+L8NLWNs6uHwzovNcEFLScdqm13u287Ow1MGKdFcfWP2R7CcXK
@@ -142,7 +142,7 @@
         HrlSmfldixQVRR7pvqD7R/S3Lznzcz0ZGacsPPqHM/Fnb4w7/aKUDzH+A8fDfBqHAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="buttonCancel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="buttonCancelOperation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAKJJREFUSEvt
         lEEOwyAMBPlEf5H/3/KKPoh6qrGUqCQRKlzajGRBFu8a5UC5+VNqrUvUGvVQOoQeexelazTAM+pwCGf2

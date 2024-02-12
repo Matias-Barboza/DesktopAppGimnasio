@@ -17,6 +17,7 @@ namespace DesktopAppGimnasio.Views
         bool IsSuccessful { get; set; }
         String Message { get; set; }
         String Caption { get; set; }
+        bool MustEnter {  get; set; }
 
         // Events
         event EventHandler EditEvent;

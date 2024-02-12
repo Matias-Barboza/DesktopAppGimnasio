@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ namespace DesktopAppGimnasio.Views
         private bool isSuccessful;
         private string message;
         private string caption;
+        private bool mustEnter;
 
         // Constructors
         public SocioView()
@@ -57,9 +59,10 @@ namespace DesktopAppGimnasio.Views
 
                 if (isSuccessful) 
                 {
-                    labelOperation.Text = "Operación actual: Realizada con éxito";
                     tabControl.SelectedTab = tabPageSociosVisualizer;
+                    MustEnter = false;
                 }
+
                 labelOperation.Text = "Operación actual:";
 
                 if (!buttonAdd.Enabled)
@@ -88,7 +91,12 @@ namespace DesktopAppGimnasio.Views
                     SearchEvent?.Invoke(this, EventArgs.Empty);
                 }
             };
-            buttonClose.Click += delegate { this.Close(); };
+            buttonClose.MouseClick += delegate { this.Close(); };
+
+            buttonAdd.EnabledChanged += delegate
+            {
+                buttonAdd.ForeColor = Color.White;
+            };
         }
 
         public int CodigoSocio { get => (textBoxCodigoSocio.Text == "") ? 0 : Convert.ToInt32(textBoxCodigoSocio.Text); set => textBoxCodigoSocio.Text = (value == 0) ? String.Empty : value.ToString(); }
@@ -101,6 +109,7 @@ namespace DesktopAppGimnasio.Views
         public bool IsSuccessful { get => isSuccessful; set => isSuccessful = value; }
         public string Message { get => message; set => message = value; }
         public string Caption { get => caption; set => caption = value; }
+        public bool MustEnter { get => mustEnter; set => mustEnter = value; }
 
         public event EventHandler SearchEvent;
         public event EventHandler AddNewEvent;
@@ -127,6 +136,7 @@ namespace DesktopAppGimnasio.Views
             }
             else 
             {
+
                 if (instance.WindowState == FormWindowState.Minimized) 
                 {
                     instance.WindowState = FormWindowState.Normal;

@@ -10,6 +10,7 @@ namespace DesktopAppGimnasio._Repositories
 {
     public class CuotaRepository : BaseRepository, ICuotaRepository
     {
+
         // Constructor
         public CuotaRepository(String connectionString)
         {
@@ -17,11 +18,6 @@ namespace DesktopAppGimnasio._Repositories
         }
 
         // Methods
-        public string GetConnectionString()
-        {
-            return connectionString;
-        }
-
         public void Add(CuotaModel cuotaModel)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -32,7 +28,7 @@ namespace DesktopAppGimnasio._Repositories
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"INSERT INTO cuotas (codigo_socio_fk, id_tipo_fk, fecha_pago, fecha_vencimiento, mes_abonado, monto_abonado)
-                                            VALUES (@codigoSocio, @id_tipo_nuevo, @fecha_pago_nuevo, @fecha_vencimiento_nuevo, @mes_abonado_nuevo, @monto_abonado_nuevo)";
+                                            VALUES (@codigoSocio, @id_tipo_nuevo, @fecha_pago_nuevo, @fecha_vencimiento_nuevo, @mes_abonado_nuevo, @monto_abonado_nuevo);";
 
                     command.Parameters.Add(new MySqlParameter()
                     {
@@ -73,6 +69,7 @@ namespace DesktopAppGimnasio._Repositories
 
                     command.ExecuteNonQuery();
                 }
+                connection.Close();
             }
         }
 
@@ -86,7 +83,7 @@ namespace DesktopAppGimnasio._Repositories
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"DELETE FROM cuotas
-                                            WHERE codigo_cuota = @codigoCuota";
+                                            WHERE codigo_cuota = @codigoCuota;";
 
                     command.Parameters.Add(new MySqlParameter()
                     {
@@ -97,6 +94,7 @@ namespace DesktopAppGimnasio._Repositories
 
                     command.ExecuteNonQuery();
                 }
+                connection.Close();
             }
         }
 
@@ -112,19 +110,19 @@ namespace DesktopAppGimnasio._Repositories
                     command.CommandText = @"UPDATE cuotas SET codigo_socio_fk = @codigoSocio, id_tipo_fk = @id_tipo_nuevo, fecha_pago = @fecha_pago_nuevo,
                                                     fecha_vencimiento = @fecha_vencimiento_nuevo,
                                                     mes_abonado = @mes_abonado_nuevo, monto_abonado = @monto_abonado_nuevo
-                                            WHERE codigo_cuota = @codigoCuota";
+                                            WHERE codigo_cuota = @codigoCuota;";
 
-                    command.Parameters.Add(new MySqlParameter()
-                    {
-                        ParameterName = "codigoSocio",
-                        MySqlDbType = MySqlDbType.Int32,
-                        Value = cuotaModel.CodigoSocio
-                    });
                     command.Parameters.Add(new MySqlParameter()
                     {
                         ParameterName = "codigoCuota",
                         MySqlDbType = MySqlDbType.Int32,
                         Value = cuotaModel.CodigoCuota
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "codigoSocio",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = cuotaModel.CodigoSocio
                     });
                     command.Parameters.Add(new MySqlParameter()
                     {
@@ -159,6 +157,7 @@ namespace DesktopAppGimnasio._Repositories
 
                     command.ExecuteNonQuery();
                 }
+                connection.Close();
             }
         }
 
@@ -173,14 +172,14 @@ namespace DesktopAppGimnasio._Repositories
                 {
                     connection.Open();
                     command.Connection = connection;
-                    command.CommandText = @"SELECT c.codigo_cuota, c.codigo_socio_fk, s.nombre, s.apellido, t.descripcion, c.fecha_pago, c.fecha_vencimiento, c.mes_abonado, c.monto_abonado
+                    command.CommandText = @"SELECT c.codigo_cuota, c.codigo_socio_fk, s.nombre, s.apellido, t.descripcion, c.fecha_pago, c.fecha_vencimiento, c.mes_abonado, c.monto_abonado, c.id_tipo_fk
                                             FROM cuotas AS c
                                                 JOIN
                                                 socios AS s
                                                 ON s.codigo_socio = c.codigo_socio_fk
                                                 JOIN tipos AS t
                                                 ON c.id_tipo_fk = t.id_tipo
-                                            ORDER BY c.codigo_cuota DESC";
+                                            ORDER BY c.codigo_cuota DESC;";
 
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
@@ -198,11 +197,13 @@ namespace DesktopAppGimnasio._Repositories
                             cuota.FechaDeVencimiento = (DateTime) reader[6];
                             cuota.MesQueAbona = (String) reader[7];
                             cuota.MontoAbonado = (float) reader[8];
+                            cuota.IdTipoCuota = (int) reader[9];
 
                             cuotasList.Add(cuota);
                         }
                     }
                 }
+                connection.Close();
             }
 
             return cuotasList;
@@ -229,8 +230,9 @@ namespace DesktopAppGimnasio._Repositories
                                                 ON s.codigo_socio = c.codigo_socio_fk
                                                 JOIN tipos AS t
                                                 ON c.id_tipo_fk = t.id_tipo
-                                            WHERE c.codigo_cuota = @codigo_cuota OR c.codigo_socio_fk = @codigo_socio OR s.nombre LIKE @nombre_apellido OR s.apellido LIKE @nombre_apellido
-                                            ORDER BY c.codigo_cuota DESC";
+                                            WHERE c.codigo_cuota = @codigo_cuota OR c.codigo_socio_fk = @codigo_socio OR s.nombre LIKE @nombre_apellido OR s.apellido LIKE @nombre_apellido OR
+                                                  CONCAT(s.nombre, ' ', s.apellido) LIKE @nombre_apellido
+                                            ORDER BY c.codigo_cuota DESC;";
                     command.Parameters.Add(new MySqlParameter()
                     {
                         ParameterName = "codigo_cuota",
@@ -271,6 +273,7 @@ namespace DesktopAppGimnasio._Repositories
                         }
                     }
                 }
+                connection.Close();
             }
 
             return cuotasList;

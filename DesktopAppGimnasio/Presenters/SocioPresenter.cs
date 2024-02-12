@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace DesktopAppGimnasio.Presenters
 
         public SocioPresenter(ISocioView view, ISocioRepository repository) 
         {
+
             this.view = view;
             this.repository = repository;
             this.sociosBindingsource = new BindingSource();
@@ -37,6 +39,7 @@ namespace DesktopAppGimnasio.Presenters
             this.view.Show();
         }
 
+        //Common methods
         private void LoadAllSocioList()
         {
             sociosList = repository.GetAll();
@@ -62,6 +65,7 @@ namespace DesktopAppGimnasio.Presenters
         private void AddNewSocio(object? sender, EventArgs e)
         {
             view.IsEdit = false;
+            view.MustEnter = true;
         }
 
         private void LoadSelectedSocioToEdit(object? sender, EventArgs e)
@@ -74,6 +78,7 @@ namespace DesktopAppGimnasio.Presenters
             view.ApellidoSocio = socio.Apellido;
 
             view.IsEdit = true;
+            view.MustEnter = true;
         }
 
         private void DeleteSelectedSocio(object? sender, EventArgs e)
@@ -100,6 +105,12 @@ namespace DesktopAppGimnasio.Presenters
 
         private void SaveSocio(object? sender, EventArgs e)
         {
+
+            if (!view.MustEnter) 
+            {
+                return;
+            }
+
             SocioModel socio = new SocioModel();
 
             socio.CodigoSocio = view.CodigoSocio;
@@ -129,6 +140,7 @@ namespace DesktopAppGimnasio.Presenters
                 view.IsSuccessful = true;
                 LoadAllSocioList();
                 CleanViewFields();
+                view.MustEnter = false;
             }
             catch (Exception ex)
             {

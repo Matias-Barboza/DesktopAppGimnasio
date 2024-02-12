@@ -35,11 +35,11 @@
             buttonClose = new Button();
             tabControl = new TabControl();
             tabPageTiposCuotasVisualizer = new TabPage();
-            buttonEdit = new Button();
+            buttonEditTipoCuota = new Button();
             dataGridViewTiposCuotas = new DataGridView();
             tabPageEditCuota = new TabPage();
-            buttonSave = new Button();
-            buttonCancel = new Button();
+            buttonSaveTipoCuota = new Button();
+            buttonCancelOperation = new Button();
             labelIDTipoCuota = new Label();
             textBoxValorActual = new TextBox();
             labelOperation = new Label();
@@ -68,6 +68,7 @@
             buttonClose.Size = new Size(76, 39);
             buttonClose.TabIndex = 7;
             buttonClose.UseVisualStyleBackColor = false;
+            buttonClose.MouseClick += buttonClose_MouseClick;
             // 
             // tabControl
             // 
@@ -85,7 +86,7 @@
             // tabPageTiposCuotasVisualizer
             // 
             tabPageTiposCuotasVisualizer.BackColor = Color.FromArgb(99, 111, 113);
-            tabPageTiposCuotasVisualizer.Controls.Add(buttonEdit);
+            tabPageTiposCuotasVisualizer.Controls.Add(buttonEditTipoCuota);
             tabPageTiposCuotasVisualizer.Controls.Add(dataGridViewTiposCuotas);
             tabPageTiposCuotasVisualizer.Location = new Point(4, 37);
             tabPageTiposCuotasVisualizer.Name = "tabPageTiposCuotasVisualizer";
@@ -93,23 +94,24 @@
             tabPageTiposCuotasVisualizer.TabIndex = 2;
             tabPageTiposCuotasVisualizer.Text = "Administración de valores de cuotas";
             // 
-            // buttonEdit
+            // buttonEditTipoCuota
             // 
-            buttonEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonEdit.BackColor = Color.FromArgb(128, 128, 255);
-            buttonEdit.FlatAppearance.BorderColor = Color.DarkSlateBlue;
-            buttonEdit.FlatAppearance.BorderSize = 2;
-            buttonEdit.FlatStyle = FlatStyle.Flat;
-            buttonEdit.Font = new Font("Century Gothic", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonEdit.ForeColor = Color.White;
-            buttonEdit.Image = (Image)resources.GetObject("buttonEdit.Image");
-            buttonEdit.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEdit.Location = new Point(714, 14);
-            buttonEdit.Name = "buttonEdit";
-            buttonEdit.Size = new Size(125, 39);
-            buttonEdit.TabIndex = 5;
-            buttonEdit.Text = "  Editar";
-            buttonEdit.UseVisualStyleBackColor = false;
+            buttonEditTipoCuota.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonEditTipoCuota.BackColor = Color.FromArgb(128, 128, 255);
+            buttonEditTipoCuota.FlatAppearance.BorderColor = Color.DarkSlateBlue;
+            buttonEditTipoCuota.FlatAppearance.BorderSize = 2;
+            buttonEditTipoCuota.FlatStyle = FlatStyle.Flat;
+            buttonEditTipoCuota.Font = new Font("Century Gothic", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonEditTipoCuota.ForeColor = Color.White;
+            buttonEditTipoCuota.Image = (Image)resources.GetObject("buttonEditTipoCuota.Image");
+            buttonEditTipoCuota.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonEditTipoCuota.Location = new Point(714, 14);
+            buttonEditTipoCuota.Name = "buttonEditTipoCuota";
+            buttonEditTipoCuota.Size = new Size(125, 39);
+            buttonEditTipoCuota.TabIndex = 5;
+            buttonEditTipoCuota.Text = "  Editar";
+            buttonEditTipoCuota.UseVisualStyleBackColor = false;
+            buttonEditTipoCuota.MouseClick += buttonEditTipoCuota_MouseClick;
             // 
             // dataGridViewTiposCuotas
             // 
@@ -162,8 +164,8 @@
             // tabPageEditCuota
             // 
             tabPageEditCuota.BackColor = Color.FromArgb(136, 150, 151);
-            tabPageEditCuota.Controls.Add(buttonSave);
-            tabPageEditCuota.Controls.Add(buttonCancel);
+            tabPageEditCuota.Controls.Add(buttonSaveTipoCuota);
+            tabPageEditCuota.Controls.Add(buttonCancelOperation);
             tabPageEditCuota.Controls.Add(labelIDTipoCuota);
             tabPageEditCuota.Controls.Add(textBoxValorActual);
             tabPageEditCuota.Controls.Add(labelOperation);
@@ -179,41 +181,43 @@
             tabPageEditCuota.TabIndex = 1;
             tabPageEditCuota.Text = "Editar valores de cuotas";
             // 
-            // buttonSave
+            // buttonSaveTipoCuota
             // 
-            buttonSave.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            buttonSave.BackColor = Color.FromArgb(128, 128, 255);
-            buttonSave.FlatAppearance.BorderColor = Color.DarkSlateBlue;
-            buttonSave.FlatAppearance.BorderSize = 2;
-            buttonSave.FlatStyle = FlatStyle.Flat;
-            buttonSave.Font = new Font("Century Gothic", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSave.ForeColor = Color.White;
-            buttonSave.Image = (Image)resources.GetObject("buttonSave.Image");
-            buttonSave.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonSave.Location = new Point(303, 358);
-            buttonSave.Name = "buttonSave";
-            buttonSave.Size = new Size(240, 38);
-            buttonSave.TabIndex = 1;
-            buttonSave.Text = "Guardar";
-            buttonSave.UseVisualStyleBackColor = false;
+            buttonSaveTipoCuota.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            buttonSaveTipoCuota.BackColor = Color.FromArgb(128, 128, 255);
+            buttonSaveTipoCuota.FlatAppearance.BorderColor = Color.DarkSlateBlue;
+            buttonSaveTipoCuota.FlatAppearance.BorderSize = 2;
+            buttonSaveTipoCuota.FlatStyle = FlatStyle.Flat;
+            buttonSaveTipoCuota.Font = new Font("Century Gothic", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSaveTipoCuota.ForeColor = Color.White;
+            buttonSaveTipoCuota.Image = (Image)resources.GetObject("buttonSaveTipoCuota.Image");
+            buttonSaveTipoCuota.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonSaveTipoCuota.Location = new Point(303, 358);
+            buttonSaveTipoCuota.Name = "buttonSaveTipoCuota";
+            buttonSaveTipoCuota.Size = new Size(240, 38);
+            buttonSaveTipoCuota.TabIndex = 1;
+            buttonSaveTipoCuota.Text = "Guardar";
+            buttonSaveTipoCuota.UseVisualStyleBackColor = false;
+            buttonSaveTipoCuota.MouseClick += buttonSaveTipoCuota_MouseClick;
             // 
-            // buttonCancel
+            // buttonCancelOperation
             // 
-            buttonCancel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            buttonCancel.BackColor = Color.FromArgb(128, 128, 255);
-            buttonCancel.FlatAppearance.BorderColor = Color.DarkSlateBlue;
-            buttonCancel.FlatAppearance.BorderSize = 2;
-            buttonCancel.FlatStyle = FlatStyle.Flat;
-            buttonCancel.Font = new Font("Century Gothic", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonCancel.ForeColor = Color.White;
-            buttonCancel.Image = (Image)resources.GetObject("buttonCancel.Image");
-            buttonCancel.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonCancel.Location = new Point(303, 402);
-            buttonCancel.Name = "buttonCancel";
-            buttonCancel.Size = new Size(240, 38);
-            buttonCancel.TabIndex = 2;
-            buttonCancel.Text = "Cancelar";
-            buttonCancel.UseVisualStyleBackColor = false;
+            buttonCancelOperation.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            buttonCancelOperation.BackColor = Color.FromArgb(128, 128, 255);
+            buttonCancelOperation.FlatAppearance.BorderColor = Color.DarkSlateBlue;
+            buttonCancelOperation.FlatAppearance.BorderSize = 2;
+            buttonCancelOperation.FlatStyle = FlatStyle.Flat;
+            buttonCancelOperation.Font = new Font("Century Gothic", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonCancelOperation.ForeColor = Color.White;
+            buttonCancelOperation.Image = (Image)resources.GetObject("buttonCancelOperation.Image");
+            buttonCancelOperation.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonCancelOperation.Location = new Point(303, 402);
+            buttonCancelOperation.Name = "buttonCancelOperation";
+            buttonCancelOperation.Size = new Size(240, 38);
+            buttonCancelOperation.TabIndex = 2;
+            buttonCancelOperation.Text = "Cancelar";
+            buttonCancelOperation.UseVisualStyleBackColor = false;
+            buttonCancelOperation.MouseClick += buttonCancelOperation_MouseClick;
             // 
             // labelIDTipoCuota
             // 
@@ -330,9 +334,9 @@
         private TabControl tabControl;
         private TabPage tabPageSociosVisualizer;
         private TabPage tabPageEditCuota;
-        private Button buttonCancel;
-        private Button buttonSave;
-        private Button buttonEdit;
+        private Button buttonCancelOperation;
+        private Button buttonSaveTipoCuota;
+        private Button buttonEditTipoCuota;
         private Label labelIDTipoCuota;
         private TextBox textBoxValorActual;
         private Label labelOperation;

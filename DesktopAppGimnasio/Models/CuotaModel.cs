@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using MySql.Data.MySqlClient;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DesktopAppGimnasio.Models
 {
@@ -34,12 +35,15 @@ namespace DesktopAppGimnasio.Models
         public int CodigoSocio { get => codigoSocio; set => codigoSocio = value; }
 
         [DisplayName("Nombre")]
+        [NotMapped]
         public string NombreSocio { get => nombreSocio; set => nombreSocio = value; }
 
         [DisplayName("Apellido")]
+        [NotMapped]
         public string ApellidoSocio { get => apellidoSocio; set => apellidoSocio = value; }
 
         [DisplayName("Tipo de cuota")]
+        [NotMapped]
         public string DescripcionCuota { get => descripcionCuota; set => descripcionCuota = value; }
 
         [DisplayName("Fecha de pago")]

@@ -39,8 +39,8 @@
             textBoxSearchDebt = new TextBox();
             dataGridViewCuotasVencidas = new DataGridView();
             tabPageCuotasVisualizer = new TabPage();
-            buttonEdit = new Button();
-            buttonDelete = new Button();
+            buttonEditCuota = new Button();
+            buttonDeleteCuota = new Button();
             buttonSearchCuota = new Button();
             textBoxSearchCuota = new TextBox();
             dataGridViewCuotas = new DataGridView();
@@ -58,9 +58,9 @@
             monthCalendarFechaPago = new MonthCalendar();
             labelCodigoSocio = new Label();
             textBoxCodigoSocio = new TextBox();
-            buttonCancel = new Button();
-            buttonSave = new Button();
-            buttonAdd = new Button();
+            buttonCancelOperation = new Button();
+            buttonSaveCuota = new Button();
+            buttonAddCuota = new Button();
             labelOperation = new Label();
             labelMonto = new Label();
             textBoxMonto = new TextBox();
@@ -161,8 +161,8 @@
             // tabPageCuotasVisualizer
             // 
             tabPageCuotasVisualizer.BackColor = Color.FromArgb(113, 127, 129);
-            tabPageCuotasVisualizer.Controls.Add(buttonEdit);
-            tabPageCuotasVisualizer.Controls.Add(buttonDelete);
+            tabPageCuotasVisualizer.Controls.Add(buttonEditCuota);
+            tabPageCuotasVisualizer.Controls.Add(buttonDeleteCuota);
             tabPageCuotasVisualizer.Controls.Add(buttonSearchCuota);
             tabPageCuotasVisualizer.Controls.Add(textBoxSearchCuota);
             tabPageCuotasVisualizer.Controls.Add(dataGridViewCuotas);
@@ -174,41 +174,43 @@
             tabPageCuotasVisualizer.TabIndex = 0;
             tabPageCuotasVisualizer.Text = "Administración de cuotas";
             // 
-            // buttonEdit
+            // buttonEditCuota
             // 
-            buttonEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonEdit.BackColor = Color.FromArgb(128, 128, 255);
-            buttonEdit.FlatAppearance.BorderColor = Color.DarkSlateBlue;
-            buttonEdit.FlatAppearance.BorderSize = 2;
-            buttonEdit.FlatStyle = FlatStyle.Flat;
-            buttonEdit.Font = new Font("Century Gothic", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonEdit.ForeColor = Color.White;
-            buttonEdit.Image = (Image)resources.GetObject("buttonEdit.Image");
-            buttonEdit.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEdit.Location = new Point(583, 14);
-            buttonEdit.Name = "buttonEdit";
-            buttonEdit.Size = new Size(125, 39);
-            buttonEdit.TabIndex = 10;
-            buttonEdit.Text = "  Editar";
-            buttonEdit.UseVisualStyleBackColor = false;
+            buttonEditCuota.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonEditCuota.BackColor = Color.FromArgb(128, 128, 255);
+            buttonEditCuota.FlatAppearance.BorderColor = Color.DarkSlateBlue;
+            buttonEditCuota.FlatAppearance.BorderSize = 2;
+            buttonEditCuota.FlatStyle = FlatStyle.Flat;
+            buttonEditCuota.Font = new Font("Century Gothic", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonEditCuota.ForeColor = Color.White;
+            buttonEditCuota.Image = (Image)resources.GetObject("buttonEditCuota.Image");
+            buttonEditCuota.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonEditCuota.Location = new Point(583, 14);
+            buttonEditCuota.Name = "buttonEditCuota";
+            buttonEditCuota.Size = new Size(125, 39);
+            buttonEditCuota.TabIndex = 10;
+            buttonEditCuota.Text = "  Editar";
+            buttonEditCuota.UseVisualStyleBackColor = false;
+            buttonEditCuota.MouseClick += buttonEditCuota_MouseClick;
             // 
-            // buttonDelete
+            // buttonDeleteCuota
             // 
-            buttonDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            buttonDelete.BackColor = Color.FromArgb(128, 128, 255);
-            buttonDelete.FlatAppearance.BorderColor = Color.DarkSlateBlue;
-            buttonDelete.FlatAppearance.BorderSize = 2;
-            buttonDelete.FlatStyle = FlatStyle.Flat;
-            buttonDelete.Font = new Font("Century Gothic", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonDelete.ForeColor = Color.White;
-            buttonDelete.Image = (Image)resources.GetObject("buttonDelete.Image");
-            buttonDelete.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonDelete.Location = new Point(714, 14);
-            buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(125, 39);
-            buttonDelete.TabIndex = 11;
-            buttonDelete.Text = "   Eliminar";
-            buttonDelete.UseVisualStyleBackColor = false;
+            buttonDeleteCuota.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonDeleteCuota.BackColor = Color.FromArgb(128, 128, 255);
+            buttonDeleteCuota.FlatAppearance.BorderColor = Color.DarkSlateBlue;
+            buttonDeleteCuota.FlatAppearance.BorderSize = 2;
+            buttonDeleteCuota.FlatStyle = FlatStyle.Flat;
+            buttonDeleteCuota.Font = new Font("Century Gothic", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonDeleteCuota.ForeColor = Color.White;
+            buttonDeleteCuota.Image = (Image)resources.GetObject("buttonDeleteCuota.Image");
+            buttonDeleteCuota.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonDeleteCuota.Location = new Point(714, 14);
+            buttonDeleteCuota.Name = "buttonDeleteCuota";
+            buttonDeleteCuota.Size = new Size(125, 39);
+            buttonDeleteCuota.TabIndex = 11;
+            buttonDeleteCuota.Text = "   Eliminar";
+            buttonDeleteCuota.UseVisualStyleBackColor = false;
+            buttonDeleteCuota.MouseClick += buttonDeleteCuota_MouseClick;
             // 
             // buttonSearchCuota
             // 
@@ -227,6 +229,7 @@
             buttonSearchCuota.Text = "Buscar";
             buttonSearchCuota.TextAlign = ContentAlignment.MiddleLeft;
             buttonSearchCuota.UseVisualStyleBackColor = false;
+            buttonSearchCuota.MouseClick += buttonSearchCuota_MouseClick;
             // 
             // textBoxSearchCuota
             // 
@@ -238,6 +241,7 @@
             textBoxSearchCuota.Name = "textBoxSearchCuota";
             textBoxSearchCuota.Size = new Size(397, 29);
             textBoxSearchCuota.TabIndex = 8;
+            textBoxSearchCuota.KeyDown += textBoxSearchCuota_KeyDown;
             // 
             // dataGridViewCuotas
             // 
@@ -309,9 +313,9 @@
             tabPageAddOrEditOrDeleteCuota.Controls.Add(monthCalendarFechaPago);
             tabPageAddOrEditOrDeleteCuota.Controls.Add(labelCodigoSocio);
             tabPageAddOrEditOrDeleteCuota.Controls.Add(textBoxCodigoSocio);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(buttonCancel);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(buttonSave);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(buttonAdd);
+            tabPageAddOrEditOrDeleteCuota.Controls.Add(buttonCancelOperation);
+            tabPageAddOrEditOrDeleteCuota.Controls.Add(buttonSaveCuota);
+            tabPageAddOrEditOrDeleteCuota.Controls.Add(buttonAddCuota);
             tabPageAddOrEditOrDeleteCuota.Controls.Add(labelOperation);
             tabPageAddOrEditOrDeleteCuota.Controls.Add(labelMonto);
             tabPageAddOrEditOrDeleteCuota.Controls.Add(textBoxMonto);
@@ -335,6 +339,7 @@
             comboBoxCantidad.Name = "comboBoxCantidad";
             comboBoxCantidad.Size = new Size(238, 27);
             comboBoxCantidad.TabIndex = 34;
+            comboBoxCantidad.SelectedIndexChanged += comboBoxCantidad_SelectedIndexChanged;
             // 
             // labelCantidad
             // 
@@ -403,7 +408,7 @@
             comboBoxMes.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             comboBoxMes.ForeColor = Color.White;
             comboBoxMes.FormattingEnabled = true;
-            comboBoxMes.Items.AddRange(new object[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" });
+            comboBoxMes.Items.AddRange(new object[] { "Seleccione una opción", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" });
             comboBoxMes.Location = new Point(22, 247);
             comboBoxMes.Name = "comboBoxMes";
             comboBoxMes.Size = new Size(238, 27);
@@ -418,11 +423,12 @@
             comboBoxTipoCuota.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             comboBoxTipoCuota.ForeColor = Color.White;
             comboBoxTipoCuota.FormattingEnabled = true;
-            comboBoxTipoCuota.Items.AddRange(new object[] { "Mensual", "Semanal", "Diaria" });
+            comboBoxTipoCuota.Items.AddRange(new object[] { "Seleccione una opción", "Mensual", "Semanal", "Diaria" });
             comboBoxTipoCuota.Location = new Point(581, 111);
             comboBoxTipoCuota.Name = "comboBoxTipoCuota";
             comboBoxTipoCuota.Size = new Size(238, 27);
             comboBoxTipoCuota.TabIndex = 4;
+            comboBoxTipoCuota.SelectedIndexChanged += comboBoxTipoCuota_SelectedIndexChanged;
             // 
             // labelMes
             // 
@@ -456,6 +462,7 @@
             monthCalendarFechaPago.MaxSelectionCount = 1;
             monthCalendarFechaPago.Name = "monthCalendarFechaPago";
             monthCalendarFechaPago.TabIndex = 3;
+            monthCalendarFechaPago.DateChanged += monthCalendarFechaPago_DateChanged;
             // 
             // labelCodigoSocio
             // 
@@ -479,59 +486,63 @@
             textBoxCodigoSocio.Size = new Size(238, 27);
             textBoxCodigoSocio.TabIndex = 0;
             // 
-            // buttonCancel
+            // buttonCancelOperation
             // 
-            buttonCancel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            buttonCancel.BackColor = Color.FromArgb(128, 128, 255);
-            buttonCancel.FlatAppearance.BorderColor = Color.DarkSlateBlue;
-            buttonCancel.FlatAppearance.BorderSize = 2;
-            buttonCancel.FlatStyle = FlatStyle.Flat;
-            buttonCancel.Font = new Font("Century Gothic", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonCancel.ForeColor = Color.White;
-            buttonCancel.Image = (Image)resources.GetObject("buttonCancel.Image");
-            buttonCancel.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonCancel.Location = new Point(303, 446);
-            buttonCancel.Name = "buttonCancel";
-            buttonCancel.Size = new Size(240, 38);
-            buttonCancel.TabIndex = 7;
-            buttonCancel.Text = "Cancelar";
-            buttonCancel.UseVisualStyleBackColor = false;
+            buttonCancelOperation.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            buttonCancelOperation.BackColor = Color.FromArgb(128, 128, 255);
+            buttonCancelOperation.FlatAppearance.BorderColor = Color.DarkSlateBlue;
+            buttonCancelOperation.FlatAppearance.BorderSize = 2;
+            buttonCancelOperation.FlatStyle = FlatStyle.Flat;
+            buttonCancelOperation.Font = new Font("Century Gothic", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonCancelOperation.ForeColor = Color.White;
+            buttonCancelOperation.Image = (Image)resources.GetObject("buttonCancelOperation.Image");
+            buttonCancelOperation.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonCancelOperation.Location = new Point(303, 446);
+            buttonCancelOperation.Name = "buttonCancelOperation";
+            buttonCancelOperation.Size = new Size(240, 38);
+            buttonCancelOperation.TabIndex = 7;
+            buttonCancelOperation.Text = "Cancelar";
+            buttonCancelOperation.UseVisualStyleBackColor = false;
+            buttonCancelOperation.MouseClick += buttonCancelOperation_MouseClick;
             // 
-            // buttonSave
+            // buttonSaveCuota
             // 
-            buttonSave.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            buttonSave.BackColor = Color.FromArgb(128, 128, 255);
-            buttonSave.FlatAppearance.BorderColor = Color.DarkSlateBlue;
-            buttonSave.FlatAppearance.BorderSize = 2;
-            buttonSave.FlatStyle = FlatStyle.Flat;
-            buttonSave.Font = new Font("Century Gothic", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSave.ForeColor = Color.White;
-            buttonSave.Image = (Image)resources.GetObject("buttonSave.Image");
-            buttonSave.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonSave.Location = new Point(303, 402);
-            buttonSave.Name = "buttonSave";
-            buttonSave.Size = new Size(240, 38);
-            buttonSave.TabIndex = 6;
-            buttonSave.Text = "Guardar";
-            buttonSave.UseVisualStyleBackColor = false;
+            buttonSaveCuota.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            buttonSaveCuota.BackColor = Color.FromArgb(128, 128, 255);
+            buttonSaveCuota.FlatAppearance.BorderColor = Color.DarkSlateBlue;
+            buttonSaveCuota.FlatAppearance.BorderSize = 2;
+            buttonSaveCuota.FlatStyle = FlatStyle.Flat;
+            buttonSaveCuota.Font = new Font("Century Gothic", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSaveCuota.ForeColor = Color.White;
+            buttonSaveCuota.Image = (Image)resources.GetObject("buttonSaveCuota.Image");
+            buttonSaveCuota.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonSaveCuota.Location = new Point(303, 402);
+            buttonSaveCuota.Name = "buttonSaveCuota";
+            buttonSaveCuota.Size = new Size(240, 38);
+            buttonSaveCuota.TabIndex = 6;
+            buttonSaveCuota.Text = "Guardar";
+            buttonSaveCuota.UseVisualStyleBackColor = false;
+            buttonSaveCuota.MouseClick += buttonSaveCuota_MouseClick;
             // 
-            // buttonAdd
+            // buttonAddCuota
             // 
-            buttonAdd.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            buttonAdd.BackColor = Color.FromArgb(128, 128, 255);
-            buttonAdd.FlatAppearance.BorderColor = Color.DarkSlateBlue;
-            buttonAdd.FlatAppearance.BorderSize = 2;
-            buttonAdd.FlatStyle = FlatStyle.Flat;
-            buttonAdd.Font = new Font("Century Gothic", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonAdd.ForeColor = Color.White;
-            buttonAdd.Image = (Image)resources.GetObject("buttonAdd.Image");
-            buttonAdd.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonAdd.Location = new Point(303, 358);
-            buttonAdd.Name = "buttonAdd";
-            buttonAdd.Size = new Size(240, 38);
-            buttonAdd.TabIndex = 5;
-            buttonAdd.Text = "Añadir";
-            buttonAdd.UseVisualStyleBackColor = false;
+            buttonAddCuota.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            buttonAddCuota.BackColor = Color.FromArgb(128, 128, 255);
+            buttonAddCuota.FlatAppearance.BorderColor = Color.DarkSlateBlue;
+            buttonAddCuota.FlatAppearance.BorderSize = 2;
+            buttonAddCuota.FlatStyle = FlatStyle.Flat;
+            buttonAddCuota.Font = new Font("Century Gothic", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAddCuota.ForeColor = Color.White;
+            buttonAddCuota.Image = (Image)resources.GetObject("buttonAddCuota.Image");
+            buttonAddCuota.ImageAlign = ContentAlignment.MiddleLeft;
+            buttonAddCuota.Location = new Point(303, 358);
+            buttonAddCuota.Name = "buttonAddCuota";
+            buttonAddCuota.Size = new Size(240, 38);
+            buttonAddCuota.TabIndex = 5;
+            buttonAddCuota.Text = "Añadir";
+            buttonAddCuota.UseVisualStyleBackColor = false;
+            buttonAddCuota.EnabledChanged += buttonAddCuota_EnabledChanged;
+            buttonAddCuota.MouseClick += buttonAddCuota_MouseClick;
             // 
             // labelOperation
             // 
@@ -570,7 +581,6 @@
             textBoxMonto.ForeColor = Color.White;
             textBoxMonto.Location = new Point(581, 244);
             textBoxMonto.Name = "textBoxMonto";
-            textBoxMonto.ReadOnly = true;
             textBoxMonto.Size = new Size(212, 27);
             textBoxMonto.TabIndex = 1;
             // 
@@ -589,6 +599,7 @@
             buttonClose.Size = new Size(76, 39);
             buttonClose.TabIndex = 6;
             buttonClose.UseVisualStyleBackColor = false;
+            buttonClose.MouseClick += buttonClose_MouseClick;
             // 
             // CuotaView
             // 
@@ -619,15 +630,15 @@
         private TabPage tabPageCuotasVisualizer;
         private TabPage tabPageAddOrEditOrDeleteCuota;
         private DataGridView dataGridViewCuotas;
-        private Button buttonEdit;
+        private Button buttonEditCuota;
         private Button buttonSearchCuota;
-        private Button buttonDelete;
+        private Button buttonDeleteCuota;
         private TextBox textBoxSearchCuota;
         private Label labelCodigoSocio;
         private TextBox textBoxCodigoSocio;
-        private Button buttonCancel;
-        private Button buttonSave;
-        private Button buttonAdd;
+        private Button buttonCancelOperation;
+        private Button buttonSaveCuota;
+        private Button buttonAddCuota;
         private Label labelOperation;
         private Label labelMonto;
         private TextBox textBoxMonto;
