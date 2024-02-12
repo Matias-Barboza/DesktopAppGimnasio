@@ -29,6 +29,8 @@ namespace DesktopAppGimnasio.Presenters
             this.view.SaveEvent += SaveTipoCuota;
             this.view.CancelEvent += CancelAction;
 
+            this.view.RefreshDataGridView += RefreshDataGridView;
+
             this.view.SetCuotasBindingSource(tiposCuotaBindingSource);
 
             LoadAllTiposCuotasList();
@@ -40,6 +42,11 @@ namespace DesktopAppGimnasio.Presenters
         {
             tiposCuotaList = repository.GetAll();
             tiposCuotaBindingSource.DataSource = tiposCuotaList;
+        }
+
+        private void RefreshDataGridView(object? sender, EventArgs e)
+        {
+            LoadAllTiposCuotasList();
         }
 
         private void LoadSelectedTipoCuotaToEdit(object? sender, EventArgs e)
@@ -83,7 +90,6 @@ namespace DesktopAppGimnasio.Presenters
                 }
 
                 view.IsSuccessful = true;
-                LoadAllTiposCuotasList();
                 CleanFieldsView();
                 view.MustEnter = false;
             }

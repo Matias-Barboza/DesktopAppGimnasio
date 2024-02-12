@@ -35,6 +35,7 @@ namespace DesktopAppGimnasio.Views
         event EventHandler CancelEvent;
 
         event EventHandler GetAmountsEvent;
+        event EventHandler RefreshDataGridView;
 
         public void SetCuotasBindingSource(BindingSource cuotasList);
 

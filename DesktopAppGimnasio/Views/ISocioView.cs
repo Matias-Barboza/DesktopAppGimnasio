@@ -32,6 +32,8 @@ namespace DesktopAppGimnasio.Views
         event EventHandler SaveEvent;
         event EventHandler CancelEvent;
 
+        event EventHandler RefreshDataGridView;
+
         // Methods
         void SetSocioListBindindSource(BindingSource socioList);
         void Show();

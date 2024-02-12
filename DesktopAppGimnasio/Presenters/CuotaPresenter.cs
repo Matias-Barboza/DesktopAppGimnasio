@@ -34,6 +34,7 @@ namespace DesktopAppGimnasio.Presenters
             this.view.SaveEvent += SaveCuota;
             this.view.CancelEvent += CancelAction;
             this.view.GetAmountsEvent += GetAmounts;
+            this.view.RefreshDataGridView += RefreschDataGridView;
 
             this.view.SetCuotasBindingSource(cuotasBindingSource);
 
@@ -60,6 +61,7 @@ namespace DesktopAppGimnasio.Presenters
             this.view.SaveEvent += SaveCuota;
             this.view.CancelEvent += CancelAction;
             this.view.GetAmountsEvent += GetAmounts;
+            this.view.RefreshDataGridView += RefreschDataGridView;
 
             this.view.SetCuotasBindingSource(cuotasBindingSource);
 
@@ -75,6 +77,11 @@ namespace DesktopAppGimnasio.Presenters
         {
             cuotasList = repository.GetAll();
             cuotasBindingSource.DataSource = cuotasList;
+        }
+
+        private void RefreschDataGridView(object? sender, EventArgs e)
+        {
+            LoadAllCuotasList();
         }
 
         private void SearchCuota(object? sender, EventArgs e)
@@ -156,6 +163,7 @@ namespace DesktopAppGimnasio.Presenters
 
         private void SaveCuota(object? sender, EventArgs e)
         {
+
             if (!view.MustEnter) 
             {
                 return;
@@ -204,7 +212,6 @@ namespace DesktopAppGimnasio.Presenters
                 }
 
                 view.IsSuccessful = true;
-                LoadAllCuotasList();
                 CleanFieldsView();
                 view.MustEnter = false;
             }

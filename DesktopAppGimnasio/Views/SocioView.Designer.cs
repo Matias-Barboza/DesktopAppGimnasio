@@ -104,6 +104,7 @@
             buttonEdit.TabIndex = 2;
             buttonEdit.Text = "  Editar";
             buttonEdit.UseVisualStyleBackColor = false;
+            buttonEdit.MouseClick += buttonEdit_MouseClick;
             // 
             // buttonSearchSocio
             // 
@@ -122,6 +123,7 @@
             buttonSearchSocio.Text = "Buscar";
             buttonSearchSocio.TextAlign = ContentAlignment.MiddleLeft;
             buttonSearchSocio.UseVisualStyleBackColor = false;
+            buttonSearchSocio.MouseClick += buttonSearchSocio_MouseClick;
             // 
             // buttonDelete
             // 
@@ -140,6 +142,7 @@
             buttonDelete.TabIndex = 3;
             buttonDelete.Text = "    Eliminar";
             buttonDelete.UseVisualStyleBackColor = false;
+            buttonDelete.MouseClick += buttonDelete_MouseClick;
             // 
             // textBoxSearchSocio
             // 
@@ -151,6 +154,7 @@
             textBoxSearchSocio.Name = "textBoxSearchSocio";
             textBoxSearchSocio.Size = new Size(397, 29);
             textBoxSearchSocio.TabIndex = 0;
+            textBoxSearchSocio.KeyDown += textBoxSearchSocio_KeyDown;
             // 
             // dataGridViewSocios
             // 
@@ -240,6 +244,7 @@
             buttonCancel.TabIndex = 5;
             buttonCancel.Text = "Cancelar";
             buttonCancel.UseVisualStyleBackColor = false;
+            buttonCancel.MouseClick += buttonCancel_MouseClick;
             // 
             // buttonSave
             // 
@@ -258,6 +263,7 @@
             buttonSave.TabIndex = 4;
             buttonSave.Text = "Guardar";
             buttonSave.UseVisualStyleBackColor = false;
+            buttonSave.MouseClick += buttonSave_MouseClick;
             // 
             // labelCodigoSocio
             // 
@@ -288,6 +294,8 @@
             buttonAdd.TabIndex = 3;
             buttonAdd.Text = "Añadir";
             buttonAdd.UseVisualStyleBackColor = false;
+            buttonAdd.EnabledChanged += buttonAdd_EnabledChanged;
+            buttonAdd.MouseClick += buttonAdd_MouseClick;
             // 
             // textBoxName
             // 
@@ -405,6 +413,7 @@
             buttonClose.Size = new Size(76, 39);
             buttonClose.TabIndex = 5;
             buttonClose.UseVisualStyleBackColor = false;
+            buttonClose.MouseClick += buttonClose_MouseClick;
             // 
             // SocioView
             // 

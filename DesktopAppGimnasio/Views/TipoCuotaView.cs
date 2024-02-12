@@ -37,6 +37,8 @@ namespace DesktopAppGimnasio.Views
         public event EventHandler SaveEvent;
         public event EventHandler CancelEvent;
 
+        public event EventHandler RefreshDataGridView;
+
         public void HideColumn(int index)
         {
             dataGridViewTiposCuotas.Columns[index].Visible = false;
@@ -45,6 +47,12 @@ namespace DesktopAppGimnasio.Views
         public void SetCuotasBindingSource(BindingSource tiposCuotaList)
         {
             dataGridViewTiposCuotas.DataSource = tiposCuotaList;
+        }
+
+        public void CleanInterfaceProperties()
+        {
+            Message = string.Empty;
+            Caption = string.Empty;
         }
 
         private static TipoCuotaView instance;
@@ -84,6 +92,7 @@ namespace DesktopAppGimnasio.Views
 
             if (isSuccessful)
             {
+                RefreshDataGridView?.Invoke(this, EventArgs.Empty);
                 tabControl.SelectedTab = tabPageTiposCuotasVisualizer;
                 MustEnter = false;
             }
@@ -91,6 +100,7 @@ namespace DesktopAppGimnasio.Views
             labelOperation.Text = "Operación actual:";
 
             MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            CleanInterfaceProperties();
         }
 
         private void buttonCancelOperation_MouseClick(object sender, MouseEventArgs e)

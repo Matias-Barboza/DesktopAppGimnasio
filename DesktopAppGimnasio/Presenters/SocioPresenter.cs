@@ -32,6 +32,8 @@ namespace DesktopAppGimnasio.Presenters
             this.view.SaveEvent += SaveSocio;
             this.view.CancelEvent += CancelAction;
 
+            this.view.RefreshDataGridView += RefreshDataGridView;
+
             this.view.SetSocioListBindindSource(sociosBindingsource);
 
             LoadAllSocioList();
@@ -44,6 +46,10 @@ namespace DesktopAppGimnasio.Presenters
         {
             sociosList = repository.GetAll();
             sociosBindingsource.DataSource = sociosList;
+        }
+        private void RefreshDataGridView(object? sender, EventArgs e)
+        {
+            LoadAllSocioList();
         }
 
         private void SearchSocio(object? sender, EventArgs e)
@@ -138,7 +144,6 @@ namespace DesktopAppGimnasio.Presenters
                 }
 
                 view.IsSuccessful = true;
-                LoadAllSocioList();
                 CleanViewFields();
                 view.MustEnter = false;
             }

@@ -53,6 +53,7 @@ namespace DesktopAppGimnasio.Views
         public event EventHandler CancelEvent;
 
         public event EventHandler GetAmountsEvent;
+        public event EventHandler RefreshDataGridView;
 
         public void SetCuotasBindingSource(BindingSource cuotasList)
         {
@@ -62,6 +63,11 @@ namespace DesktopAppGimnasio.Views
         public void HideColumn(int index)
         {
             dataGridViewCuotas.Columns[index].Visible = false;
+        }
+        public void CleanInterfaceProperties()
+        {
+            Message = string.Empty;
+            Caption = string.Empty;
         }
 
         private static CuotaView instance;
@@ -127,6 +133,7 @@ namespace DesktopAppGimnasio.Views
             {
                 DeleteEvent?.Invoke(this, EventArgs.Empty);
                 MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CleanInterfaceProperties();
             }
         }
 
@@ -136,6 +143,7 @@ namespace DesktopAppGimnasio.Views
 
             if (isSuccessful)
             {
+                RefreshDataGridView?.Invoke(this, EventArgs.Empty);
                 tabControl.SelectedTab = tabPageCuotasVisualizer;
                 MustEnter = false;
             }
@@ -148,6 +156,7 @@ namespace DesktopAppGimnasio.Views
             }
 
             MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            CleanInterfaceProperties();    
         }
 
         private void buttonCancelOperation_MouseClick(object sender, MouseEventArgs e)

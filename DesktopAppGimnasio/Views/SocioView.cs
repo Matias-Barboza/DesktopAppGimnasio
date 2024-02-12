@@ -24,79 +24,6 @@ namespace DesktopAppGimnasio.Views
         public SocioView()
         {
             InitializeComponent();
-            AssociateAndRaiseEvents();
-        }
-
-        private void AssociateAndRaiseEvents()
-        {
-            // Principal Events
-            buttonSearchSocio.MouseClick += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
-            buttonAdd.MouseClick += delegate 
-            { 
-                AddNewEvent?.Invoke(this, EventArgs.Empty);
-                labelOperation.Text = "Operación actual: Añadir socio";
-            };
-            buttonEdit.MouseClick += delegate 
-            { 
-                EditEvent?.Invoke(this, EventArgs.Empty);
-                labelOperation.Text = "Operación actual: Editar socio";
-                tabControl.SelectedTab = tabPageAddOrEditOrDeleteSocio;
-                buttonAdd.Enabled = false;
-            };
-            buttonDelete.MouseClick += delegate 
-            { 
-                DialogResult result = MessageBox.Show("¿Está seguro de eliminar el socio?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (result == DialogResult.Yes) 
-                {
-                    DeleteEvent?.Invoke(this, EventArgs.Empty);
-                    MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            };
-            buttonSave.MouseClick += delegate 
-            { 
-                SaveEvent?.Invoke(this, EventArgs.Empty);
-
-                if (isSuccessful) 
-                {
-                    tabControl.SelectedTab = tabPageSociosVisualizer;
-                    MustEnter = false;
-                }
-
-                labelOperation.Text = "Operación actual:";
-
-                if (!buttonAdd.Enabled)
-                {
-                    buttonAdd.Enabled = true;
-                }
-
-                MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            };
-            buttonCancel.MouseClick += delegate { 
-                CancelEvent?.Invoke(this, EventArgs.Empty);
-                labelOperation.Text = "Operación actual:";
-                
-                if (!buttonAdd.Enabled) 
-                {
-                    buttonAdd.Enabled = true;
-                }
-            };
-            
-            
-            // Other Events
-            textBoxSearchSocio.KeyDown += (s, e) =>
-            {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    SearchEvent?.Invoke(this, EventArgs.Empty);
-                }
-            };
-            buttonClose.MouseClick += delegate { this.Close(); };
-
-            buttonAdd.EnabledChanged += delegate
-            {
-                buttonAdd.ForeColor = Color.White;
-            };
         }
 
         public int CodigoSocio { get => (textBoxCodigoSocio.Text == "") ? 0 : Convert.ToInt32(textBoxCodigoSocio.Text); set => textBoxCodigoSocio.Text = (value == 0) ? String.Empty : value.ToString(); }
@@ -118,13 +45,21 @@ namespace DesktopAppGimnasio.Views
         public event EventHandler SaveEvent;
         public event EventHandler CancelEvent;
 
+        public event EventHandler RefreshDataGridView;
+
         public void SetSocioListBindindSource(BindingSource sociosList)
         {
             dataGridViewSocios.DataSource = sociosList;
         }
 
+        public void CleanInterfaceProperties()
+        {
+            Message = string.Empty;
+            Caption = string.Empty;
+        }
+
         private static SocioView instance;
-        public static SocioView GetInstance(Form parentContainer) 
+        public static SocioView GetInstance(Form parentContainer)
         {
 
             if (instance == null || instance.IsDisposed)
@@ -134,10 +69,10 @@ namespace DesktopAppGimnasio.Views
                 instance.FormBorderStyle = FormBorderStyle.None;
                 instance.Dock = DockStyle.Fill;
             }
-            else 
+            else
             {
 
-                if (instance.WindowState == FormWindowState.Minimized) 
+                if (instance.WindowState == FormWindowState.Minimized)
                 {
                     instance.WindowState = FormWindowState.Normal;
                 }
@@ -145,6 +80,88 @@ namespace DesktopAppGimnasio.Views
             }
 
             return instance;
+        }
+
+        private void buttonSearchSocio_MouseClick(object sender, MouseEventArgs e)
+        {
+            SearchEvent?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void buttonAdd_MouseClick(object sender, MouseEventArgs e)
+        {
+            AddNewEvent?.Invoke(this, EventArgs.Empty);
+            labelOperation.Text = "Operación actual: Añadir socio";
+        }
+
+        private void buttonEdit_MouseClick(object sender, MouseEventArgs e)
+        {
+            EditEvent?.Invoke(this, EventArgs.Empty);
+            labelOperation.Text = "Operación actual: Editar socio";
+            tabControl.SelectedTab = tabPageAddOrEditOrDeleteSocio;
+            buttonAdd.Enabled = false;
+        }
+
+        private void buttonDelete_MouseClick(object sender, MouseEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Está seguro de eliminar el socio?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes)
+            {
+                DeleteEvent?.Invoke(this, EventArgs.Empty);
+                MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CleanInterfaceProperties();
+            }
+        }
+
+        private void buttonSave_MouseClick(object sender, MouseEventArgs e)
+        {
+            SaveEvent?.Invoke(this, EventArgs.Empty);
+
+            if (isSuccessful)
+            {
+                RefreshDataGridView?.Invoke(this, EventArgs.Empty);
+                tabControl.SelectedTab = tabPageSociosVisualizer;
+                MustEnter = false;
+            }
+
+            labelOperation.Text = "Operación actual:";
+
+            if (!buttonAdd.Enabled)
+            {
+                buttonAdd.Enabled = true;
+            }
+
+            MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            CleanInterfaceProperties();
+        }
+
+        private void buttonCancel_MouseClick(object sender, MouseEventArgs e)
+        {
+            CancelEvent?.Invoke(this, EventArgs.Empty);
+            labelOperation.Text = "Operación actual:";
+
+            if (!buttonAdd.Enabled)
+            {
+                buttonAdd.Enabled = true;
+            }
+        }
+
+        private void textBoxSearchSocio_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SearchEvent?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        private void buttonClose_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonAdd_EnabledChanged(object sender, EventArgs e)
+        {
+            buttonAdd.ForeColor = Color.White;
         }
     }
 }

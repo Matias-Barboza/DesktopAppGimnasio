@@ -24,6 +24,8 @@ namespace DesktopAppGimnasio.Views
         event EventHandler SaveEvent;
         event EventHandler CancelEvent;
 
+        event EventHandler RefreshDataGridView;
+
         public void SetCuotasBindingSource(BindingSource tiposCuotaList);
 
         public void HideColumn(int index);
