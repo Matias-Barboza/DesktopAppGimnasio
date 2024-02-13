@@ -30,7 +30,7 @@ namespace DesktopAppGimnasio.Views
         public string DniSocio { get => textBoxDNI.Text; set => textBoxDNI.Text = value; }
         public string NombreSocio { get => textBoxName.Text; set => textBoxName.Text = value; }
         public string ApellidoSocio { get => textBoxLastName.Text; set => textBoxLastName.Text = value; }
-        public bool EstaActivo { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool EstaActivo { get => checkBoxEstado.Checked ; set => checkBoxEstado.Checked = value; }
         public string SearchValue { get => textBoxSearchSocio.Text; set => textBoxSearchSocio.Text = value; }
         public bool IsEdit { get => isEdit; set => isEdit = value; }
         public bool IsSuccessful { get => isSuccessful; set => isSuccessful = value; }
@@ -58,6 +58,12 @@ namespace DesktopAppGimnasio.Views
             Caption = string.Empty;
         }
 
+        public void ChangeEstadoActividadVisibility(bool visible) 
+        {
+            labelEstadoActividad.Visible = visible;
+            checkBoxEstado.Visible = visible;
+        }
+
         private static SocioView instance;
         public static SocioView GetInstance(Form parentContainer)
         {
@@ -82,6 +88,7 @@ namespace DesktopAppGimnasio.Views
             return instance;
         }
 
+        // Events
         private void buttonSearchSocio_MouseClick(object sender, MouseEventArgs e)
         {
             SearchEvent?.Invoke(this, EventArgs.Empty);
@@ -99,6 +106,7 @@ namespace DesktopAppGimnasio.Views
             labelOperation.Text = "Operación actual: Editar socio";
             tabControl.SelectedTab = tabPageAddOrEditOrDeleteSocio;
             buttonAdd.Enabled = false;
+            ChangeEstadoActividadVisibility(true);
         }
 
         private void buttonDelete_MouseClick(object sender, MouseEventArgs e)
@@ -131,6 +139,8 @@ namespace DesktopAppGimnasio.Views
                 buttonAdd.Enabled = true;
             }
 
+            ChangeEstadoActividadVisibility(false);
+
             MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             CleanInterfaceProperties();
         }
@@ -144,6 +154,8 @@ namespace DesktopAppGimnasio.Views
             {
                 buttonAdd.Enabled = true;
             }
+
+            ChangeEstadoActividadVisibility(false);
         }
 
         private void textBoxSearchSocio_KeyDown(object sender, KeyEventArgs e)

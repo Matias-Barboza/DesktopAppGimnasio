@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SocioView));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             tabControl = new TabControl();
             tabPageSociosVisualizer = new TabPage();
             buttonEdit = new Button();
@@ -40,6 +40,8 @@
             textBoxSearchSocio = new TextBox();
             dataGridViewSocios = new DataGridView();
             tabPageAddOrEditOrDeleteSocio = new TabPage();
+            checkBoxEstado = new CheckBox();
+            labelEstadoActividad = new Label();
             buttonCancel = new Button();
             buttonSave = new Button();
             labelCodigoSocio = new Label();
@@ -165,14 +167,14 @@
             dataGridViewSocios.BackgroundColor = Color.FromArgb(99, 111, 113);
             dataGridViewSocios.BorderStyle = BorderStyle.None;
             dataGridViewSocios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.Gold;
-            dataGridViewCellStyle1.Font = new Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Gold;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewSocios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.Gold;
+            dataGridViewCellStyle4.Font = new Font("Arial Rounded MT Bold", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.Gold;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridViewSocios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewSocios.ColumnHeadersHeight = 50;
             dataGridViewSocios.EnableHeadersVisualStyles = false;
             dataGridViewSocios.GridColor = Color.Goldenrod;
@@ -181,23 +183,23 @@
             dataGridViewSocios.Name = "dataGridViewSocios";
             dataGridViewSocios.ReadOnly = true;
             dataGridViewSocios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(99, 111, 113);
-            dataGridViewCellStyle2.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Yellow;
-            dataGridViewCellStyle2.SelectionBackColor = Color.Yellow;
-            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(99, 111, 113);
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewSocios.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(99, 111, 113);
+            dataGridViewCellStyle5.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.Yellow;
+            dataGridViewCellStyle5.SelectionBackColor = Color.Yellow;
+            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(99, 111, 113);
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridViewSocios.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewSocios.RowHeadersVisible = false;
             dataGridViewSocios.RowHeadersWidth = 20;
             dataGridViewSocios.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(99, 111, 113);
-            dataGridViewCellStyle3.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.Yellow;
-            dataGridViewCellStyle3.SelectionBackColor = Color.Yellow;
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(99, 111, 113);
-            dataGridViewSocios.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(99, 111, 113);
+            dataGridViewCellStyle6.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.Yellow;
+            dataGridViewCellStyle6.SelectionBackColor = Color.Yellow;
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(99, 111, 113);
+            dataGridViewSocios.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewSocios.RowTemplate.Height = 30;
             dataGridViewSocios.RowTemplate.Resizable = DataGridViewTriState.False;
             dataGridViewSocios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -207,6 +209,8 @@
             // tabPageAddOrEditOrDeleteSocio
             // 
             tabPageAddOrEditOrDeleteSocio.BackColor = Color.FromArgb(136, 150, 151);
+            tabPageAddOrEditOrDeleteSocio.Controls.Add(checkBoxEstado);
+            tabPageAddOrEditOrDeleteSocio.Controls.Add(labelEstadoActividad);
             tabPageAddOrEditOrDeleteSocio.Controls.Add(buttonCancel);
             tabPageAddOrEditOrDeleteSocio.Controls.Add(buttonSave);
             tabPageAddOrEditOrDeleteSocio.Controls.Add(labelCodigoSocio);
@@ -227,6 +231,38 @@
             tabPageAddOrEditOrDeleteSocio.TabIndex = 1;
             tabPageAddOrEditOrDeleteSocio.Text = "Añadir/Editar/Eliminar Socio";
             // 
+            // checkBoxEstado
+            // 
+            checkBoxEstado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            checkBoxEstado.AutoSize = true;
+            checkBoxEstado.BackColor = Color.DimGray;
+            checkBoxEstado.FlatAppearance.BorderColor = Color.Black;
+            checkBoxEstado.FlatAppearance.CheckedBackColor = Color.FromArgb(0, 192, 192);
+            checkBoxEstado.FlatStyle = FlatStyle.Flat;
+            checkBoxEstado.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            checkBoxEstado.ForeColor = Color.White;
+            checkBoxEstado.Location = new Point(303, 111);
+            checkBoxEstado.Name = "checkBoxEstado";
+            checkBoxEstado.Padding = new Padding(5, 3, 120, 2);
+            checkBoxEstado.Size = new Size(199, 28);
+            checkBoxEstado.TabIndex = 3;
+            checkBoxEstado.Text = "Activo";
+            checkBoxEstado.UseVisualStyleBackColor = false;
+            checkBoxEstado.Visible = false;
+            // 
+            // labelEstadoActividad
+            // 
+            labelEstadoActividad.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            labelEstadoActividad.AutoSize = true;
+            labelEstadoActividad.Font = new Font("Century Gothic", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            labelEstadoActividad.ForeColor = Color.White;
+            labelEstadoActividad.Location = new Point(303, 84);
+            labelEstadoActividad.Name = "labelEstadoActividad";
+            labelEstadoActividad.Size = new Size(203, 23);
+            labelEstadoActividad.TabIndex = 12;
+            labelEstadoActividad.Text = "Estado de actividad:";
+            labelEstadoActividad.Visible = false;
+            // 
             // buttonCancel
             // 
             buttonCancel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
@@ -241,7 +277,7 @@
             buttonCancel.Location = new Point(303, 446);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(240, 38);
-            buttonCancel.TabIndex = 5;
+            buttonCancel.TabIndex = 6;
             buttonCancel.Text = "Cancelar";
             buttonCancel.UseVisualStyleBackColor = false;
             buttonCancel.MouseClick += buttonCancel_MouseClick;
@@ -260,7 +296,7 @@
             buttonSave.Location = new Point(303, 402);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(240, 38);
-            buttonSave.TabIndex = 4;
+            buttonSave.TabIndex = 5;
             buttonSave.Text = "Guardar";
             buttonSave.UseVisualStyleBackColor = false;
             buttonSave.MouseClick += buttonSave_MouseClick;
@@ -291,7 +327,7 @@
             buttonAdd.Location = new Point(303, 358);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(240, 38);
-            buttonAdd.TabIndex = 3;
+            buttonAdd.TabIndex = 4;
             buttonAdd.Text = "Añadir";
             buttonAdd.UseVisualStyleBackColor = false;
             buttonAdd.EnabledChanged += buttonAdd_EnabledChanged;
@@ -458,5 +494,7 @@
         private Button buttonSave;
         private Label labelCodigoSocio;
         private TextBox textBoxCodigoSocio;
+        private CheckBox checkBoxEstado;
+        private Label labelEstadoActividad;
     }
 }

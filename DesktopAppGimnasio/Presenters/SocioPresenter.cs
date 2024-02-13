@@ -82,6 +82,7 @@ namespace DesktopAppGimnasio.Presenters
             view.DniSocio = socio.DNI;
             view.NombreSocio = socio.Nombre;
             view.ApellidoSocio = socio.Apellido;
+            view.EstaActivo = socio.EstaActivo;
 
             view.IsEdit = true;
             view.MustEnter = true;
@@ -123,6 +124,7 @@ namespace DesktopAppGimnasio.Presenters
             socio.DNI = view.DniSocio;
             socio.Nombre = view.NombreSocio;
             socio.Apellido = view.ApellidoSocio;
+            socio.EstaActivo = (view.IsEdit) ? view.EstaActivo : true;
 
             try
             {

@@ -85,7 +85,7 @@ namespace DesktopAppGimnasio._Repositories
                 {
                     connection.Open();
                     command.Connection = connection;
-                    command.CommandText = @"UPDATE socios SET DNI = @DNI_nuevo, nombre = @nombre_nuevo, apellido = @apellido_nuevo
+                    command.CommandText = @"UPDATE socios SET DNI = @DNI_nuevo, nombre = @nombre_nuevo, apellido = @apellido_nuevo, esta_activo = @estado_nuevo
                                            WHERE codigo_socio = @codigoSocio;";
                     command.Parameters.Add(new MySqlParameter()
                     {
@@ -110,6 +110,12 @@ namespace DesktopAppGimnasio._Repositories
                         ParameterName = "apellido_nuevo",
                         MySqlDbType = MySqlDbType.VarChar,
                         Value = socioModel.Apellido
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "estado_nuevo",
+                        MySqlDbType = MySqlDbType.Bit,
+                        Value = socioModel.EstaActivo
                     });
 
                     command.ExecuteNonQuery();
