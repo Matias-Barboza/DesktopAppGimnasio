@@ -21,12 +21,14 @@ namespace DesktopAppGimnasio.Views
         private string message;
         private string caption;
         private bool mustEnter;
+        private bool mustShowDebtsMessage;
 
         public CuotaView()
         {
             InitializeComponent();
             comboBoxMes.SelectedIndex = DateTime.Now.Month;
             comboBoxTipoCuota.SelectedIndex = 0;
+            MustShowDebtsMessage = true;
         }
 
         public int CodigoCuota { get => (textBoxCodigoCuota.Text == "") ? 0 : Convert.ToInt32(textBoxCodigoCuota.Text); set => textBoxCodigoCuota.Text = (value == 0) ? String.Empty : value.ToString(); }
@@ -45,6 +47,7 @@ namespace DesktopAppGimnasio.Views
         public string Message { get => message; set => message = value; }
         public string Caption { get => caption; set => caption = value; }
         public bool MustEnter { get => mustEnter; set => mustEnter = value; }
+        public bool MustShowDebtsMessage { get => mustShowDebtsMessage; set => mustShowDebtsMessage = value; }
 
         public event EventHandler SearchEvent;
         public event EventHandler SearchDebtsEvent;
@@ -76,6 +79,21 @@ namespace DesktopAppGimnasio.Views
         public void HideDebtsDataGridColumn(int index)
         {
             dataGridViewCuotasVencidas.Columns[index].Visible = false;
+        }
+
+        public void ShowDebtsMessage(int count)
+        {
+            if (count == 0) 
+            {
+                return;
+            }
+            
+            DialogResult result = MessageBox.Show($"Existen {count} cuotas vencidas. Revisar por favor.\n¿Desea seguir viendo este mensaje?", "Alerta de cuotas vencidas", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.No) 
+            {
+                MustShowDebtsMessage = false;
+            }
         }
 
         public void CleanInterfaceProperties()

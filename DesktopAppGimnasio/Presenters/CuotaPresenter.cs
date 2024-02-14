@@ -47,14 +47,21 @@ namespace DesktopAppGimnasio.Presenters
 
             LoadAllCuotasList();
             LoadAllCuotasVencidasList();
-            view.Amounts = GetAllQuotesAmount();
+            this.view.Amounts = GetAllQuotesAmount();
 
             this.view.HideColumn(9);
             this.view.HideDebtsDataGridColumn(4);
             this.view.HideDebtsDataGridColumn(7);
             this.view.HideDebtsDataGridColumn(8);
             this.view.HideDebtsDataGridColumn(9);
+
+            if (view.MustShowDebtsMessage) 
+            {
+                view.ShowDebtsMessage(cuotasVencidasList.Count());
+            }
+
             this.view.Show();
+
         }
 
         // Common methods

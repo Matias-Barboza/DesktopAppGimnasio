@@ -26,6 +26,7 @@ namespace DesktopAppGimnasio.Views
         String Message { get; set; }
         String Caption {  get; set; }
         bool MustEnter { get; set; }
+        bool MustShowDebtsMessage {  get; set; }
 
         // Events
         event EventHandler SearchEvent;
@@ -46,6 +47,8 @@ namespace DesktopAppGimnasio.Views
 
         public void HideColumn(int index);
         public void HideDebtsDataGridColumn(int index);
+
+        public void ShowDebtsMessage(int count);
 
         public void Show();
     }
