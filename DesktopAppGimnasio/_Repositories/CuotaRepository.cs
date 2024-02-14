@@ -298,6 +298,7 @@ namespace DesktopAppGimnasio._Repositories
 															                                                   FROM cuotas AS c
 															                                                   WHERE c.codigo_socio_fk = cv.codigo_socio_fk);";
 
+
                     using(MySqlDataReader reader = command.ExecuteReader()) 
                     {
 
@@ -345,6 +346,24 @@ namespace DesktopAppGimnasio._Repositories
                                       cv.fecha_vencimiento = (SELECT MAX(c.fecha_vencimiento)
 												              FROM cuotas AS c
 												              WHERE c.codigo_socio_fk = cv.codigo_socio_fk);";
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "codigoCuota",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = codigo_cuota
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "codigoSocio",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = codigo_socio
+                    });
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "nombre_y_apellido",
+                        MySqlDbType = MySqlDbType.VarChar,
+                        Value = nombreYApellidoSocio
+                    });
 
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
