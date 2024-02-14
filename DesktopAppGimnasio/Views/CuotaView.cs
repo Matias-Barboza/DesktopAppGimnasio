@@ -39,6 +39,7 @@ namespace DesktopAppGimnasio.Views
         public IEnumerable<float> Amounts { get => amounts; set => amounts = value; }
         public int Cantidad { get => (comboBoxCantidad.SelectedItem == "") ? -1 : Convert.ToInt32(comboBoxCantidad.SelectedItem); set => comboBoxCantidad.SelectedIndex = value; }
         public string SearchValue { get => textBoxSearchCuota.Text; set => textBoxSearchCuota.Text = value; }
+        public string SearchDebtValue { get => textBoxSearchDebt.Text; set => textBoxSearchDebt.Text = value; }
         public bool IsEdit { get => isEdit; set => isEdit = value; }
         public bool IsSuccessful { get => isSuccessful; set => isSuccessful = value; }
         public string Message { get => message; set => message = value; }
@@ -46,6 +47,7 @@ namespace DesktopAppGimnasio.Views
         public bool MustEnter { get => mustEnter; set => mustEnter = value; }
 
         public event EventHandler SearchEvent;
+        public event EventHandler SearchDebtsEvent;
         public event EventHandler AddNewEvent;
         public event EventHandler EditEvent;
         public event EventHandler DeleteEvent;
@@ -54,16 +56,28 @@ namespace DesktopAppGimnasio.Views
 
         public event EventHandler GetAmountsEvent;
         public event EventHandler RefreshDataGridView;
+        public event EventHandler RefreshDebtsDataGridView;
 
         public void SetCuotasBindingSource(BindingSource cuotasList)
         {
             dataGridViewCuotas.DataSource = cuotasList;
         }
 
+        public void SetCuotasVencidasBindingSource(BindingSource cuotasList)
+        {
+            dataGridViewCuotasVencidas.DataSource = cuotasList;
+        }
+
         public void HideColumn(int index)
         {
             dataGridViewCuotas.Columns[index].Visible = false;
         }
+
+        public void HideDebtsDataGridColumn(int index)
+        {
+            dataGridViewCuotasVencidas.Columns[index].Visible = false;
+        }
+
         public void CleanInterfaceProperties()
         {
             Message = string.Empty;
@@ -111,6 +125,11 @@ namespace DesktopAppGimnasio.Views
             SearchEvent?.Invoke(this, EventArgs.Empty);
         }
 
+        private void buttonSearchDebt_MouseClick(object sender, MouseEventArgs e)
+        {
+            SearchDebtsEvent?.Invoke(this, EventArgs.Empty);
+        }
+
         private void buttonAddCuota_MouseClick(object sender, MouseEventArgs e)
         {
             AddNewEvent?.Invoke(this, EventArgs.Empty);
@@ -133,6 +152,7 @@ namespace DesktopAppGimnasio.Views
             {
                 DeleteEvent?.Invoke(this, EventArgs.Empty);
                 MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RefreshDebtsDataGridView?.Invoke(this, EventArgs.Empty);
                 CleanInterfaceProperties();
             }
         }
@@ -144,6 +164,7 @@ namespace DesktopAppGimnasio.Views
             if (isSuccessful)
             {
                 RefreshDataGridView?.Invoke(this, EventArgs.Empty);
+                RefreshDebtsDataGridView?.Invoke(this, EventArgs.Empty);
                 tabControl.SelectedTab = tabPageCuotasVisualizer;
                 MustEnter = false;
             }
@@ -156,7 +177,7 @@ namespace DesktopAppGimnasio.Views
             }
 
             MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            CleanInterfaceProperties();    
+            CleanInterfaceProperties();
         }
 
         private void buttonCancelOperation_MouseClick(object sender, MouseEventArgs e)
@@ -238,6 +259,14 @@ namespace DesktopAppGimnasio.Views
             }
         }
 
+        private void textBoxSearchDebt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SearchDebtsEvent?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
         private void buttonAddCuota_EnabledChanged(object sender, EventArgs e)
         {
             buttonAddCuota.ForeColor = Color.White;
@@ -246,6 +275,19 @@ namespace DesktopAppGimnasio.Views
         private void buttonClose_MouseClick(object sender, MouseEventArgs e)
         {
             this.Close();
+        }
+
+        private void dataGridViewCuotasVencidas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            int columnIndexToChange = 6;
+
+            if (e.RowIndex >= 0 && e.ColumnIndex == dataGridViewCuotasVencidas.Columns["FechaDeVencimiento"].Index)
+            {
+                if (e.ColumnIndex == columnIndexToChange)
+                {
+                    e.CellStyle.BackColor = Color.IndianRed;
+                }
+            }
         }
     }
 }

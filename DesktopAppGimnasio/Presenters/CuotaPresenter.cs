@@ -16,33 +16,9 @@ namespace DesktopAppGimnasio.Presenters
         private ICuotaRepository repository;
         private ITipoCuotaRepository repositoryTC;
         private BindingSource cuotasBindingSource;
+        private BindingSource cuotasVencidasBindingSource;
         private IEnumerable<CuotaModel> cuotasList;
-
-        public CuotaPresenter(ICuotaView view, ICuotaRepository repository)
-        {
-
-            this.view = view;
-            this.repository = repository;
-            this.cuotasBindingSource = new BindingSource();
-
-
-            // Subscribe to Events
-            this.view.SearchEvent += SearchCuota;
-            this.view.AddNewEvent += AddNewCuota;
-            this.view.EditEvent += LoadSelectedCuotaToEdit;
-            this.view.DeleteEvent += DeleteSelectedCuota;
-            this.view.SaveEvent += SaveCuota;
-            this.view.CancelEvent += CancelAction;
-            this.view.GetAmountsEvent += GetAmounts;
-            this.view.RefreshDataGridView += RefreschDataGridView;
-
-            this.view.SetCuotasBindingSource(cuotasBindingSource);
-
-            LoadAllCuotasList();
-
-            this.view.HideColumn(9);
-            this.view.Show();
-        }
+        private IEnumerable<CuotaModel> cuotasVencidasList;
 
         public CuotaPresenter(ICuotaView view, ICuotaRepository repository, ITipoCuotaRepository repositoryTC)
         {
@@ -51,24 +27,33 @@ namespace DesktopAppGimnasio.Presenters
             this.repository = repository;
             this.repositoryTC = repositoryTC;
             this.cuotasBindingSource = new BindingSource();
+            this.cuotasVencidasBindingSource = new BindingSource();
 
 
             // Subscribe to Events
             this.view.SearchEvent += SearchCuota;
+            this.view.SearchDebtsEvent += SearchDebtCuota;
             this.view.AddNewEvent += AddNewCuota;
             this.view.EditEvent += LoadSelectedCuotaToEdit;
             this.view.DeleteEvent += DeleteSelectedCuota;
             this.view.SaveEvent += SaveCuota;
             this.view.CancelEvent += CancelAction;
             this.view.GetAmountsEvent += GetAmounts;
-            this.view.RefreshDataGridView += RefreschDataGridView;
+            this.view.RefreshDataGridView += RefreshDataGridView;
+            this.view.RefreshDebtsDataGridView += RefreshDebtsDataGridView;
 
             this.view.SetCuotasBindingSource(cuotasBindingSource);
+            this.view.SetCuotasVencidasBindingSource(cuotasVencidasBindingSource);
 
             LoadAllCuotasList();
+            LoadAllCuotasVencidasList();
             view.Amounts = GetAllQuotesAmount();
 
             this.view.HideColumn(9);
+            this.view.HideDebtsDataGridColumn(4);
+            this.view.HideDebtsDataGridColumn(7);
+            this.view.HideDebtsDataGridColumn(8);
+            this.view.HideDebtsDataGridColumn(9);
             this.view.Show();
         }
 
@@ -79,7 +64,7 @@ namespace DesktopAppGimnasio.Presenters
             cuotasBindingSource.DataSource = cuotasList;
         }
 
-        private void RefreschDataGridView(object? sender, EventArgs e)
+        private void RefreshDataGridView(object? sender, EventArgs e)
         {
             LoadAllCuotasList();
         }
@@ -241,6 +226,33 @@ namespace DesktopAppGimnasio.Presenters
 
 
         // Other methods
+        private void LoadAllCuotasVencidasList()
+        {
+            cuotasVencidasList = repository.GetAllDebts();
+            cuotasVencidasBindingSource.DataSource = cuotasVencidasList;
+        }
+
+        private void RefreshDebtsDataGridView(object? sender, EventArgs e)
+        {
+            LoadAllCuotasVencidasList();
+        }
+
+        private void SearchDebtCuota(object? sender, EventArgs e)
+        {
+            bool emptyValue = String.IsNullOrEmpty(view.SearchDebtValue);
+
+            if (!emptyValue)
+            {
+                cuotasVencidasList = repository.GetDebtsByValue(view.SearchDebtValue);
+            }
+            else 
+            {
+                cuotasVencidasList = repository.GetAllDebts();
+            }
+
+            cuotasVencidasBindingSource.DataSource = cuotasVencidasList;
+        }
+
         private void GetAmounts(object? sender, EventArgs e)
         {
             view.Amounts = GetAllQuotesAmount();

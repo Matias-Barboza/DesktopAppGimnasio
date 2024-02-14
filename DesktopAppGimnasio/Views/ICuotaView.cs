@@ -20,6 +20,7 @@ namespace DesktopAppGimnasio.Views
         int Cantidad { get; set; }
         IEnumerable<float> Amounts { get; set; }
         string SearchValue { get; set; }
+        string SearchDebtValue { get; set; }
         bool IsEdit { get; set; }
         bool IsSuccessful { get; set; }
         String Message { get; set; }
@@ -28,6 +29,7 @@ namespace DesktopAppGimnasio.Views
 
         // Events
         event EventHandler SearchEvent;
+        event EventHandler SearchDebtsEvent;
         event EventHandler AddNewEvent;
         event EventHandler EditEvent;
         event EventHandler DeleteEvent;
@@ -36,10 +38,14 @@ namespace DesktopAppGimnasio.Views
 
         event EventHandler GetAmountsEvent;
         event EventHandler RefreshDataGridView;
+        event EventHandler RefreshDebtsDataGridView;
 
         public void SetCuotasBindingSource(BindingSource cuotasList);
 
+        public void SetCuotasVencidasBindingSource(BindingSource cuotasVencidasList);
+
         public void HideColumn(int index);
+        public void HideDebtsDataGridColumn(int index);
 
         public void Show();
     }

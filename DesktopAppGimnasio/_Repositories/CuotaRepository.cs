@@ -278,5 +278,95 @@ namespace DesktopAppGimnasio._Repositories
 
             return cuotasList;
         }
+
+        public IEnumerable<CuotaModel> GetAllDebts()
+        {
+            List<CuotaModel> cuotasVencidasList = new List<CuotaModel>();
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                using (MySqlCommand command = new MySqlCommand()) 
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = @"SELECT cv.codigo_cuota, cv.codigo_socio_fk, s.nombre, s.apellido, cv.fecha_pago, cv.fecha_vencimiento
+                                            FROM cuotas AS cv
+		                                        JOIN
+	                                            socios AS s
+	                                            ON cv.codigo_socio_fk = s.codigo_socio
+                                            WHERE CURDATE() > cv.fecha_vencimiento AND cv.fecha_vencimiento = (SELECT MAX(c.fecha_vencimiento)
+															                                                   FROM cuotas AS c
+															                                                   WHERE c.codigo_socio_fk = cv.codigo_socio_fk);";
+
+                    using(MySqlDataReader reader = command.ExecuteReader()) 
+                    {
+
+                        while(reader.Read()) 
+                        {
+                            CuotaModel cuota = new CuotaModel();
+
+                            cuota.CodigoCuota = (int) reader[0];
+                            cuota.CodigoSocio = (int) reader[1];
+                            cuota.NombreSocio = (String) reader[2];
+                            cuota.ApellidoSocio = (String) reader[3];
+                            cuota.FechaDePago = (DateTime) reader[4];
+                            cuota.FechaDeVencimiento = (DateTime) reader[5];
+
+                            cuotasVencidasList.Add(cuota);
+                        }
+                    }
+                }
+            }
+
+            return cuotasVencidasList;
+        }
+
+        public IEnumerable<CuotaModel> GetDebtsByValue(string value)
+        {
+            List<CuotaModel> cuotasVencidasList = new List<CuotaModel>();
+            int codigo_cuota = int.TryParse(value, out _) ? int.Parse(value) : 0;
+            int codigo_socio = int.TryParse(value, out _) ? int.Parse(value) : 0;
+            string nombreYApellidoSocio = "%" + value + "%";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                using (MySqlCommand command = new MySqlCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = @"SELECT cv.codigo_cuota, cv.codigo_socio_fk, s.nombre, s.apellido, cv.fecha_pago, cv.fecha_vencimiento
+                                FROM cuotas AS cv
+                                    JOIN
+                                    socios AS s
+                                    ON cv.codigo_socio_fk = s.codigo_socio
+                                WHERE CURDATE() > cv.fecha_vencimiento AND
+                                      (cv.codigo_cuota = @codigoCuota OR cv.codigo_socio_fk = @codigoSocio OR s.nombre = @nombre_y_apellido OR
+                                        s.apellido = @nombre_y_apellido OR CONCAT(s.nombre,' ',s.apellido) = @nombre_y_apellido) AND
+                                      cv.fecha_vencimiento = (SELECT MAX(c.fecha_vencimiento)
+												              FROM cuotas AS c
+												              WHERE c.codigo_socio_fk = cv.codigo_socio_fk);";
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+
+                        while (reader.Read())
+                        {
+                            CuotaModel cuota = new CuotaModel();
+
+                            cuota.CodigoCuota = (int) reader[0];
+                            cuota.CodigoSocio = (int) reader[1];
+                            cuota.NombreSocio = (String) reader[2];
+                            cuota.ApellidoSocio = (String) reader[3];
+                            cuota.FechaDePago = (DateTime) reader[4];
+                            cuota.FechaDeVencimiento = (DateTime) reader[5];
+
+                            cuotasVencidasList.Add(cuota);
+                        }
+                    }
+                }
+            }
+
+            return cuotasVencidasList;
+        }
     }
 }

@@ -13,5 +13,7 @@ namespace DesktopAppGimnasio.Models
         void Delete(int codigoCuota);
         IEnumerable<CuotaModel> GetAll();
         IEnumerable<CuotaModel> GetByValue(string value);
+        IEnumerable<CuotaModel> GetAllDebts();
+        IEnumerable<CuotaModel> GetDebtsByValue(string value);
     }
 }
