@@ -28,7 +28,8 @@ namespace DesktopAppGimnasio._Repositories
                 {
                     connection.Open();
                     command.Connection = connection;
-                    command.CommandText = "INSERT INTO socios (DNI, nombre, apellido, esta_activo) VALUES (@DNI_nuevo, @nombre_nuevo, @apellido_nuevo, true);";
+                    command.CommandText = @"INSERT INTO socios (DNI, nombre, apellido, esta_activo)
+                                            VALUES (@DNI_nuevo, @nombre_nuevo, @apellido_nuevo, true);";
                     command.Parameters.Add(new MySqlParameter()
                     {
                         ParameterName = "DNI_nuevo",
@@ -134,7 +135,9 @@ namespace DesktopAppGimnasio._Repositories
                 {
                     connection.Open();
                     command.Connection = connection;
-                    command.CommandText = "SELECT * FROM socios ORDER BY codigo_socio DESC;";
+                    command.CommandText = @"SELECT codigo_socio, DNI, nombre, apellido, esta_activo
+                                            FROM socios
+                                            ORDER BY codigo_socio DESC;";
 
                     using (MySqlDataReader reader = command.ExecuteReader()) 
                     {

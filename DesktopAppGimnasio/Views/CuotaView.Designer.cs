@@ -359,6 +359,7 @@
             comboBoxCantidad.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             comboBoxCantidad.BackColor = Color.DimGray;
             comboBoxCantidad.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxCantidad.Enabled = false;
             comboBoxCantidad.FlatStyle = FlatStyle.Flat;
             comboBoxCantidad.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             comboBoxCantidad.ForeColor = Color.White;
@@ -537,6 +538,7 @@
             // 
             buttonSaveCuota.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             buttonSaveCuota.BackColor = Color.FromArgb(128, 128, 255);
+            buttonSaveCuota.Enabled = false;
             buttonSaveCuota.FlatAppearance.BorderColor = Color.DarkSlateBlue;
             buttonSaveCuota.FlatAppearance.BorderSize = 2;
             buttonSaveCuota.FlatStyle = FlatStyle.Flat;

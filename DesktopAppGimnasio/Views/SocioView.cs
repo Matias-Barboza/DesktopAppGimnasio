@@ -98,6 +98,8 @@ namespace DesktopAppGimnasio.Views
         {
             AddNewEvent?.Invoke(this, EventArgs.Empty);
             labelOperation.Text = "Operación actual: Añadir socio";
+
+            buttonSave.Enabled = true;
         }
 
         private void buttonEdit_MouseClick(object sender, MouseEventArgs e)
@@ -105,7 +107,10 @@ namespace DesktopAppGimnasio.Views
             EditEvent?.Invoke(this, EventArgs.Empty);
             labelOperation.Text = "Operación actual: Editar socio";
             tabControl.SelectedTab = tabPageAddOrEditOrDeleteSocio;
+            
             buttonAdd.Enabled = false;
+            buttonSave.Enabled = true;
+
             ChangeEstadoActividadVisibility(true);
         }
 
@@ -139,6 +144,8 @@ namespace DesktopAppGimnasio.Views
                 buttonAdd.Enabled = true;
             }
 
+            buttonSave.Enabled = false;
+
             ChangeEstadoActividadVisibility(false);
 
             MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -150,10 +157,8 @@ namespace DesktopAppGimnasio.Views
             CancelEvent?.Invoke(this, EventArgs.Empty);
             labelOperation.Text = "Operación actual:";
 
-            if (!buttonAdd.Enabled)
-            {
-                buttonAdd.Enabled = true;
-            }
+            buttonAdd.Enabled = true;
+            buttonSave.Enabled = false;
 
             ChangeEstadoActividadVisibility(false);
         }

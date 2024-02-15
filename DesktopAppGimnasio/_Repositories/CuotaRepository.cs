@@ -69,7 +69,6 @@ namespace DesktopAppGimnasio._Repositories
 
                     command.ExecuteNonQuery();
                 }
-                connection.Close();
             }
         }
 
@@ -94,7 +93,6 @@ namespace DesktopAppGimnasio._Repositories
 
                     command.ExecuteNonQuery();
                 }
-                connection.Close();
             }
         }
 
@@ -107,8 +105,8 @@ namespace DesktopAppGimnasio._Repositories
                 {
                     connection.Open();
                     command.Connection = connection;
-                    command.CommandText = @"UPDATE cuotas SET codigo_socio_fk = @codigoSocio, id_tipo_fk = @id_tipo_nuevo, fecha_pago = @fecha_pago_nuevo,
-                                                    fecha_vencimiento = @fecha_vencimiento_nuevo,
+                    command.CommandText = @"UPDATE cuotas SET codigo_socio_fk = @codigoSocio, id_tipo_fk = @id_tipo_nuevo,
+                                                    fecha_pago = @fecha_pago_nuevo, fecha_vencimiento = @fecha_vencimiento_nuevo,
                                                     mes_abonado = @mes_abonado_nuevo, monto_abonado = @monto_abonado_nuevo
                                             WHERE codigo_cuota = @codigoCuota;";
 
@@ -157,7 +155,6 @@ namespace DesktopAppGimnasio._Repositories
 
                     command.ExecuteNonQuery();
                 }
-                connection.Close();
             }
         }
 
@@ -203,7 +200,6 @@ namespace DesktopAppGimnasio._Repositories
                         }
                     }
                 }
-                connection.Close();
             }
 
             return cuotasList;
@@ -273,7 +269,6 @@ namespace DesktopAppGimnasio._Repositories
                         }
                     }
                 }
-                connection.Close();
             }
 
             return cuotasList;
@@ -294,9 +289,11 @@ namespace DesktopAppGimnasio._Repositories
 		                                        JOIN
 	                                            socios AS s
 	                                            ON cv.codigo_socio_fk = s.codigo_socio
-                                            WHERE CURDATE() > cv.fecha_vencimiento AND cv.fecha_vencimiento = (SELECT MAX(c.fecha_vencimiento)
-															                                                   FROM cuotas AS c
-															                                                   WHERE c.codigo_socio_fk = cv.codigo_socio_fk);";
+                                            WHERE CURDATE() > cv.fecha_vencimiento AND
+                                                              s.esta_activo = TRUE AND
+                                                              cv.fecha_vencimiento = (SELECT MAX(c.fecha_vencimiento)
+															                          FROM cuotas AS c
+															                          WHERE c.codigo_socio_fk = cv.codigo_socio_fk);";
 
 
                     using(MySqlDataReader reader = command.ExecuteReader()) 
@@ -336,16 +333,17 @@ namespace DesktopAppGimnasio._Repositories
                     connection.Open();
                     command.Connection = connection;
                     command.CommandText = @"SELECT cv.codigo_cuota, cv.codigo_socio_fk, s.nombre, s.apellido, cv.fecha_pago, cv.fecha_vencimiento
-                                FROM cuotas AS cv
-                                    JOIN
-                                    socios AS s
-                                    ON cv.codigo_socio_fk = s.codigo_socio
-                                WHERE CURDATE() > cv.fecha_vencimiento AND
-                                      (cv.codigo_cuota = @codigoCuota OR cv.codigo_socio_fk = @codigoSocio OR s.nombre = @nombre_y_apellido OR
-                                        s.apellido = @nombre_y_apellido OR CONCAT(s.nombre,' ',s.apellido) = @nombre_y_apellido) AND
-                                      cv.fecha_vencimiento = (SELECT MAX(c.fecha_vencimiento)
-												              FROM cuotas AS c
-												              WHERE c.codigo_socio_fk = cv.codigo_socio_fk);";
+                                            FROM cuotas AS cv
+                                                    JOIN
+                                                    socios AS s
+                                                    ON cv.codigo_socio_fk = s.codigo_socio
+                                            WHERE CURDATE() > cv.fecha_vencimiento AND
+                                                              (cv.codigo_cuota = @codigoCuota OR cv.codigo_socio_fk = @codigoSocio OR s.nombre = @nombre_y_apellido OR
+                                                              s.apellido = @nombre_y_apellido OR CONCAT(s.nombre,' ',s.apellido) = @nombre_y_apellido) AND
+                                                              s.esta_activo = TRUE AND
+                                                              cv.fecha_vencimiento = (SELECT MAX(c.fecha_vencimiento)
+												                                      FROM cuotas AS c
+												                                      WHERE c.codigo_socio_fk = cv.codigo_socio_fk);";
                     command.Parameters.Add(new MySqlParameter()
                     {
                         ParameterName = "codigoCuota",

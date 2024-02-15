@@ -228,7 +228,7 @@ namespace DesktopAppGimnasio.Presenters
             view.FechaDePago = DateTime.Today;
             view.MesQueAbona = "";
             view.IdTipoCuota = 0;
-            view.Cantidad = 0;
+            view.Cantidad = -1;
         }
 
 

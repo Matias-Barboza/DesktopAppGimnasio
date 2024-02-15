@@ -152,6 +152,8 @@ namespace DesktopAppGimnasio.Views
         {
             AddNewEvent?.Invoke(this, EventArgs.Empty);
             labelOperation.Text = "Operación actual: Añadir cuota";
+
+            buttonSaveCuota.Enabled = true;
         }
 
         private void buttonEditCuota_MouseClick(object sender, MouseEventArgs e)
@@ -159,7 +161,9 @@ namespace DesktopAppGimnasio.Views
             EditEvent?.Invoke(this, EventArgs.Empty);
             labelOperation.Text = "Operación actual: Editar cuota";
             tabControl.SelectedTab = tabPageAddOrEditOrDeleteCuota;
+            
             buttonAddCuota.Enabled = false;
+            buttonSaveCuota.Enabled = true;
         }
 
         private void buttonDeleteCuota_MouseClick(object sender, MouseEventArgs e)
@@ -194,6 +198,8 @@ namespace DesktopAppGimnasio.Views
                 buttonAddCuota.Enabled = true;
             }
 
+            buttonSaveCuota.Enabled = false;
+
             MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             CleanInterfaceProperties();
         }
@@ -203,21 +209,21 @@ namespace DesktopAppGimnasio.Views
             CancelEvent?.Invoke(this, EventArgs.Empty);
             labelOperation.Text = "Operación actual:";
 
-            if (!buttonAddCuota.Enabled)
-            {
-                buttonAddCuota.Enabled = true;
-            }
+             buttonAddCuota.Enabled = true;
+             buttonSaveCuota.Enabled = false;
         }
         private void comboBoxTipoCuota_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxTipoCuota.SelectedIndex == 0)
             {
+                comboBoxCantidad.Enabled = false;
+                textBoxMonto.Text = string.Empty;
                 return;
             }
 
+            comboBoxCantidad.Enabled = true;
             comboBoxCantidad.Items.Clear();
             comboBoxCantidad.Text = "";
-            comboBoxCantidad.SelectedIndex = -1;
             textBoxMonto.Text = "";
 
             if (comboBoxTipoCuota.SelectedIndex == 1)
@@ -241,7 +247,7 @@ namespace DesktopAppGimnasio.Views
 
         private void comboBoxCantidad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxCantidad.SelectedIndex == 0)
+            if (comboBoxCantidad.SelectedIndex < 1)
             {
                 textBoxMonto.Text = "";
                 return;

@@ -42,7 +42,6 @@ namespace DesktopAppGimnasio._Repositories
 
                     command.ExecuteNonQuery();
                 }
-                connection.Close();
             }
         }
 
@@ -56,7 +55,7 @@ namespace DesktopAppGimnasio._Repositories
                 {
                     connection.Open();
                     command.Connection = connection;
-                    command.CommandText = @"SELECT *
+                    command.CommandText = @"SELECT id_tipo, descripcion, monto
                                             FROM tipos;";
 
                     using(MySqlDataReader reader = command.ExecuteReader()) 
@@ -74,7 +73,6 @@ namespace DesktopAppGimnasio._Repositories
                         }
                     }
                 }
-                connection.Close();
             }
 
             return tiposCuotaList;
@@ -102,7 +100,6 @@ namespace DesktopAppGimnasio._Repositories
                         }
                     }
                 }
-                connection.Close();
             }
 
             return amounts;
