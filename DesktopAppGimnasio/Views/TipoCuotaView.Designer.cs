@@ -185,6 +185,7 @@
             // 
             buttonSaveTipoCuota.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             buttonSaveTipoCuota.BackColor = Color.FromArgb(128, 128, 255);
+            buttonSaveTipoCuota.Enabled = false;
             buttonSaveTipoCuota.FlatAppearance.BorderColor = Color.DarkSlateBlue;
             buttonSaveTipoCuota.FlatAppearance.BorderSize = 2;
             buttonSaveTipoCuota.FlatStyle = FlatStyle.Flat;

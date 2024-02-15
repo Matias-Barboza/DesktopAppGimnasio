@@ -84,6 +84,8 @@ namespace DesktopAppGimnasio.Views
             EditEvent?.Invoke(this, EventArgs.Empty);
             labelOperation.Text = "Operación actual: Editar cuota";
             tabControl.SelectedTab = tabPageEditCuota;
+
+            buttonSaveTipoCuota.Enabled = true;
         }
 
         private void buttonSaveTipoCuota_MouseClick(object sender, MouseEventArgs e)
@@ -99,6 +101,8 @@ namespace DesktopAppGimnasio.Views
 
             labelOperation.Text = "Operación actual:";
 
+            buttonSaveTipoCuota.Enabled = false;
+
             MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
             CleanInterfaceProperties();
         }
@@ -107,6 +111,8 @@ namespace DesktopAppGimnasio.Views
         {
             CancelEvent?.Invoke(this, EventArgs.Empty);
             labelOperation.Text = "Operación actual:";
+
+            buttonSaveTipoCuota.Enabled = false;
         }
 
         private void buttonClose_MouseClick(object sender, MouseEventArgs e)
