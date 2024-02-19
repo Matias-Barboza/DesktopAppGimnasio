@@ -21,6 +21,7 @@ namespace DesktopAppGimnasio.Views
         public event EventHandler ShowSociosView;
         public event EventHandler ShowCuotasView;
         public event EventHandler ShowTiposCuotasView;
+        public event EventHandler ShowAboutView;
 
         public void AssociateAndRaiseEvents()
         {
@@ -95,6 +96,32 @@ namespace DesktopAppGimnasio.Views
         private void buttonTiposCuotas_KeyDown(object sender, KeyEventArgs e)
         {
             ShowTiposCuotasView?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void buttonInfo_MouseClick(object sender, MouseEventArgs e)
+        {
+            ShowAboutView?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void button1_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button2_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(this.WindowState == FormWindowState.Maximized) 
+            {
+                this.WindowState = FormWindowState.Normal;
+                return;
+            }
+
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void button3_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

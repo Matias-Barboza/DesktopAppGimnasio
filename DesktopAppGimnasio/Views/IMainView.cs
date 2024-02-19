@@ -11,5 +11,6 @@ namespace DesktopAppGimnasio.Views
         event EventHandler ShowSociosView;
         event EventHandler ShowCuotasView;
         event EventHandler ShowTiposCuotasView;
+        event EventHandler ShowAboutView;
     }
 }
