@@ -66,7 +66,7 @@
             buttonClose.Location = new Point(774, 5);
             buttonClose.Name = "buttonClose";
             buttonClose.Size = new Size(76, 39);
-            buttonClose.TabIndex = 7;
+            buttonClose.TabIndex = 3;
             buttonClose.UseVisualStyleBackColor = false;
             buttonClose.MouseClick += buttonClose_MouseClick;
             // 
@@ -82,6 +82,7 @@
             tabControl.SelectedIndex = 0;
             tabControl.Size = new Size(855, 548);
             tabControl.TabIndex = 8;
+            tabControl.TabStop = false;
             // 
             // tabPageTiposCuotasVisualizer
             // 
@@ -108,7 +109,7 @@
             buttonEditTipoCuota.Location = new Point(714, 14);
             buttonEditTipoCuota.Name = "buttonEditTipoCuota";
             buttonEditTipoCuota.Size = new Size(125, 39);
-            buttonEditTipoCuota.TabIndex = 5;
+            buttonEditTipoCuota.TabIndex = 0;
             buttonEditTipoCuota.Text = "  Editar";
             buttonEditTipoCuota.UseVisualStyleBackColor = false;
             buttonEditTipoCuota.MouseClick += buttonEditTipoCuota_MouseClick;
@@ -160,6 +161,7 @@
             dataGridViewTiposCuotas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewTiposCuotas.Size = new Size(835, 438);
             dataGridViewTiposCuotas.TabIndex = 6;
+            dataGridViewTiposCuotas.TabStop = false;
             // 
             // tabPageEditCuota
             // 
@@ -272,6 +274,7 @@
             textBoxIDTipoCuota.ReadOnly = true;
             textBoxIDTipoCuota.Size = new Size(238, 27);
             textBoxIDTipoCuota.TabIndex = 20;
+            textBoxIDTipoCuota.TabStop = false;
             // 
             // labelValorActual
             // 
@@ -308,7 +311,8 @@
             textBoxDescripcion.Name = "textBoxDescripcion";
             textBoxDescripcion.ReadOnly = true;
             textBoxDescripcion.Size = new Size(238, 27);
-            textBoxDescripcion.TabIndex = 13;
+            textBoxDescripcion.TabIndex = 0;
+            textBoxDescripcion.TabStop = false;
             // 
             // TipoCuotaView
             // 

@@ -12,56 +12,24 @@ namespace DesktopAppGimnasio.Views
 {
     public partial class MainView : Form, IMainView
     {
+        private bool dragging;
+        private Point startPoint;
+
         public MainView()
         {
             InitializeComponent();
-            //AssociateAndRaiseEvents();
         }
 
+        //public event EventHandler ShowPresentationView;
         public event EventHandler ShowSociosView;
         public event EventHandler ShowCuotasView;
         public event EventHandler ShowTiposCuotasView;
         public event EventHandler ShowAboutView;
 
-        public void AssociateAndRaiseEvents()
-        {
-            buttonSocios.MouseClick += delegate
-            {
-                ShowSociosView?.Invoke(this, EventArgs.Empty);
-            };
-            buttonSocios.KeyDown += (s, e) =>
-            {
-                if (e.KeyCode == Keys.D1)
-                {
-                    ShowSociosView?.Invoke(this, EventArgs.Empty);
-                }
-            };
-            buttonCuotas.MouseClick += delegate
-            {
-                ShowCuotasView?.Invoke(this, EventArgs.Empty);
-            };
-            buttonCuotas.KeyDown += (s, e) =>
-            {
-                if (e.KeyCode == Keys.D2)
-                {
-                    ShowCuotasView?.Invoke(this, EventArgs.Empty);
-                }
-            };
-            buttonTiposCuotas.MouseClick += delegate
-            {
-                ShowTiposCuotasView?.Invoke(this, EventArgs.Empty);
-            };
-            buttonTiposCuotas.KeyDown += (s, e) =>
-            {
-                if (e.KeyCode == Keys.D3)
-                {
-                    ShowTiposCuotasView?.Invoke(this, EventArgs.Empty);
-                }
-            };
-
-
-            buttonClose.MouseClick += delegate { this.Close(); };
-        }
+        //private void MainView_Load(object sender, EventArgs e)
+        //{
+        //    ShowPresentationView?.Invoke(this, EventArgs.Empty);
+        //}
 
         private void buttonSocios_MouseClick(object sender, MouseEventArgs e)
         {
@@ -85,17 +53,26 @@ namespace DesktopAppGimnasio.Views
 
         private void buttonSocios_KeyDown(object sender, KeyEventArgs e)
         {
-            ShowSociosView?.Invoke(this, EventArgs.Empty);
+            if(e.KeyCode == Keys.D1) 
+            {
+                ShowSociosView?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         private void buttonCuotas_KeyDown(object sender, KeyEventArgs e)
         {
-            ShowCuotasView?.Invoke(this, EventArgs.Empty);
+            if (e.KeyCode == Keys.D2)
+            {
+                ShowCuotasView?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         private void buttonTiposCuotas_KeyDown(object sender, KeyEventArgs e)
         {
-            ShowTiposCuotasView?.Invoke(this, EventArgs.Empty);
+            if (e.KeyCode == Keys.D3) 
+            {
+                ShowTiposCuotasView?.Invoke(this, EventArgs.Empty);
+            }
         }
 
         private void buttonInfo_MouseClick(object sender, MouseEventArgs e)
@@ -103,14 +80,14 @@ namespace DesktopAppGimnasio.Views
             ShowAboutView?.Invoke(this, EventArgs.Empty);
         }
 
-        private void button1_MouseClick(object sender, MouseEventArgs e)
+        private void buttonCloseTB_MouseClick(object sender, MouseEventArgs e)
         {
             this.Close();
         }
 
-        private void button2_MouseClick(object sender, MouseEventArgs e)
+        private void buttonMaximize_MouseClick(object sender, MouseEventArgs e)
         {
-            if(this.WindowState == FormWindowState.Maximized) 
+            if (this.WindowState == FormWindowState.Maximized)
             {
                 this.WindowState = FormWindowState.Normal;
                 return;
@@ -119,9 +96,29 @@ namespace DesktopAppGimnasio.Views
             this.WindowState = FormWindowState.Maximized;
         }
 
-        private void button3_MouseClick(object sender, MouseEventArgs e)
+        private void buttonMinimize_MouseClick(object sender, MouseEventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void panelMove_MouseDown(object sender, MouseEventArgs e)
+        {
+            dragging = true;
+            startPoint = new Point(e.X, e.Y);
+        }
+
+        private void panelMove_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragging)
+            {
+                Point newPoint = PointToScreen(e.Location);
+                Location = new Point(newPoint.X - this.startPoint.X, newPoint.Y - this.startPoint.Y);
+            }
+        }
+
+        private void panelMove_MouseUp(object sender, MouseEventArgs e)
+        {
+            dragging = false;
         }
     }
 }

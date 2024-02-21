@@ -160,7 +160,7 @@ namespace DesktopAppGimnasio.Views
         {
             EditEvent?.Invoke(this, EventArgs.Empty);
             labelOperation.Text = "Operación actual: Editar cuota";
-            tabControl.SelectedTab = tabPageAddOrEditOrDeleteCuota;
+            tabControl.SelectedTab = tabPageAddOrEditCuota;
             
             buttonAddCuota.Enabled = false;
             buttonSaveCuota.Enabled = true;

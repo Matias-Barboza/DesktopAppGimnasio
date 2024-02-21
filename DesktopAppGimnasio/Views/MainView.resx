@@ -2783,21 +2783,21 @@
         XJ4AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="buttonMinimize.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAAD5JREFUWEft
         zbENwEAIBEG6cf99uQecEEL2fGDNSBueLgAAAIB/yffJm9XtrBttVrezbrRZ3c660WZ1C4dEfKp9V4An
         1LPLAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="buttonMaximize.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAAGVJREFUWEft
         zrEJwEAMQ9HbJvvvlR0ujUoLHwSZBP4DdTbSAoCv2fe1J6Nar3pKRrVe9ZSMar3qKRnVeseHLzGow6AO
         gzoM6jCow6DO/wdNRbVe9ZSMar3qKRnVetVTMqoFMGStB7Y7WsbiW6xsAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="buttonCloseTB.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAALtJREFUWEft
         jkEKAyEQBPc3+f+/8ocNDRWR2MriqOQwBXWxp2e8kiRJ/p37/bpreX5MtN8QXRjtN/wu/ErcxXUk8Txu

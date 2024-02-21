@@ -98,14 +98,14 @@ namespace DesktopAppGimnasio.Presenters
                 repository.Delete(socio.CodigoSocio);
                 view.IsSuccessful = true;
                 view.Caption = "Estado de eliminación de socio";
-                view.Message = $"El socio {codigoSocio} fue eliminado exitosamente";
+                view.Message = $"El socio {codigoSocio} fue eliminado exitosamente.";
                 LoadAllSocioList();
             }
             catch (Exception ex)
             {
                 view.IsSuccessful = false;
                 view.Caption = "Error en la operación actual: Eliminación de socio";
-                view.Message = "No se pudo realizar la acción debido a un error";
+                view.Message = "No se pudo realizar la acción debido a un error.";
             }
         }
 
@@ -136,13 +136,13 @@ namespace DesktopAppGimnasio.Presenters
                 {
                     repository.Edit(socio);
                     view.Caption = "Estado de edición de socio";
-                    view.Message = $"Socio {socio.CodigoSocio} editado exitosamente";
+                    view.Message = $"Socio {socio.CodigoSocio} editado exitosamente.";
                 }
                 else
                 {
                     repository.Add(socio);
                     view.Caption = "Estado de adición de socio";
-                    view.Message = $"Socio agregado exitosamente";
+                    view.Message = $"Socio agregado exitosamente.";
                 }
 
                 view.IsSuccessful = true;

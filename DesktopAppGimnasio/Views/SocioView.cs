@@ -106,7 +106,7 @@ namespace DesktopAppGimnasio.Views
         {
             EditEvent?.Invoke(this, EventArgs.Empty);
             labelOperation.Text = "Operación actual: Editar socio";
-            tabControl.SelectedTab = tabPageAddOrEditOrDeleteSocio;
+            tabControl.SelectedTab = tabPageAddOrEditSocio;
             
             buttonAdd.Enabled = false;
             buttonSave.Enabled = true;

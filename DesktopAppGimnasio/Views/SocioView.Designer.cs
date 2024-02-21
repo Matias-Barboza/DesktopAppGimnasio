@@ -39,7 +39,7 @@
             buttonDelete = new Button();
             textBoxSearchSocio = new TextBox();
             dataGridViewSocios = new DataGridView();
-            tabPageAddOrEditOrDeleteSocio = new TabPage();
+            tabPageAddOrEditSocio = new TabPage();
             checkBoxEstado = new CheckBox();
             labelEstadoActividad = new Label();
             buttonCancel = new Button();
@@ -58,14 +58,14 @@
             tabControl.SuspendLayout();
             tabPageSociosVisualizer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSocios).BeginInit();
-            tabPageAddOrEditOrDeleteSocio.SuspendLayout();
+            tabPageAddOrEditSocio.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl
             // 
             tabControl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControl.Controls.Add(tabPageSociosVisualizer);
-            tabControl.Controls.Add(tabPageAddOrEditOrDeleteSocio);
+            tabControl.Controls.Add(tabPageAddOrEditSocio);
             tabControl.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
             tabControl.Location = new Point(0, 12);
             tabControl.Name = "tabControl";
@@ -73,6 +73,7 @@
             tabControl.SelectedIndex = 0;
             tabControl.Size = new Size(855, 548);
             tabControl.TabIndex = 1;
+            tabControl.TabStop = false;
             // 
             // tabPageSociosVisualizer
             // 
@@ -205,31 +206,32 @@
             dataGridViewSocios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewSocios.Size = new Size(705, 437);
             dataGridViewSocios.TabIndex = 4;
+            dataGridViewSocios.TabStop = false;
             // 
-            // tabPageAddOrEditOrDeleteSocio
+            // tabPageAddOrEditSocio
             // 
-            tabPageAddOrEditOrDeleteSocio.BackColor = Color.FromArgb(136, 150, 151);
-            tabPageAddOrEditOrDeleteSocio.Controls.Add(checkBoxEstado);
-            tabPageAddOrEditOrDeleteSocio.Controls.Add(labelEstadoActividad);
-            tabPageAddOrEditOrDeleteSocio.Controls.Add(buttonCancel);
-            tabPageAddOrEditOrDeleteSocio.Controls.Add(buttonSave);
-            tabPageAddOrEditOrDeleteSocio.Controls.Add(labelCodigoSocio);
-            tabPageAddOrEditOrDeleteSocio.Controls.Add(buttonAdd);
-            tabPageAddOrEditOrDeleteSocio.Controls.Add(textBoxName);
-            tabPageAddOrEditOrDeleteSocio.Controls.Add(labelOperation);
-            tabPageAddOrEditOrDeleteSocio.Controls.Add(labelLastName);
-            tabPageAddOrEditOrDeleteSocio.Controls.Add(textBoxCodigoSocio);
-            tabPageAddOrEditOrDeleteSocio.Controls.Add(labelName);
-            tabPageAddOrEditOrDeleteSocio.Controls.Add(textBoxLastName);
-            tabPageAddOrEditOrDeleteSocio.Controls.Add(labelDNI);
-            tabPageAddOrEditOrDeleteSocio.Controls.Add(textBoxDNI);
-            tabPageAddOrEditOrDeleteSocio.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            tabPageAddOrEditOrDeleteSocio.Location = new Point(4, 37);
-            tabPageAddOrEditOrDeleteSocio.Name = "tabPageAddOrEditOrDeleteSocio";
-            tabPageAddOrEditOrDeleteSocio.Padding = new Padding(3);
-            tabPageAddOrEditOrDeleteSocio.Size = new Size(847, 507);
-            tabPageAddOrEditOrDeleteSocio.TabIndex = 1;
-            tabPageAddOrEditOrDeleteSocio.Text = "Añadir/Editar/Eliminar Socio";
+            tabPageAddOrEditSocio.BackColor = Color.FromArgb(136, 150, 151);
+            tabPageAddOrEditSocio.Controls.Add(checkBoxEstado);
+            tabPageAddOrEditSocio.Controls.Add(labelEstadoActividad);
+            tabPageAddOrEditSocio.Controls.Add(buttonCancel);
+            tabPageAddOrEditSocio.Controls.Add(buttonSave);
+            tabPageAddOrEditSocio.Controls.Add(labelCodigoSocio);
+            tabPageAddOrEditSocio.Controls.Add(buttonAdd);
+            tabPageAddOrEditSocio.Controls.Add(textBoxName);
+            tabPageAddOrEditSocio.Controls.Add(labelOperation);
+            tabPageAddOrEditSocio.Controls.Add(labelLastName);
+            tabPageAddOrEditSocio.Controls.Add(textBoxCodigoSocio);
+            tabPageAddOrEditSocio.Controls.Add(labelName);
+            tabPageAddOrEditSocio.Controls.Add(textBoxLastName);
+            tabPageAddOrEditSocio.Controls.Add(labelDNI);
+            tabPageAddOrEditSocio.Controls.Add(textBoxDNI);
+            tabPageAddOrEditSocio.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tabPageAddOrEditSocio.Location = new Point(4, 37);
+            tabPageAddOrEditSocio.Name = "tabPageAddOrEditSocio";
+            tabPageAddOrEditSocio.Padding = new Padding(3);
+            tabPageAddOrEditSocio.Size = new Size(847, 507);
+            tabPageAddOrEditSocio.TabIndex = 1;
+            tabPageAddOrEditSocio.Text = "Añadir/Editar Socio";
             // 
             // checkBoxEstado
             // 
@@ -386,6 +388,7 @@
             textBoxCodigoSocio.ReadOnly = true;
             textBoxCodigoSocio.Size = new Size(238, 27);
             textBoxCodigoSocio.TabIndex = 11;
+            textBoxCodigoSocio.TabStop = false;
             // 
             // labelName
             // 
@@ -448,7 +451,7 @@
             buttonClose.Location = new Point(774, 5);
             buttonClose.Name = "buttonClose";
             buttonClose.Size = new Size(76, 39);
-            buttonClose.TabIndex = 5;
+            buttonClose.TabIndex = 7;
             buttonClose.UseVisualStyleBackColor = false;
             buttonClose.MouseClick += buttonClose_MouseClick;
             // 
@@ -468,14 +471,14 @@
             tabPageSociosVisualizer.ResumeLayout(false);
             tabPageSociosVisualizer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewSocios).EndInit();
-            tabPageAddOrEditOrDeleteSocio.ResumeLayout(false);
-            tabPageAddOrEditOrDeleteSocio.PerformLayout();
+            tabPageAddOrEditSocio.ResumeLayout(false);
+            tabPageAddOrEditSocio.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
         private TabControl tabControl;
-        private TabPage tabPageAddOrEditOrDeleteSocio;
+        private TabPage tabPageAddOrEditSocio;
         private TabPage tabPageSociosVisualizer;
         private DataGridView dataGridViewSocios;
         private TextBox textBoxLastName;

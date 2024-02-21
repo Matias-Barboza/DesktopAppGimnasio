@@ -31,21 +31,22 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             buttonSocios = new Button();
             buttonCuotas = new Button();
-            panel1 = new Panel();
+            panelLeft = new Panel();
             buttonInfo = new Button();
             buttonTiposCuotas = new Button();
             pictureBoxLogo = new PictureBox();
             labelSections = new Label();
             buttonClose = new Button();
-            panel2 = new Panel();
-            panel3 = new Panel();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
-            panel4 = new Panel();
-            panel1.SuspendLayout();
+            panelTop = new Panel();
+            panelToolBarContainer = new Panel();
+            panelMove = new Panel();
+            buttonMinimize = new Button();
+            buttonMaximize = new Button();
+            buttonCloseTB = new Button();
+            panelYellowLine = new Panel();
+            panelLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
-            panel3.SuspendLayout();
+            panelToolBarContainer.SuspendLayout();
             SuspendLayout();
             // 
             // buttonSocios
@@ -94,22 +95,22 @@
             buttonCuotas.KeyDown += buttonCuotas_KeyDown;
             buttonCuotas.MouseClick += buttonCuotas_MouseClick;
             // 
-            // panel1
+            // panelLeft
             // 
-            panel1.BackColor = Color.FromArgb(63, 71, 73);
-            panel1.BackgroundImageLayout = ImageLayout.Stretch;
-            panel1.Controls.Add(buttonInfo);
-            panel1.Controls.Add(buttonTiposCuotas);
-            panel1.Controls.Add(pictureBoxLogo);
-            panel1.Controls.Add(labelSections);
-            panel1.Controls.Add(buttonClose);
-            panel1.Controls.Add(buttonSocios);
-            panel1.Controls.Add(buttonCuotas);
-            panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(300, 710);
-            panel1.TabIndex = 3;
+            panelLeft.BackColor = Color.FromArgb(63, 71, 73);
+            panelLeft.BackgroundImageLayout = ImageLayout.Stretch;
+            panelLeft.Controls.Add(buttonInfo);
+            panelLeft.Controls.Add(buttonTiposCuotas);
+            panelLeft.Controls.Add(pictureBoxLogo);
+            panelLeft.Controls.Add(labelSections);
+            panelLeft.Controls.Add(buttonClose);
+            panelLeft.Controls.Add(buttonSocios);
+            panelLeft.Controls.Add(buttonCuotas);
+            panelLeft.Dock = DockStyle.Left;
+            panelLeft.Location = new Point(0, 0);
+            panelLeft.Name = "panelLeft";
+            panelLeft.Size = new Size(300, 710);
+            panelLeft.TabIndex = 3;
             // 
             // buttonInfo
             // 
@@ -128,7 +129,7 @@
             buttonInfo.Location = new Point(5, 288);
             buttonInfo.Name = "buttonInfo";
             buttonInfo.Size = new Size(292, 40);
-            buttonInfo.TabIndex = 4;
+            buttonInfo.TabIndex = 3;
             buttonInfo.Text = "Acerca de";
             buttonInfo.UseVisualStyleBackColor = false;
             buttonInfo.MouseClick += buttonInfo_MouseClick;
@@ -198,89 +199,101 @@
             buttonClose.Location = new Point(3, 658);
             buttonClose.Name = "buttonClose";
             buttonClose.Size = new Size(294, 40);
-            buttonClose.TabIndex = 3;
+            buttonClose.TabIndex = 4;
             buttonClose.Text = "Salir";
             buttonClose.UseVisualStyleBackColor = false;
             buttonClose.MouseClick += buttonClose_MouseClick;
             // 
-            // panel2
+            // panelTop
             // 
-            panel2.BackColor = Color.FromArgb(63, 71, 73);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(300, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(855, 110);
-            panel2.TabIndex = 4;
+            panelTop.BackColor = Color.FromArgb(63, 71, 73);
+            panelTop.Dock = DockStyle.Top;
+            panelTop.Location = new Point(300, 0);
+            panelTop.Name = "panelTop";
+            panelTop.Size = new Size(855, 110);
+            panelTop.TabIndex = 4;
             // 
-            // panel3
+            // panelToolBarContainer
             // 
-            panel3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel3.BackColor = Color.FromArgb(63, 71, 73);
-            panel3.Controls.Add(button3);
-            panel3.Controls.Add(button2);
-            panel3.Controls.Add(button1);
-            panel3.Location = new Point(300, 0);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(855, 40);
-            panel3.TabIndex = 5;
+            panelToolBarContainer.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panelToolBarContainer.BackColor = Color.FromArgb(63, 71, 73);
+            panelToolBarContainer.Controls.Add(panelMove);
+            panelToolBarContainer.Controls.Add(buttonMinimize);
+            panelToolBarContainer.Controls.Add(buttonMaximize);
+            panelToolBarContainer.Controls.Add(buttonCloseTB);
+            panelToolBarContainer.Location = new Point(300, 0);
+            panelToolBarContainer.Name = "panelToolBarContainer";
+            panelToolBarContainer.Size = new Size(855, 40);
+            panelToolBarContainer.TabIndex = 5;
             // 
-            // button3
+            // panelMove
             // 
-            button3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button3.FlatAppearance.BorderColor = Color.Yellow;
-            button3.FlatAppearance.BorderSize = 2;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.ForeColor = Color.Yellow;
-            button3.Image = (Image)resources.GetObject("button3.Image");
-            button3.Location = new Point(715, 2);
-            button3.Name = "button3";
-            button3.Padding = new Padding(0, 0, 1, 7);
-            button3.Size = new Size(42, 34);
-            button3.TabIndex = 2;
-            button3.UseVisualStyleBackColor = true;
-            button3.MouseClick += button3_MouseClick;
+            panelMove.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panelMove.Location = new Point(3, 2);
+            panelMove.Name = "panelMove";
+            panelMove.Size = new Size(710, 36);
+            panelMove.TabIndex = 3;
+            panelMove.MouseDown += panelMove_MouseDown;
+            panelMove.MouseMove += panelMove_MouseMove;
+            panelMove.MouseUp += panelMove_MouseUp;
             // 
-            // button2
+            // buttonMinimize
             // 
-            button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button2.FlatAppearance.BorderColor = Color.Yellow;
-            button2.FlatAppearance.BorderSize = 2;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = Color.Yellow;
-            button2.Image = (Image)resources.GetObject("button2.Image");
-            button2.Location = new Point(763, 2);
-            button2.Name = "button2";
-            button2.Padding = new Padding(0, 0, 1, 3);
-            button2.Size = new Size(42, 34);
-            button2.TabIndex = 1;
-            button2.UseVisualStyleBackColor = true;
-            button2.MouseClick += button2_MouseClick;
+            buttonMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonMinimize.FlatAppearance.BorderColor = Color.Yellow;
+            buttonMinimize.FlatAppearance.BorderSize = 2;
+            buttonMinimize.FlatStyle = FlatStyle.Flat;
+            buttonMinimize.ForeColor = Color.Yellow;
+            buttonMinimize.Image = (Image)resources.GetObject("buttonMinimize.Image");
+            buttonMinimize.Location = new Point(715, 2);
+            buttonMinimize.Name = "buttonMinimize";
+            buttonMinimize.Padding = new Padding(0, 0, 1, 7);
+            buttonMinimize.Size = new Size(42, 34);
+            buttonMinimize.TabIndex = 5;
+            buttonMinimize.UseVisualStyleBackColor = true;
+            buttonMinimize.MouseClick += buttonMinimize_MouseClick;
             // 
-            // button1
+            // buttonMaximize
             // 
-            button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button1.FlatAppearance.BorderColor = Color.Yellow;
-            button1.FlatAppearance.BorderSize = 2;
-            button1.FlatAppearance.MouseDownBackColor = Color.Firebrick;
-            button1.FlatAppearance.MouseOverBackColor = Color.IndianRed;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.Yellow;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(811, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(42, 34);
-            button1.TabIndex = 0;
-            button1.UseVisualStyleBackColor = true;
-            button1.MouseClick += button1_MouseClick;
+            buttonMaximize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonMaximize.FlatAppearance.BorderColor = Color.Yellow;
+            buttonMaximize.FlatAppearance.BorderSize = 2;
+            buttonMaximize.FlatStyle = FlatStyle.Flat;
+            buttonMaximize.ForeColor = Color.Yellow;
+            buttonMaximize.Image = (Image)resources.GetObject("buttonMaximize.Image");
+            buttonMaximize.Location = new Point(763, 2);
+            buttonMaximize.Name = "buttonMaximize";
+            buttonMaximize.Padding = new Padding(0, 0, 1, 3);
+            buttonMaximize.Size = new Size(42, 34);
+            buttonMaximize.TabIndex = 6;
+            buttonMaximize.UseVisualStyleBackColor = true;
+            buttonMaximize.MouseClick += buttonMaximize_MouseClick;
             // 
-            // panel4
+            // buttonCloseTB
             // 
-            panel4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel4.BackColor = Color.Yellow;
-            panel4.Location = new Point(302, 40);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(853, 10);
-            panel4.TabIndex = 7;
+            buttonCloseTB.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonCloseTB.FlatAppearance.BorderColor = Color.Yellow;
+            buttonCloseTB.FlatAppearance.BorderSize = 2;
+            buttonCloseTB.FlatAppearance.MouseDownBackColor = Color.Firebrick;
+            buttonCloseTB.FlatAppearance.MouseOverBackColor = Color.IndianRed;
+            buttonCloseTB.FlatStyle = FlatStyle.Flat;
+            buttonCloseTB.ForeColor = Color.Yellow;
+            buttonCloseTB.Image = (Image)resources.GetObject("buttonCloseTB.Image");
+            buttonCloseTB.Location = new Point(811, 2);
+            buttonCloseTB.Name = "buttonCloseTB";
+            buttonCloseTB.Size = new Size(42, 34);
+            buttonCloseTB.TabIndex = 7;
+            buttonCloseTB.UseVisualStyleBackColor = true;
+            buttonCloseTB.MouseClick += buttonCloseTB_MouseClick;
+            // 
+            // panelYellowLine
+            // 
+            panelYellowLine.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panelYellowLine.BackColor = Color.Yellow;
+            panelYellowLine.Location = new Point(302, 40);
+            panelYellowLine.Name = "panelYellowLine";
+            panelYellowLine.Size = new Size(853, 10);
+            panelYellowLine.TabIndex = 7;
             // 
             // MainView
             // 
@@ -289,20 +302,20 @@
             BackColor = Color.DarkGray;
             ClientSize = new Size(1155, 710);
             ControlBox = false;
-            Controls.Add(panel4);
-            Controls.Add(panel3);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
+            Controls.Add(panelYellowLine);
+            Controls.Add(panelToolBarContainer);
+            Controls.Add(panelTop);
+            Controls.Add(panelLeft);
             FormBorderStyle = FormBorderStyle.None;
             IsMdiContainer = true;
             Name = "MainView";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MainView";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panelLeft.ResumeLayout(false);
+            panelLeft.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
-            panel3.ResumeLayout(false);
+            panelToolBarContainer.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -310,17 +323,18 @@
 
         private Button buttonSocios;
         private Button buttonCuotas;
-        private Panel panel1;
-        private Panel panel2;
+        private Panel panelLeft;
+        private Panel panelTop;
         private Button buttonClose;
         private Label labelSections;
         private PictureBox pictureBoxLogo;
         private Button buttonTiposCuotas;
         private Button buttonInfo;
-        private Panel panel3;
-        private Button button3;
-        private Button button2;
-        private Button button1;
-        private Panel panel4;
+        private Panel panelToolBarContainer;
+        private Button buttonMinimize;
+        private Button buttonMaximize;
+        private Button buttonCloseTB;
+        private Panel panelYellowLine;
+        private Panel panelMove;
     }
 }

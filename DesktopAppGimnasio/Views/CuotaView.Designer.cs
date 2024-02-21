@@ -46,7 +46,7 @@
             buttonSearchCuota = new Button();
             textBoxSearchCuota = new TextBox();
             dataGridViewCuotas = new DataGridView();
-            tabPageAddOrEditOrDeleteCuota = new TabPage();
+            tabPageAddOrEditCuota = new TabPage();
             comboBoxCantidad = new ComboBox();
             labelCantidad = new Label();
             labelPesos = new Label();
@@ -72,7 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewCuotasVencidas).BeginInit();
             tabPageCuotasVisualizer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCuotas).BeginInit();
-            tabPageAddOrEditOrDeleteCuota.SuspendLayout();
+            tabPageAddOrEditCuota.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl
@@ -80,7 +80,7 @@
             tabControl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControl.Controls.Add(tabPageDebtorsVisualizer);
             tabControl.Controls.Add(tabPageCuotasVisualizer);
-            tabControl.Controls.Add(tabPageAddOrEditOrDeleteCuota);
+            tabControl.Controls.Add(tabPageAddOrEditCuota);
             tabControl.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point);
             tabControl.Location = new Point(0, 12);
             tabControl.Name = "tabControl";
@@ -88,6 +88,7 @@
             tabControl.SelectedIndex = 0;
             tabControl.Size = new Size(855, 548);
             tabControl.TabIndex = 0;
+            tabControl.TabStop = false;
             // 
             // tabPageDebtorsVisualizer
             // 
@@ -115,7 +116,7 @@
             buttonSearchDebt.Location = new Point(409, 20);
             buttonSearchDebt.Name = "buttonSearchDebt";
             buttonSearchDebt.Size = new Size(100, 32);
-            buttonSearchDebt.TabIndex = 11;
+            buttonSearchDebt.TabIndex = 1;
             buttonSearchDebt.Text = "Buscar";
             buttonSearchDebt.TextAlign = ContentAlignment.MiddleLeft;
             buttonSearchDebt.UseVisualStyleBackColor = false;
@@ -131,7 +132,7 @@
             textBoxSearchDebt.Location = new Point(6, 21);
             textBoxSearchDebt.Name = "textBoxSearchDebt";
             textBoxSearchDebt.Size = new Size(397, 29);
-            textBoxSearchDebt.TabIndex = 10;
+            textBoxSearchDebt.TabIndex = 0;
             textBoxSearchDebt.KeyDown += textBoxSearchDebt_KeyDown;
             // 
             // dataGridViewCuotasVencidas
@@ -184,6 +185,7 @@
             dataGridViewCuotasVencidas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewCuotasVencidas.Size = new Size(835, 438);
             dataGridViewCuotasVencidas.TabIndex = 1;
+            dataGridViewCuotasVencidas.TabStop = false;
             dataGridViewCuotasVencidas.CellFormatting += dataGridViewCuotasVencidas_CellFormatting;
             // 
             // tabPageCuotasVisualizer
@@ -216,7 +218,7 @@
             buttonEditCuota.Location = new Point(583, 14);
             buttonEditCuota.Name = "buttonEditCuota";
             buttonEditCuota.Size = new Size(125, 39);
-            buttonEditCuota.TabIndex = 10;
+            buttonEditCuota.TabIndex = 2;
             buttonEditCuota.Text = "  Editar";
             buttonEditCuota.UseVisualStyleBackColor = false;
             buttonEditCuota.MouseClick += buttonEditCuota_MouseClick;
@@ -235,7 +237,7 @@
             buttonDeleteCuota.Location = new Point(714, 14);
             buttonDeleteCuota.Name = "buttonDeleteCuota";
             buttonDeleteCuota.Size = new Size(125, 39);
-            buttonDeleteCuota.TabIndex = 11;
+            buttonDeleteCuota.TabIndex = 3;
             buttonDeleteCuota.Text = "   Eliminar";
             buttonDeleteCuota.UseVisualStyleBackColor = false;
             buttonDeleteCuota.MouseClick += buttonDeleteCuota_MouseClick;
@@ -253,7 +255,7 @@
             buttonSearchCuota.Location = new Point(409, 20);
             buttonSearchCuota.Name = "buttonSearchCuota";
             buttonSearchCuota.Size = new Size(100, 32);
-            buttonSearchCuota.TabIndex = 9;
+            buttonSearchCuota.TabIndex = 1;
             buttonSearchCuota.Text = "Buscar";
             buttonSearchCuota.TextAlign = ContentAlignment.MiddleLeft;
             buttonSearchCuota.UseVisualStyleBackColor = false;
@@ -268,7 +270,7 @@
             textBoxSearchCuota.Location = new Point(6, 21);
             textBoxSearchCuota.Name = "textBoxSearchCuota";
             textBoxSearchCuota.Size = new Size(397, 29);
-            textBoxSearchCuota.TabIndex = 8;
+            textBoxSearchCuota.TabIndex = 0;
             textBoxSearchCuota.KeyDown += textBoxSearchCuota_KeyDown;
             // 
             // dataGridViewCuotas
@@ -324,35 +326,36 @@
             dataGridViewCuotas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewCuotas.Size = new Size(835, 438);
             dataGridViewCuotas.TabIndex = 0;
+            dataGridViewCuotas.TabStop = false;
             // 
-            // tabPageAddOrEditOrDeleteCuota
+            // tabPageAddOrEditCuota
             // 
-            tabPageAddOrEditOrDeleteCuota.BackColor = Color.FromArgb(136, 150, 151);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(comboBoxCantidad);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(labelCantidad);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(labelPesos);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(labelCodigoCuota);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(textBoxCodigoCuota);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(labelTipoCuota);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(comboBoxMes);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(comboBoxTipoCuota);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(labelMes);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(labelFechaPago);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(monthCalendarFechaPago);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(labelCodigoSocio);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(textBoxCodigoSocio);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(buttonCancelOperation);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(buttonSaveCuota);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(buttonAddCuota);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(labelOperation);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(labelMonto);
-            tabPageAddOrEditOrDeleteCuota.Controls.Add(textBoxMonto);
-            tabPageAddOrEditOrDeleteCuota.Location = new Point(4, 37);
-            tabPageAddOrEditOrDeleteCuota.Name = "tabPageAddOrEditOrDeleteCuota";
-            tabPageAddOrEditOrDeleteCuota.Padding = new Padding(3);
-            tabPageAddOrEditOrDeleteCuota.Size = new Size(847, 507);
-            tabPageAddOrEditOrDeleteCuota.TabIndex = 1;
-            tabPageAddOrEditOrDeleteCuota.Text = "Registrar/Editar/Eliminar cuota";
+            tabPageAddOrEditCuota.BackColor = Color.FromArgb(136, 150, 151);
+            tabPageAddOrEditCuota.Controls.Add(comboBoxCantidad);
+            tabPageAddOrEditCuota.Controls.Add(labelCantidad);
+            tabPageAddOrEditCuota.Controls.Add(labelPesos);
+            tabPageAddOrEditCuota.Controls.Add(labelCodigoCuota);
+            tabPageAddOrEditCuota.Controls.Add(textBoxCodigoCuota);
+            tabPageAddOrEditCuota.Controls.Add(labelTipoCuota);
+            tabPageAddOrEditCuota.Controls.Add(comboBoxMes);
+            tabPageAddOrEditCuota.Controls.Add(comboBoxTipoCuota);
+            tabPageAddOrEditCuota.Controls.Add(labelMes);
+            tabPageAddOrEditCuota.Controls.Add(labelFechaPago);
+            tabPageAddOrEditCuota.Controls.Add(monthCalendarFechaPago);
+            tabPageAddOrEditCuota.Controls.Add(labelCodigoSocio);
+            tabPageAddOrEditCuota.Controls.Add(textBoxCodigoSocio);
+            tabPageAddOrEditCuota.Controls.Add(buttonCancelOperation);
+            tabPageAddOrEditCuota.Controls.Add(buttonSaveCuota);
+            tabPageAddOrEditCuota.Controls.Add(buttonAddCuota);
+            tabPageAddOrEditCuota.Controls.Add(labelOperation);
+            tabPageAddOrEditCuota.Controls.Add(labelMonto);
+            tabPageAddOrEditCuota.Controls.Add(textBoxMonto);
+            tabPageAddOrEditCuota.Location = new Point(4, 37);
+            tabPageAddOrEditCuota.Name = "tabPageAddOrEditCuota";
+            tabPageAddOrEditCuota.Padding = new Padding(3);
+            tabPageAddOrEditCuota.Size = new Size(847, 507);
+            tabPageAddOrEditCuota.TabIndex = 1;
+            tabPageAddOrEditCuota.Text = "Registrar/Editar cuota";
             // 
             // comboBoxCantidad
             // 
@@ -367,7 +370,7 @@
             comboBoxCantidad.Location = new Point(581, 179);
             comboBoxCantidad.Name = "comboBoxCantidad";
             comboBoxCantidad.Size = new Size(238, 27);
-            comboBoxCantidad.TabIndex = 34;
+            comboBoxCantidad.TabIndex = 3;
             comboBoxCantidad.SelectedIndexChanged += comboBoxCantidad_SelectedIndexChanged;
             // 
             // labelCantidad
@@ -416,6 +419,7 @@
             textBoxCodigoCuota.ReadOnly = true;
             textBoxCodigoCuota.Size = new Size(238, 27);
             textBoxCodigoCuota.TabIndex = 31;
+            textBoxCodigoCuota.TabStop = false;
             // 
             // labelTipoCuota
             // 
@@ -441,7 +445,7 @@
             comboBoxMes.Location = new Point(22, 247);
             comboBoxMes.Name = "comboBoxMes";
             comboBoxMes.Size = new Size(238, 27);
-            comboBoxMes.TabIndex = 2;
+            comboBoxMes.TabIndex = 1;
             // 
             // comboBoxTipoCuota
             // 
@@ -456,7 +460,7 @@
             comboBoxTipoCuota.Location = new Point(581, 111);
             comboBoxTipoCuota.Name = "comboBoxTipoCuota";
             comboBoxTipoCuota.Size = new Size(238, 27);
-            comboBoxTipoCuota.TabIndex = 4;
+            comboBoxTipoCuota.TabIndex = 2;
             comboBoxTipoCuota.SelectedIndexChanged += comboBoxTipoCuota_SelectedIndexChanged;
             // 
             // labelMes
@@ -491,6 +495,7 @@
             monthCalendarFechaPago.MaxSelectionCount = 1;
             monthCalendarFechaPago.Name = "monthCalendarFechaPago";
             monthCalendarFechaPago.TabIndex = 3;
+            monthCalendarFechaPago.TabStop = false;
             monthCalendarFechaPago.DateChanged += monthCalendarFechaPago_DateChanged;
             // 
             // labelCodigoSocio
@@ -612,7 +617,7 @@
             textBoxMonto.Location = new Point(581, 244);
             textBoxMonto.Name = "textBoxMonto";
             textBoxMonto.Size = new Size(212, 27);
-            textBoxMonto.TabIndex = 1;
+            textBoxMonto.TabIndex = 4;
             // 
             // buttonClose
             // 
@@ -627,7 +632,7 @@
             buttonClose.Location = new Point(774, 5);
             buttonClose.Name = "buttonClose";
             buttonClose.Size = new Size(76, 39);
-            buttonClose.TabIndex = 6;
+            buttonClose.TabIndex = 8;
             buttonClose.UseVisualStyleBackColor = false;
             buttonClose.MouseClick += buttonClose_MouseClick;
             // 
@@ -649,8 +654,8 @@
             tabPageCuotasVisualizer.ResumeLayout(false);
             tabPageCuotasVisualizer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCuotas).EndInit();
-            tabPageAddOrEditOrDeleteCuota.ResumeLayout(false);
-            tabPageAddOrEditOrDeleteCuota.PerformLayout();
+            tabPageAddOrEditCuota.ResumeLayout(false);
+            tabPageAddOrEditCuota.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -658,7 +663,7 @@
 
         private TabControl tabControl;
         private TabPage tabPageCuotasVisualizer;
-        private TabPage tabPageAddOrEditOrDeleteCuota;
+        private TabPage tabPageAddOrEditCuota;
         private DataGridView dataGridViewCuotas;
         private Button buttonEditCuota;
         private Button buttonSearchCuota;

@@ -19,11 +19,18 @@ namespace DesktopAppGimnasio.Presenters
         {
             this.mainView = mainView;
             this.mySqlConnectionString = mySqlConnectionString;
+            //this.mainView.ShowPresentationView += ShowPresentationView;
             this.mainView.ShowSociosView += ShowSociosView;
             this.mainView.ShowCuotasView += ShowCuotasView;
             this.mainView.ShowTiposCuotasView += ShowTiposCuotasView;
             this.mainView.ShowAboutView += ShowAboutView;
         }
+
+        //private void ShowPresentationView(object? sender, EventArgs e)
+        //{
+        //    IPresentationView presentationView = PresentationView.GetInstance((Form) mainView);
+        //    PresentationPresenter presentationPresenter = new PresentationPresenter(presentationView);
+        //}
 
         private void ShowSociosView(object? sender, EventArgs e)
         {

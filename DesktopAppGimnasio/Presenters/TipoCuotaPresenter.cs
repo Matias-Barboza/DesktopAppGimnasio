@@ -86,7 +86,7 @@ namespace DesktopAppGimnasio.Presenters
                 {
                     repository.Edit(tipoCuotaModel);
                     view.Caption = "Estado de edición de tipo de cuota";
-                    view.Message = $"Cuota \"{tipoCuotaModel.Descripcion}\" editada correctamente";
+                    view.Message = $"Cuota \"{tipoCuotaModel.Descripcion}\" editada correctamente.";
                 }
 
                 view.IsSuccessful = true;

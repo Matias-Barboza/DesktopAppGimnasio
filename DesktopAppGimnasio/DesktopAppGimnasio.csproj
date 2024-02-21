@@ -35,10 +35,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="_Resources\" />
+    <Folder Include="_Resources\UserManual\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="PdfiumViewer.Native.x86.v8-xfa" Version="2018.4.8.256" />
+    <PackageReference Include="PdfiumViewer.Native.x86_64.v8-xfa" Version="2018.4.8.256" />
     <PackageReference Include="PdfiumViewer.Updated" Version="2.14.4" />
   </ItemGroup>
 

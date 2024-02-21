@@ -142,7 +142,7 @@ namespace DesktopAppGimnasio.Presenters
                 repository.Delete(codigoCuota);
                 view.IsSuccessful = true;
                 view.Caption = "Estado de eliminación de cuota";
-                view.Message = $"La cuota {codigoCuota} fué eliminada correctamente";
+                view.Message = $"La cuota {codigoCuota} fué eliminada correctamente.";
                 LoadAllCuotasList();
             }
             catch (Exception ex) 
@@ -194,13 +194,13 @@ namespace DesktopAppGimnasio.Presenters
                 {
                     repository.Edit(cuota);
                     view.Caption = "Estado de edición de cuota";
-                    view.Message = $"Cuota {cuota.CodigoCuota} editada exitosamente";
+                    view.Message = $"Cuota {cuota.CodigoCuota} editada exitosamente.";
                 }
                 else
                 {
                     repository.Add(cuota);
                     view.Caption = "Estado de adición de cuota";
-                    view.Message = $"Cuota añadida exitosamente";
+                    view.Message = $"Cuota añadida exitosamente.";
                 }
 
                 view.IsSuccessful = true;
