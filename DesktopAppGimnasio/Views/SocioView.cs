@@ -122,8 +122,8 @@ namespace DesktopAppGimnasio.Views
             {
                 MustEnter = true;
                 DeleteEvent?.Invoke(this, EventArgs.Empty);
-                MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RefreshDataGridView?.Invoke(this, EventArgs.Empty);
+                MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CleanInterfaceProperties();
                 MustEnter = false;
             }
