@@ -1,13 +1,6 @@
-﻿using DesktopAppGimnasio._Repositories;
-using DesktopAppGimnasio.Models;
+﻿using DesktopAppGimnasio.Models;
 using DesktopAppGimnasio.Presenters.CommonTasks;
 using DesktopAppGimnasio.Views;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesktopAppGimnasio.Presenters
 {
@@ -103,6 +96,7 @@ namespace DesktopAppGimnasio.Presenters
 
         private void CancelAction(object? sender, EventArgs e)
         {
+            view.MustEnter = false;
             view.IsEdit = false;
             CleanFieldsView();
         }

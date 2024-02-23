@@ -1,12 +1,6 @@
-﻿using DesktopAppGimnasio._Repositories;
-using DesktopAppGimnasio.Models;
+﻿using DesktopAppGimnasio.Models;
 using DesktopAppGimnasio.Presenters.CommonTasks;
 using DesktopAppGimnasio.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesktopAppGimnasio.Presenters
 {
@@ -134,6 +128,12 @@ namespace DesktopAppGimnasio.Presenters
 
         private void DeleteSelectedCuota(object? sender, EventArgs e)
         {
+
+            if (!view.MustEnter) 
+            {
+                return;
+            }
+
             try 
             {
                 CuotaModel cuota = (CuotaModel) cuotasBindingSource.Current;
@@ -143,7 +143,7 @@ namespace DesktopAppGimnasio.Presenters
                 view.IsSuccessful = true;
                 view.Caption = "Estado de eliminación de cuota";
                 view.Message = $"La cuota {codigoCuota} fué eliminada correctamente.";
-                LoadAllCuotasList();
+                view.MustEnter = false;
             }
             catch (Exception ex) 
             {
@@ -217,6 +217,7 @@ namespace DesktopAppGimnasio.Presenters
 
         private void CancelAction(object? sender, EventArgs e)
         {
+            view.MustEnter = false;
             CleanFieldsView();
         }
     

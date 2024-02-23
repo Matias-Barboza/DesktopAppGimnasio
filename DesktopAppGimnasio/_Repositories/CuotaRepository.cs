@@ -1,10 +1,5 @@
 ﻿using DesktopAppGimnasio.Models;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesktopAppGimnasio._Repositories
 {
@@ -89,6 +84,30 @@ namespace DesktopAppGimnasio._Repositories
                         ParameterName = "codigoCuota",
                         MySqlDbType = MySqlDbType.Int32,
                         Value = codigoCuota
+                    });
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void DeleteAllCuotasOfSocio(int codigoSocio)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+
+                using (MySqlCommand command = connection.CreateCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = @"DELETE FROM cuotas
+                                            WHERE codigo_socio_fk = @codigoSocio;";
+
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "codigoSocio",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = codigoSocio
                     });
 
                     command.ExecuteNonQuery();

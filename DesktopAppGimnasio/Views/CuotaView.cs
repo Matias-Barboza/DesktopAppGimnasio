@@ -172,10 +172,12 @@ namespace DesktopAppGimnasio.Views
 
             if (result == DialogResult.Yes)
             {
+                MustEnter = true;
                 DeleteEvent?.Invoke(this, EventArgs.Empty);
                 MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RefreshDebtsDataGridView?.Invoke(this, EventArgs.Empty);
                 CleanInterfaceProperties();
+                MustEnter = false;
             }
         }
 

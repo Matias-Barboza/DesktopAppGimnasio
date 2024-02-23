@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DesktopAppGimnasio.Models;
+﻿using DesktopAppGimnasio.Models;
 using DesktopAppGimnasio.Presenters.CommonTasks;
 using DesktopAppGimnasio.Views;
 
@@ -14,14 +8,16 @@ namespace DesktopAppGimnasio.Presenters
     {
         private ISocioView view;
         private ISocioRepository repository;
+        private ICuotaRepository repositoryC;
         private BindingSource sociosBindingsource;
         private IEnumerable<SocioModel> sociosList;
 
-        public SocioPresenter(ISocioView view, ISocioRepository repository) 
+        public SocioPresenter(ISocioView view, ISocioRepository repository, ICuotaRepository repositoryC)
         {
 
             this.view = view;
             this.repository = repository;
+            this.repositoryC = repositoryC;
             this.sociosBindingsource = new BindingSource();
 
             // Subscribe to Events
@@ -90,16 +86,22 @@ namespace DesktopAppGimnasio.Presenters
 
         private void DeleteSelectedSocio(object? sender, EventArgs e)
         {
+            if (!view.MustEnter) 
+            {
+                return;
+            }
+
             try
             {
                 SocioModel socio = (SocioModel) sociosBindingsource.Current;
                 int codigoSocio = socio.CodigoSocio;
 
-                repository.Delete(socio.CodigoSocio);
+                repositoryC.DeleteAllCuotasOfSocio(codigoSocio);
+                repository.Delete(codigoSocio);
                 view.IsSuccessful = true;
                 view.Caption = "Estado de eliminación de socio";
                 view.Message = $"El socio {codigoSocio} fue eliminado exitosamente.";
-                LoadAllSocioList();
+                view.MustEnter = false;
             }
             catch (Exception ex)
             {
@@ -159,6 +161,7 @@ namespace DesktopAppGimnasio.Presenters
 
         private void CancelAction(object? sender, EventArgs e)
         {
+            view.MustEnter = false;
             CleanViewFields();
         }
 

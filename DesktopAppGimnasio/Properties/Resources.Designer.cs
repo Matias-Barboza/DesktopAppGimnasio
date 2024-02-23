@@ -59,5 +59,15 @@ namespace DesktopAppGimnasio.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Byte[].
+        /// </summary>
+        internal static byte[] Manual_de_usuario_Desktop_App_Gimnasio {
+            get {
+                object obj = ResourceManager.GetObject("Manual_de_usuario_Desktop_App_Gimnasio", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

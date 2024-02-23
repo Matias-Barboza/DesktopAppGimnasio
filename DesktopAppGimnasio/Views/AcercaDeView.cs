@@ -7,6 +7,8 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -40,16 +42,27 @@ namespace DesktopAppGimnasio.Views
 
         public void LoadPdf()
         {
-            string pdfName = "Manual de usuario Desktop App Gimnasio.pdf";
+            string resource = "Manual_de_usuario_Desktop_App_Gimnasio";
 
-            string resourcePath = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "_Resources");
+            string pdf = "Manual_de_usuario_Desktop_App_Gimnasio.pdf";
 
-            string directoryUserManual = Path.Combine(resourcePath, "UserManual");
+            ResourceManager resourceManager = new ResourceManager("DesktopAppGimnasio.Properties.Resources", Assembly.GetExecutingAssembly());
 
-            string pdfPath = Path.Combine(directoryUserManual, pdfName);
+            byte[] bytesFile = (byte[]) resourceManager.GetObject(resource);
 
-            byte[] pdfBytes = System.IO.File.ReadAllBytes(pdfPath);
+            string temporalDirectory = Path.GetTempPath();
 
+            string completePdfPath = Path.Combine(temporalDirectory, pdf);
+
+            File.WriteAllBytes(completePdfPath, bytesFile);
+
+            if (!File.Exists(completePdfPath))
+            {
+                MessageBox.Show("La ruta del archivo especificado no existe o no fué encontrada.", "Ruta no encontrada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            byte[] pdfBytes = System.IO.File.ReadAllBytes(completePdfPath);
 
             LoadPdf(pdfBytes);
         }

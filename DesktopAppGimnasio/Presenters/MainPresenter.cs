@@ -1,12 +1,6 @@
 ﻿using DesktopAppGimnasio._Repositories;
 using DesktopAppGimnasio.Models;
 using DesktopAppGimnasio.Views;
-using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesktopAppGimnasio.Presenters
 {
@@ -36,7 +30,8 @@ namespace DesktopAppGimnasio.Presenters
         {
             ISocioView socioView = SocioView.GetInstance((Form) mainView);
             ISocioRepository socioRepository = new SocioRepository(mySqlConnectionString);
-            SocioPresenter socioPresenter = new SocioPresenter(socioView, socioRepository);
+            ICuotaRepository cuotaRepository = new CuotaRepository(mySqlConnectionString);
+            SocioPresenter socioPresenter = new SocioPresenter(socioView, socioRepository, cuotaRepository);
         }
 
         private void ShowCuotasView(object? sender, EventArgs e)

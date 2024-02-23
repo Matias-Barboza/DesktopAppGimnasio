@@ -1,10 +1,6 @@
-using DesktopAppGimnasio._Repositories;
-using DesktopAppGimnasio.Models;
 using DesktopAppGimnasio.Presenters;
 using DesktopAppGimnasio.Views;
 using System.Configuration;
-using System.Diagnostics;
-using System.Windows.Forms;
 
 namespace DesktopAppGimnasio
 {
@@ -26,7 +22,6 @@ namespace DesktopAppGimnasio
 
             IMainView mainView = new MainView();
             new MainPresenter(mainView, mySqlConnectionString);
-;
             Application.Run((Form) mainView);
         }
     }

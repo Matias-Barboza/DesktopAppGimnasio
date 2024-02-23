@@ -116,13 +116,16 @@ namespace DesktopAppGimnasio.Views
 
         private void buttonDelete_MouseClick(object sender, MouseEventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Está seguro de eliminar el socio?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show("¿Está seguro de eliminar el socio?\nEsto desencadena una eliminación de todas las cuotas que corresponden al socio.", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (result == DialogResult.Yes)
             {
+                MustEnter = true;
                 DeleteEvent?.Invoke(this, EventArgs.Empty);
                 MessageBox.Show(Message, Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RefreshDataGridView?.Invoke(this, EventArgs.Empty);
                 CleanInterfaceProperties();
+                MustEnter = false;
             }
         }
 

@@ -6,7 +6,15 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>icono_app_gim.ico</ApplicationIcon>
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+    <Title>Complemento System</Title>
+    <Description>Aplicativo para gestión de socios y cuotas de un gimnasio.</Description>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="icono_app_gim.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <Reference Include="MySql.Data">
@@ -42,6 +50,7 @@
     <PackageReference Include="PdfiumViewer.Native.x86.v8-xfa" Version="2018.4.8.256" />
     <PackageReference Include="PdfiumViewer.Native.x86_64.v8-xfa" Version="2018.4.8.256" />
     <PackageReference Include="PdfiumViewer.Updated" Version="2.14.4" />
+    <PackageReference Include="System.Resources.ResourceManager" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
