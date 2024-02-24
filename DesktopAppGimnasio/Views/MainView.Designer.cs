@@ -281,6 +281,7 @@
             buttonCloseTB.Image = (Image)resources.GetObject("buttonCloseTB.Image");
             buttonCloseTB.Location = new Point(811, 2);
             buttonCloseTB.Name = "buttonCloseTB";
+            buttonCloseTB.Padding = new Padding(0, 0, 0, 1);
             buttonCloseTB.Size = new Size(42, 34);
             buttonCloseTB.TabIndex = 7;
             buttonCloseTB.UseVisualStyleBackColor = true;

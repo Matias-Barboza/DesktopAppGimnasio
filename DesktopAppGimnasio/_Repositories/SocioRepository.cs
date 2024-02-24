@@ -1,5 +1,6 @@
 ﻿using DesktopAppGimnasio.Models;
 using MySql.Data.MySqlClient;
+using static System.Windows.Forms.AxHost;
 
 namespace DesktopAppGimnasio._Repositories
 {
@@ -48,29 +49,6 @@ namespace DesktopAppGimnasio._Repositories
             }
         }
 
-        public void Delete(int codigoSocio)
-        {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            {
-
-                using (MySqlCommand command = connection.CreateCommand())
-                {
-                    connection.Open();
-                    command.Connection = connection;
-                    command.CommandText = @"DELETE FROM socios
-                                            WHERE codigo_socio = @codigoSocio;";
-                    command.Parameters.Add(new MySqlParameter()
-                    {
-                        ParameterName = "codigoSocio",
-                        MySqlDbType = MySqlDbType.Int32,
-                        Value = codigoSocio
-                    });
-
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-
         public void Edit(SocioModel socioModel)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -111,6 +89,80 @@ namespace DesktopAppGimnasio._Repositories
                         ParameterName = "estado_nuevo",
                         MySqlDbType = MySqlDbType.Bit,
                         Value = socioModel.EstaActivo
+                    });
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void Delete(int codigoSocio)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+
+                using (MySqlCommand command = connection.CreateCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = @"DELETE FROM socios
+                                            WHERE codigo_socio = @codigoSocio;";
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "codigoSocio",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = codigoSocio
+                    });
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public bool IsActive(int codigoSocio) 
+        {
+            bool state;
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+
+                using(MySqlCommand command = connection.CreateCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = @"SELECT esta_activo
+                                            FROM socios
+                                            WHERE codigo_socio = @codigoSocio";
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "codigoSocio",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = codigoSocio
+                    });
+
+                    state = (bool) command.ExecuteScalar();
+                }
+            }
+
+            return state;
+        }
+
+        public void ReactivateSocio(int codigoSocio) 
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+
+                using (MySqlCommand command = connection.CreateCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = @"UPDATE socios SET esta_activo = true
+                                            WHERE codigo_socio = @codigoSocio";
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "codigoSocio",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = codigoSocio
                     });
 
                     command.ExecuteNonQuery();

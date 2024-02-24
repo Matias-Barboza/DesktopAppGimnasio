@@ -67,54 +67,6 @@ namespace DesktopAppGimnasio._Repositories
             }
         }
 
-        public void Delete(int codigoCuota)
-        {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            {
-
-                using (MySqlCommand command = connection.CreateCommand())
-                {
-                    connection.Open();
-                    command.Connection = connection;
-                    command.CommandText = @"DELETE FROM cuotas
-                                            WHERE codigo_cuota = @codigoCuota;";
-
-                    command.Parameters.Add(new MySqlParameter()
-                    {
-                        ParameterName = "codigoCuota",
-                        MySqlDbType = MySqlDbType.Int32,
-                        Value = codigoCuota
-                    });
-
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-
-        public void DeleteAllCuotasOfSocio(int codigoSocio)
-        {
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
-            {
-
-                using (MySqlCommand command = connection.CreateCommand())
-                {
-                    connection.Open();
-                    command.Connection = connection;
-                    command.CommandText = @"DELETE FROM cuotas
-                                            WHERE codigo_socio_fk = @codigoSocio;";
-
-                    command.Parameters.Add(new MySqlParameter()
-                    {
-                        ParameterName = "codigoSocio",
-                        MySqlDbType = MySqlDbType.Int32,
-                        Value = codigoSocio
-                    });
-
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-
         public void Edit(CuotaModel cuotaModel)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -170,6 +122,54 @@ namespace DesktopAppGimnasio._Repositories
                         ParameterName = "monto_abonado_nuevo",
                         MySqlDbType = MySqlDbType.Float,
                         Value = cuotaModel.MontoAbonado
+                    });
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void Delete(int codigoCuota)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+
+                using (MySqlCommand command = connection.CreateCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = @"DELETE FROM cuotas
+                                            WHERE codigo_cuota = @codigoCuota;";
+
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "codigoCuota",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = codigoCuota
+                    });
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void DeleteAllCuotasOfSocio(int codigoSocio)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+
+                using (MySqlCommand command = connection.CreateCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = @"DELETE FROM cuotas
+                                            WHERE codigo_socio_fk = @codigoSocio;";
+
+                    command.Parameters.Add(new MySqlParameter()
+                    {
+                        ParameterName = "codigoSocio",
+                        MySqlDbType = MySqlDbType.Int32,
+                        Value = codigoSocio
                     });
 
                     command.ExecuteNonQuery();

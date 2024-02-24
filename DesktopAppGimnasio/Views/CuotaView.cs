@@ -26,7 +26,6 @@ namespace DesktopAppGimnasio.Views
         public CuotaView()
         {
             InitializeComponent();
-            comboBoxMes.SelectedIndex = DateTime.Now.Month;
             comboBoxTipoCuota.SelectedIndex = 0;
             MustShowDebtsMessage = true;
         }
@@ -35,7 +34,7 @@ namespace DesktopAppGimnasio.Views
         public int CodigoSocio { get => (textBoxCodigoSocio.Text == "") ? 0 : Convert.ToInt32(textBoxCodigoSocio.Text); set => textBoxCodigoSocio.Text = (value == 0) ? String.Empty : value.ToString(); }
         public DateTime FechaDePago { get => monthCalendarFechaPago.SelectionStart; set => monthCalendarFechaPago.SetDate(value); }
         public DateTime FechaDeVencimiento { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string MesQueAbona { get => (String)comboBoxMes.SelectedItem; set => comboBoxMes.SelectedIndex = (value == "") ? 0 : ConvertMonthToInt(value); }
+        public string MesQueAbona { get => ConvertIntToMonth(monthCalendarFechaPago.SelectionStart.Month); set => MesQueAbona = value; }
         public float MontoAbonado { get => (textBoxMonto.Text == "") ? 0 : float.Parse(textBoxMonto.Text); set => textBoxMonto.Text = (value == 0) ? String.Empty : value.ToString("0.00"); }
         public int IdTipoCuota { get => comboBoxTipoCuota.SelectedIndex; set => comboBoxTipoCuota.SelectedIndex = value; }
         public IEnumerable<float> Amounts { get => amounts; set => amounts = value; }
@@ -126,7 +125,7 @@ namespace DesktopAppGimnasio.Views
             return instance;
         }
 
-        public int ConvertMonthToInt(string Month)
+        public string ConvertIntToMonth(int month)
         {
             List<String> months = new List<String>()
             {
@@ -135,7 +134,7 @@ namespace DesktopAppGimnasio.Views
                 "Noviembre", "Diciembre"
             };
 
-            return months.IndexOf(Month);
+            return months[month];
         }
 
         private void buttonSearchCuota_MouseClick(object sender, MouseEventArgs e)
@@ -231,7 +230,7 @@ namespace DesktopAppGimnasio.Views
 
             if (comboBoxTipoCuota.SelectedIndex == 1)
             {
-                labelCantidad.Text = "Cantidad de meses";
+                labelCantidad.Text = "Cantidad de meses:";
                 comboBoxCantidad.Items.AddRange(new object[2] { "Seleccione una opción", 1 });
             }
             else if (comboBoxTipoCuota.SelectedIndex == 2)
@@ -272,10 +271,6 @@ namespace DesktopAppGimnasio.Views
             }
 
             textBoxMonto.Text = montoCalculado.ToString("0.00");
-        }
-        private void monthCalendarFechaPago_DateChanged(object sender, DateRangeEventArgs e)
-        {
-            comboBoxMes.SelectedIndex = (monthCalendarFechaPago.SelectionStart.Month);
         }
 
         private void textBoxSearchCuota_KeyDown(object sender, KeyEventArgs e)

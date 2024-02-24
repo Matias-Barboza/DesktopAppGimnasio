@@ -86,6 +86,7 @@ namespace DesktopAppGimnasio.Presenters
 
         private void DeleteSelectedSocio(object? sender, EventArgs e)
         {
+
             if (!view.MustEnter) 
             {
                 return;

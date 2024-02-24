@@ -53,9 +53,7 @@
             labelCodigoCuota = new Label();
             textBoxCodigoCuota = new TextBox();
             labelTipoCuota = new Label();
-            comboBoxMes = new ComboBox();
             comboBoxTipoCuota = new ComboBox();
-            labelMes = new Label();
             labelFechaPago = new Label();
             monthCalendarFechaPago = new MonthCalendar();
             labelCodigoSocio = new Label();
@@ -337,9 +335,7 @@
             tabPageAddOrEditCuota.Controls.Add(labelCodigoCuota);
             tabPageAddOrEditCuota.Controls.Add(textBoxCodigoCuota);
             tabPageAddOrEditCuota.Controls.Add(labelTipoCuota);
-            tabPageAddOrEditCuota.Controls.Add(comboBoxMes);
             tabPageAddOrEditCuota.Controls.Add(comboBoxTipoCuota);
-            tabPageAddOrEditCuota.Controls.Add(labelMes);
             tabPageAddOrEditCuota.Controls.Add(labelFechaPago);
             tabPageAddOrEditCuota.Controls.Add(monthCalendarFechaPago);
             tabPageAddOrEditCuota.Controls.Add(labelCodigoSocio);
@@ -367,7 +363,7 @@
             comboBoxCantidad.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             comboBoxCantidad.ForeColor = Color.White;
             comboBoxCantidad.FormattingEnabled = true;
-            comboBoxCantidad.Location = new Point(581, 179);
+            comboBoxCantidad.Location = new Point(581, 111);
             comboBoxCantidad.Name = "comboBoxCantidad";
             comboBoxCantidad.Size = new Size(238, 27);
             comboBoxCantidad.TabIndex = 3;
@@ -379,7 +375,7 @@
             labelCantidad.AutoSize = true;
             labelCantidad.Font = new Font("Century Gothic", 14F, FontStyle.Bold, GraphicsUnit.Point);
             labelCantidad.ForeColor = Color.White;
-            labelCantidad.Location = new Point(581, 152);
+            labelCantidad.Location = new Point(581, 84);
             labelCantidad.Name = "labelCantidad";
             labelCantidad.Size = new Size(139, 23);
             labelCantidad.TabIndex = 35;
@@ -391,7 +387,7 @@
             labelPesos.AutoSize = true;
             labelPesos.Font = new Font("Century Gothic", 14F, FontStyle.Bold, GraphicsUnit.Point);
             labelPesos.ForeColor = Color.White;
-            labelPesos.Location = new Point(801, 245);
+            labelPesos.Location = new Point(798, 181);
             labelPesos.Name = "labelPesos";
             labelPesos.Size = new Size(21, 23);
             labelPesos.TabIndex = 33;
@@ -404,9 +400,9 @@
             labelCodigoCuota.ForeColor = Color.White;
             labelCodigoCuota.Location = new Point(22, 84);
             labelCodigoCuota.Name = "labelCodigoCuota";
-            labelCodigoCuota.Size = new Size(144, 23);
+            labelCodigoCuota.Size = new Size(174, 23);
             labelCodigoCuota.TabIndex = 32;
-            labelCodigoCuota.Text = "Código cuota:";
+            labelCodigoCuota.Text = "Código de cuota:";
             // 
             // textBoxCodigoCuota
             // 
@@ -427,25 +423,11 @@
             labelTipoCuota.AutoSize = true;
             labelTipoCuota.Font = new Font("Century Gothic", 14F, FontStyle.Bold, GraphicsUnit.Point);
             labelTipoCuota.ForeColor = Color.White;
-            labelTipoCuota.Location = new Point(581, 84);
+            labelTipoCuota.Location = new Point(22, 220);
             labelTipoCuota.Name = "labelTipoCuota";
             labelTipoCuota.Size = new Size(142, 23);
             labelTipoCuota.TabIndex = 30;
             labelTipoCuota.Text = "Tipo de cuota:";
-            // 
-            // comboBoxMes
-            // 
-            comboBoxMes.BackColor = Color.DimGray;
-            comboBoxMes.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxMes.FlatStyle = FlatStyle.Flat;
-            comboBoxMes.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            comboBoxMes.ForeColor = Color.White;
-            comboBoxMes.FormattingEnabled = true;
-            comboBoxMes.Items.AddRange(new object[] { "Seleccione una opción", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" });
-            comboBoxMes.Location = new Point(22, 247);
-            comboBoxMes.Name = "comboBoxMes";
-            comboBoxMes.Size = new Size(238, 27);
-            comboBoxMes.TabIndex = 1;
             // 
             // comboBoxTipoCuota
             // 
@@ -457,22 +439,11 @@
             comboBoxTipoCuota.ForeColor = Color.White;
             comboBoxTipoCuota.FormattingEnabled = true;
             comboBoxTipoCuota.Items.AddRange(new object[] { "Seleccione una opción", "Mensual", "Semanal", "Diaria" });
-            comboBoxTipoCuota.Location = new Point(581, 111);
+            comboBoxTipoCuota.Location = new Point(22, 246);
             comboBoxTipoCuota.Name = "comboBoxTipoCuota";
             comboBoxTipoCuota.Size = new Size(238, 27);
             comboBoxTipoCuota.TabIndex = 2;
             comboBoxTipoCuota.SelectedIndexChanged += comboBoxTipoCuota_SelectedIndexChanged;
-            // 
-            // labelMes
-            // 
-            labelMes.AutoSize = true;
-            labelMes.Font = new Font("Century Gothic", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            labelMes.ForeColor = Color.White;
-            labelMes.Location = new Point(22, 220);
-            labelMes.Name = "labelMes";
-            labelMes.Size = new Size(160, 23);
-            labelMes.TabIndex = 26;
-            labelMes.Text = "Mes que abona:";
             // 
             // labelFechaPago
             // 
@@ -496,7 +467,6 @@
             monthCalendarFechaPago.Name = "monthCalendarFechaPago";
             monthCalendarFechaPago.TabIndex = 3;
             monthCalendarFechaPago.TabStop = false;
-            monthCalendarFechaPago.DateChanged += monthCalendarFechaPago_DateChanged;
             // 
             // labelCodigoSocio
             // 
@@ -601,7 +571,7 @@
             labelMonto.AutoSize = true;
             labelMonto.Font = new Font("Century Gothic", 14F, FontStyle.Bold, GraphicsUnit.Point);
             labelMonto.ForeColor = Color.White;
-            labelMonto.Location = new Point(581, 220);
+            labelMonto.Location = new Point(581, 152);
             labelMonto.Name = "labelMonto";
             labelMonto.Size = new Size(164, 23);
             labelMonto.TabIndex = 12;
@@ -614,7 +584,7 @@
             textBoxMonto.BorderStyle = BorderStyle.FixedSingle;
             textBoxMonto.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             textBoxMonto.ForeColor = Color.White;
-            textBoxMonto.Location = new Point(581, 244);
+            textBoxMonto.Location = new Point(581, 179);
             textBoxMonto.Name = "textBoxMonto";
             textBoxMonto.Size = new Size(212, 27);
             textBoxMonto.TabIndex = 4;
@@ -680,8 +650,6 @@
         private MonthCalendar monthCalendarFechaPago;
         private Label labelFechaPago;
         private ComboBox comboBoxTipoCuota;
-        private Label labelMes;
-        private ComboBox comboBoxMes;
         private Label labelTipoCuota;
         private Button buttonClose;
         private TabPage tabPageDebtorsVisualizer;

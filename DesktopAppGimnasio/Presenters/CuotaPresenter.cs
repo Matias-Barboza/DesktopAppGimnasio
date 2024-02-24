@@ -8,17 +8,19 @@ namespace DesktopAppGimnasio.Presenters
     {
         private ICuotaView view;
         private ICuotaRepository repository;
+        private ISocioRepository repositoryS;
         private ITipoCuotaRepository repositoryTC;
         private BindingSource cuotasBindingSource;
         private BindingSource cuotasVencidasBindingSource;
         private IEnumerable<CuotaModel> cuotasList;
         private IEnumerable<CuotaModel> cuotasVencidasList;
 
-        public CuotaPresenter(ICuotaView view, ICuotaRepository repository, ITipoCuotaRepository repositoryTC)
+        public CuotaPresenter(ICuotaView view, ICuotaRepository repository,ISocioRepository  repositoryS,ITipoCuotaRepository repositoryTC)
         {
 
             this.view = view;
             this.repository = repository;
+            this.repositoryS = repositoryS;
             this.repositoryTC = repositoryTC;
             this.cuotasBindingSource = new BindingSource();
             this.cuotasVencidasBindingSource = new BindingSource();
@@ -55,7 +57,6 @@ namespace DesktopAppGimnasio.Presenters
             }
 
             this.view.Show();
-
         }
 
         // Common methods
@@ -100,7 +101,6 @@ namespace DesktopAppGimnasio.Presenters
             view.CodigoSocio = cuota.CodigoSocio;
             view.MontoAbonado = cuota.MontoAbonado;
             view.FechaDePago = cuota.FechaDePago;
-            view.MesQueAbona = cuota.MesQueAbona;
             view.IdTipoCuota = cuota.IdTipoCuota;
             view.Cantidad = 0;
 
@@ -161,7 +161,6 @@ namespace DesktopAppGimnasio.Presenters
                 return;
             }
 
-
             CuotaModel cuota = new CuotaModel();
 
             cuota.CodigoCuota = view.CodigoCuota;
@@ -170,25 +169,13 @@ namespace DesktopAppGimnasio.Presenters
             cuota.FechaDePago = view.FechaDePago;
             cuota.MesQueAbona = view.MesQueAbona;
             cuota.IdTipoCuota = (view.IdTipoCuota > 0) ? view.IdTipoCuota : -1;
+            cuota.FechaDeVencimiento = CalculateFechaDeVencimiento(cuota.IdTipoCuota, cuota.FechaDePago);
 
             try
             {
                 ModelDataValidation validator = new ModelDataValidation();
 
                 validator.Validate(cuota);
-
-                if (cuota.IdTipoCuota == 1)
-                {
-                    cuota.FechaDeVencimiento = cuota.FechaDePago.AddMonths(1);
-                }
-                else if (cuota.IdTipoCuota == 2)
-                {
-                    cuota.FechaDeVencimiento = cuota.FechaDePago.AddDays((view.Cantidad * 7));
-                }
-                else
-                {
-                    cuota.FechaDeVencimiento = cuota.FechaDePago.AddDays(view.Cantidad);
-                }
 
                 if (view.IsEdit) 
                 {
@@ -199,8 +186,8 @@ namespace DesktopAppGimnasio.Presenters
                 else
                 {
                     repository.Add(cuota);
+                    ReactivateSocio(cuota.CodigoSocio);
                     view.Caption = "Estado de adición de cuota";
-                    view.Message = $"Cuota añadida exitosamente.";
                 }
 
                 view.IsSuccessful = true;
@@ -227,13 +214,47 @@ namespace DesktopAppGimnasio.Presenters
             view.CodigoSocio = 0;
             view.MontoAbonado = 0;
             view.FechaDePago = DateTime.Today;
-            view.MesQueAbona = "";
             view.IdTipoCuota = 0;
             view.Cantidad = -1;
         }
 
 
         // Other methods
+        private DateTime CalculateFechaDeVencimiento(int idTipoCuota, DateTime fechaDePago) 
+        {
+            DateTime calculatedFechaDeVencimiento =  new DateTime();
+
+            if (idTipoCuota == 1)
+            {
+                calculatedFechaDeVencimiento = fechaDePago.AddMonths(1);
+            }
+            
+            if (idTipoCuota == 2)
+            {
+                calculatedFechaDeVencimiento = fechaDePago.AddDays((view.Cantidad * 7));
+            }
+            
+            if(idTipoCuota == 3)
+            {
+                calculatedFechaDeVencimiento = fechaDePago.AddDays(view.Cantidad);
+            }
+
+            return calculatedFechaDeVencimiento;
+        }
+
+        public void ReactivateSocio(int codigoSocio) 
+        {
+            if (repositoryS.IsActive(codigoSocio))
+            {
+                view.Message = $"Cuota añadida exitosamente.";
+                return;
+            }
+
+            repositoryS.ReactivateSocio(codigoSocio);
+            view.Message = $"Cuota añadida exitosamente.\nEl estado de actividad del socio {codigoSocio} fué reactivado.\n" +
+                            "Tenga en cuenta que si elimina la cuota deberá pasar a inactividad manualmente al socio.";
+        }
+
         private void LoadAllCuotasVencidasList()
         {
             cuotasVencidasList = repository.GetAllDebts();

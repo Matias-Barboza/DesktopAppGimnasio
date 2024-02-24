@@ -38,8 +38,9 @@ namespace DesktopAppGimnasio.Presenters
         {
             ICuotaView cuotaView = CuotaView.GetInstance((Form) mainView);
             ICuotaRepository cuotaRepository = new CuotaRepository(mySqlConnectionString);
+            ISocioRepository socioRepository = new SocioRepository(mySqlConnectionString);
             ITipoCuotaRepository tipoCuotaRepository = new TipoCuotaRepository(mySqlConnectionString);
-            CuotaPresenter cuotaPresenter = new CuotaPresenter(cuotaView, cuotaRepository, tipoCuotaRepository);
+            CuotaPresenter cuotaPresenter = new CuotaPresenter(cuotaView, cuotaRepository, socioRepository, tipoCuotaRepository);
         }
 
         private void ShowTiposCuotasView(object? sender, EventArgs e)
