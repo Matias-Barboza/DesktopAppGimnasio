@@ -15,7 +15,7 @@ namespace DesktopAppGimnasio.Presenters
         private IEnumerable<CuotaModel> cuotasList;
         private IEnumerable<CuotaModel> cuotasVencidasList;
 
-        public CuotaPresenter(ICuotaView view, ICuotaRepository repository,ISocioRepository  repositoryS,ITipoCuotaRepository repositoryTC)
+        public CuotaPresenter(ICuotaView view, ICuotaRepository repository,ISocioRepository  repositoryS, ITipoCuotaRepository repositoryTC)
         {
 
             this.view = view;
