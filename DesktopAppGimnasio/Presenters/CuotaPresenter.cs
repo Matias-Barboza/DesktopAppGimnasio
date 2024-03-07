@@ -53,7 +53,7 @@ namespace DesktopAppGimnasio.Presenters
 
             if (view.MustShowDebtsMessage) 
             {
-                view.ShowDebtsMessage(cuotasVencidasList.Count());
+                view.ShowDebtsMessage(repository.GetDebtsAmount());
             }
 
             this.view.Show();
@@ -129,7 +129,7 @@ namespace DesktopAppGimnasio.Presenters
         private void DeleteSelectedCuota(object? sender, EventArgs e)
         {
 
-            if (!view.MustEnter) 
+            if (!view.MustEnter)
             {
                 return;
             }
@@ -156,7 +156,7 @@ namespace DesktopAppGimnasio.Presenters
         private void SaveCuota(object? sender, EventArgs e)
         {
 
-            if (!view.MustEnter) 
+            if (!view.MustEnter)
             {
                 return;
             }

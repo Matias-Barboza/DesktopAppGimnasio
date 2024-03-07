@@ -177,6 +177,35 @@ namespace DesktopAppGimnasio._Repositories
             }
         }
 
+        public int GetDebtsAmount() 
+        {
+            int amountDebts = 0;
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+
+                using (MySqlCommand command = connection.CreateCommand())
+                {
+                    connection.Open();
+                    command.Connection = connection;
+                    command.CommandText = @"SELECT count(*)
+                                            FROM cuotas AS cv
+		                                        JOIN
+	                                            socios AS s
+	                                            ON cv.codigo_socio_fk = s.codigo_socio
+                                            WHERE CURDATE() > cv.fecha_vencimiento AND
+                                                              s.esta_activo = TRUE AND
+                                                              cv.fecha_vencimiento = (SELECT MAX(c.fecha_vencimiento)
+															                          FROM cuotas AS c
+															                          WHERE c.codigo_socio_fk = cv.codigo_socio_fk);";
+
+                    amountDebts = (int)(Int64) command.ExecuteScalar();
+                }
+            }
+
+            return amountDebts;
+        }
+
         public IEnumerable<CuotaModel> GetAll()
         {
             List<CuotaModel> cuotasList = new List<CuotaModel>();

@@ -6,6 +6,7 @@
         void Edit(CuotaModel cuotaModel);
         void Delete(int codigoCuota);
         void DeleteAllCuotasOfSocio(int codigoSocio);
+        int GetDebtsAmount();
         IEnumerable<CuotaModel> GetAll();
         IEnumerable<CuotaModel> GetByValue(string value);
         IEnumerable<CuotaModel> GetAllDebts();
